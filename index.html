@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All-in-One Web Portal</title>
+    <style>
+        /* CSS স্টাইল - আপনার স্ক্রিনশটের মতো ডার্ক ডিজাইন */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { background-color: #040d16; color: white; padding: 20px; display: flex; justify-content: center; }
+        .container { width: 100%; max-width: 500px; }
+        
+        h2 { text-align: center; margin: 20px 0; font-size: 18px; color: #00ffcc; border-bottom: 1px solid #1b263b; padding-bottom: 10px; }
+        
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 30px; }
+        
+        .card { 
+            background: rgba(255, 255, 255, 0.03); 
+            border: 1px solid #1b263b; 
+            border-radius: 15px; 
+            padding: 12px 5px; 
+            text-align: center; 
+            text-decoration: none; 
+            color: white; 
+            transition: 0.3s;
+        }
+        .card:hover { background: rgba(0, 255, 204, 0.1); border-color: #00ffcc; transform: translateY(-3px); }
+
+        .icon-box { 
+            width: 55px; height: 55px; background: white; border-radius: 12px; 
+            margin: 0 auto 8px; display: flex; align-items: center; justify-content: center;
+            border: 2px solid #32CD32; overflow: hidden;
+        }
+        .icon-box img { width: 80%; height: 80%; object-fit: contain; }
+        .card span { font-size: 11px; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h2>ইসলামিক অ্যাপস</h2>
+    <div class="grid">
+        <a href="#" class="card"><div class="icon-box"><img src="https://cdn-icons-png.flaticon.com/512/2855/2855169.png"></div><span>5 Kalima</span></a>
+        <a href="#" class="card"><div class="icon-box"><img src="https://cdn-icons-png.flaticon.com/512/2311/2311904.png"></div><span>Qibla Finder</span></a>
+        <a href="#" class="card"><div class="icon-box"><img src="https://cdn-icons-png.flaticon.com/512/2972/2972449.png"></div><span>Al Quran</span></a>
+    </div>
+
+    <h2>সোশ্যাল মিডিয়া ও AI</h2>
+    <div class="grid">
+        <a href="https://facebook.com" class="card"><div class="icon-box"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png"></div><span>Facebook</span></a>
+        <a href="https://gemini.google.com" class="card"><div class="icon-box"><img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/google-gemini-icon.png"></div><span>Gemini</span></a>
+        <a href="https://chatgpt.com" class="card"><div class="icon-box"><img src="https://static.cdnlogo.com/logos/c/38/chatgpt.png"></div><span>Chat GPT</span></a>
+        <a href="https://google.com" class="card"><div class="icon-box"><img src="https://cdn-icons-png.flaticon.com/512/300/300221.png"></div><span>Google</span></a>
+        <a href="https://tiktok.com" class="card"><div class="icon-box"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png"></div><span>TikTok</span></a>
+        <a href="https://youtube.com" class="card"><div class="icon-box"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"></div><span>YouTube</span></a>
+    </div>
+
+    <h2>খেলাধুলা (Cricket)</h2>
+    <div class="grid">
+        <a href="https://cricbuzz.com" class="card"><div class="icon-box"><img src="https://static.cricbuzz.com/images/cb_logo.svg"></div><span>Cricbuzz</span></a>
+        <a href="#" class="card"><div class="icon-box"><img src="https://cdn-icons-png.flaticon.com/512/5351/5351461.png"></div><span>CricLine</span></a>
+        <a href="#" class="card"><div class="icon-box"><img src="https://cdn-icons-png.flaticon.com/512/889/889102.png"></div><span>ESPNcricinfo</span></a>
+    </div>
+
+    <h2>নিউজ ও টিভি চ্যানেল</h2>
+    <div class="grid">
+        <a href="#" class="card"><div class="icon-box"><img src="https://upload.wikimedia.org/wikipedia/en/2/23/Somoy_TV_logo.png"></div><span>Somoy TV</span></a>
+        <a href="#" class="card"><div class="icon-box"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Jamuna_TV_Logo.png"></div><span>Jamuna TV</span></a>
+        <a href="#" class="card"><div class="icon-box"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f3/NTV_Bangladesh_logo.svg/1200px-NTV_Bangladesh_logo.svg.png"></div><span>NTV Online</span></a>
+        <a href="#" class="card"><div class="icon-box"><img src="https://upload.wikimedia.org/wikipedia/bn/4/4e/Channel_i_logo.png"></div><span>Channel I</span></a>
+        <a href="#" class="card"><div class="icon-box"><img src="https://upload.wikimedia.org/wikipedia/en/c/ce/Ekattor_TV_logo.png"></div><span>Ekattor TV</span></a>
+        <a href="#" class="card"><div class="icon-box"><img src="https://upload.wikimedia.org/wikipedia/bn/6/6f/Independent_TV_logo.png"></div><span>Independent</span></a>
+    </div>
+
+    <h2>সংবাদপত্র</h2>
+    <div class="grid">
+        <a href="https://prothomalo.com" class="card"><div class="icon-box"><img src="https://palo-images.prothomalo.com/contents/themes/web/assets/images/logo.png"></div><span>Prothom Alo</span></a>
+        <a href="#" class="card"><div class="icon-box"><img src="https://www.jugantor.com/view/img/logo.png"></div><span>Jugantor</span></a>
+        <a href="#" class="card"><div class="icon-box"><img src="https://www.bd-pratidin.com/assets/images/logo.png"></div><span>bd-Pratidin</span></a>
+    </div>
+
+</div>
+
+</body>
+</html>
