@@ -132,5 +132,137 @@
     }
 </script>
 
+</body><!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Phone BD - Ultimate App Store</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #040d16; color: white; padding: 5px; display: flex; justify-content: center; }
+        .container { width: 100%; max-width: 240px; }
+
+        .brand-header { text-align: center; padding: 10px 0 5px; }
+        .brand-header h1 { font-size: 18px; animation: colorChange 4s infinite; font-weight: bold; }
+        @keyframes colorChange {
+            0% { color: red; } 25% { color: blue; } 50% { color: yellow; } 75% { color: green; } 100% { color: red; }
+        }
+
+        .search-container { margin: 8px 0; position: sticky; top: 5px; z-index: 100; }
+        #searchBar {
+            width: 100%; padding: 7px; border-radius: 15px; border: 1.5px solid #32CD32;
+            background: #1b263b; color: white; font-size: 11px; outline: none; text-align: center;
+        }
+
+        h2 { font-size: 10px; color: #00ffcc; margin: 12px 0 5px; border-left: 3px solid #32CD32; padding-left: 6px; text-transform: uppercase; }
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; }
+
+        .card { 
+            background: rgba(255, 255, 255, 0.05); border: 1px solid #1b263b; 
+            border-radius: 8px; padding: 5px 2px; text-align: center; text-decoration: none; 
+            display: flex; flex-direction: column; align-items: center;
+        }
+
+        .icon-box { 
+            width: 38px; height: 38px; background: white; border-radius: 8px; 
+            margin-bottom: 3px; display: flex; align-items: center; justify-content: center;
+            border: 1.2px solid #32CD32; overflow: hidden;
+        }
+        .icon-box img { width: 70%; height: 70%; object-fit: contain; }
+        .card span { font-size: 7.5px; color: #ccc; width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+        .footer { text-align: center; margin-top: 15px; padding: 10px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+        .footer p { font-size: 8px; color: #666; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="brand-header">
+        <h1>Cloud Phone BD</h1>
+        <p style="font-size: 9px;">Ultimate Web App Store</p>
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="searchBar" placeholder="Search 60+ Apps..." onkeyup="searchApp()">
+    </div>
+
+    <div id="appStore">
+        <h2>Cloud & Utilities</h2>
+        <div class="grid">
+            <a href="https://cloudphonebd.github.io/Browser" class="card"><div class="icon-box"><img src="https://img.icons8.com/color/96/globe.png"></div><span>Browser</span></a>
+            <a href="http://maps.google.com" class="card"><div class="icon-box"><img src="https://img.icons8.com/color/96/google-maps-new.png"></div><span>Maps</span></a>
+            <a href="https://mail.google.com/mail/mu/mp/" class="card"><div class="icon-box"><img src="https://img.icons8.com/color/96/gmail-new.png"></div><span>Gmail</span></a>
+            <a href="https://www.facebook.com/messages/" class="card"><div class="icon-box"><img src="https://img.icons8.com/color/96/messenger--v1.png"></div><span>Messenger</span></a>
+            <a href="https://www.fast.com/" class="card"><div class="icon-box"><img src="https://img.icons8.com/color/96/speed.png"></div><span>Fast Speed</span></a>
+            <a href="http://web.telegram.org" class="card"><div class="icon-box"><img src="https://img.icons8.com/color/96/telegram-app.png"></div><span>Telegram</span></a>
+            <a href="https://drive.google.com" class="card"><div class="icon-box"><img src="https://img.icons8.com/color/96/google-drive--v1.png"></div><span>Drive</span></a>
+            <a href="https://www.remove.bg/" class="card"><div class="icon-box"><img src="https://img.icons8.com/color/96/image-file.png"></div><span>Remove BG</span></a>
+            <a href="http://cloudphone.tech/auth/sign-in" class="card"><div class="icon-box"><img src="https://img.icons8.com/color/96/cloud.png"></div><span>Cloud Auth</span></a>
+        </div>
+
+        <h2>Games & Fun</h2>
+        <div class="grid">
+            <a href="http://javagames.cc" class="card"><div class="icon-box"><img src="https://img.icons8.com/color/96/java.png"></div><span>Java Games</span></a>
+            <a href="https://javagames.cc/play/4075" class="card"><div class="icon-box"><img src="https://img.icons8.com/color/96/football-player.png"></div><span>E-Football</span></a>
+            <a href="http://tubidy.cc" class="card"><div class="icon-box"><img src="https://img.icons8.com/color/96/video.png"></div><span>Tubidy YT</span></a>
+            <a href="http://cinespot.mobi/" class="card"><div class="icon-box"><img src="https://img.icons8.com/color/96/movie.png"></div><span>Cinespot</span></a>
+            <a href="https://sitebazz.com" class="card"><div class="icon-box"><img src="https://img.icons8.com/color/96/web.png"></div><span>SiteBazz</span></a>
+            <a href="https://x0.rf.gd/a/x0-all/" class="card"><div class="icon-box"><img src="https://img.icons8.com/color/96/android-os.png"></div><span>KaiOS Mods</span></a>
+        </div>
+
+        <h2>BD Services</h2>
+        <div class="grid">
+            <a href="https://www.grameenphone.com" class="card"><div class="icon-box"><img src="https://img.icons8.com/color/96/sim-card.png"></div><span>MyGP</span></a>
+            <a href="https://www.bkash.com" class="card"><div class="icon-box"><img src="https://www.logo.wine/a/logo/BKash/BKash-Icon-Logo.wine.svg"></div><span>bKash</span></a>
+            <a href="https://www.daraz.com.bd" class="card"><div class="icon-box"><img src="https://img.icons8.com/color/96/daraz.png"></div><span>Daraz</span></a>
+            <a href="https://bikroy.com" class="card"><div class="icon-box"><img src="https://bikroy.com/favicon.ico"></div><span>Bikroy</span></a>
+            <a href="https://www.nagad.com.bd" class="card"><div class="icon-box"><img src="https://www.nagad.com.bd/favicon.ico"></div><span>Nagad</span></a>
+            <a href="https://pathao.com" class="card"><div class="icon-box"><img src="https://pathao.com/favicon.ico"></div><span>Pathao</span></a>
+        </div>
+
+        <h2>News & AI</h2>
+        <div class="grid">
+            <a href="https://prothomalo.com" class="card"><div class="icon-box"><img src="https://palo-images.prothomalo.com/contents/themes/web/assets/images/logo.png"></div><span>Prothom Alo</span></a>
+            <a href="https://somoynews.tv" class="card"><div class="icon-box"><img src="https://www.somoynews.tv/favicon.ico"></div><span>Somoy TV</span></a>
+            <a href="https://chatgpt.com" class="card"><div class="icon-box"><img src="https://img.icons8.com/ios-filled/100/chatgpt.png"></div><span>ChatGPT</span></a>
+            <a href="https://gemini.google.com" class="card"><div class="icon-box"><img src="https://img.icons8.com/fluency/96/google-gemini.png"></div><span>Gemini</span></a>
+            <a href="https://facebook.com" class="card"><div class="icon-box"><img src="https://img.icons8.com/color/96/facebook-new.png"></div><span>Facebook</span></a>
+            <a href="https://youtube.com" class="card"><div class="icon-box"><img src="https://img.icons8.com/color/96/youtube-play.png"></div><span>YouTube</span></a>
+        </div>
+
+        <h2>Islamic & Global</h2>
+        <div class="grid">
+            <a href="https://quran.com" class="card"><div class="icon-box"><img src="https://cdn-icons-png.flaticon.com/512/2972/2972449.png"></div><span>Al Quran</span></a>
+            <a href="https://hadithbd.com" class="card"><div class="icon-box"><img src="https://cdn-icons-png.flaticon.com/512/2855/2855169.png"></div><span>Hadith BD</span></a>
+            <a href="https://amazon.com" class="card"><div class="icon-box"><img src="https://img.icons8.com/color/96/amazon.png"></div><span>Amazon</span></a>
+            <a href="https://wikipedia.org" class="card"><div class="icon-box"><img src="https://img.icons8.com/color/96/wikipedia.png"></div><span>Wikipedia</span></a>
+            <a href="https://aliexpress.com" class="card"><div class="icon-box"><img src="https://img.icons8.com/color/96/aliexpress.png"></div><span>AliExpress</span></a>
+            <a href="https://www.google.com" class="card"><div class="icon-box"><img src="https://img.icons8.com/color/96/google-logo.png"></div><span>Google</span></a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Owner By <b style="color: #00ffcc;">(Cloudphonebd)</b></p>
+    </div>
+</div>
+
+<script>
+    function searchApp() {
+        let input = document.getElementById('searchBar').value.toLowerCase();
+        let cards = document.getElementsByClassName('card');
+        let headings = document.getElementsByTagName('h2');
+        for (let i = 0; i < cards.length; i++) {
+            let appName = cards[i].innerText.toLowerCase();
+            cards[i].classList.toggle('hidden', !appName.includes(input));
+        }
+        if(input !== "") { for(let h of headings) h.style.display = "none"; }
+        else { for(let h of headings) h.style.display = "block"; }
+    }
+</script>
+
 </body>
+</html>
                                                                                       </html>
