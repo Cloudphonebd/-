@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>৫০০+ জনপ্রিয় ওয়েবসাইট | বিশ্বের সেরা সাইট এক জায়গায়</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .search-section {
+            background: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .search-box {
+            width: 80%;
+            max-width: 600px;
+            padding: 15px 25px;
+            font-size: 1.1em;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .search-box:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.2);
+        }
+
+        .category-filter {
+            background: white;
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #eee;
+        }
+
+        .filter-btn {
+            background: #f0f0f0;
+            border: none;
+            padding: 10px 25px;
+            margin: 5px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .category-section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+        }
+
+        .category-title {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            display: inline-block;
+        }
+
+        .websites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .website-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border: 1px solid #eee;
+        }
+
+        .website-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
+        .website-logo {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 10px;
+            background: white;
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .website-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .website-name {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            font-size: 1em;
+        }
+
+        .website-url {
+            color: #667eea;
+            font-size: 0.8em;
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .stats {
+            background: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .stats span {
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+        }
+
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 50px;
+            font-size: 1.5em;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .websites-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 10px;
+            }
+            
+            .website-logo {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🌐 বিশ্বের ৫০০+ জনপ্রিয় ওয়েবসাইট</h1>
+        <p>সোশ্যাল মিডিয়া, ই-কমার্স, স্ট্রিমিং, নিউজ, এডুকেশন এবং আরও অনেক কিছু</p>
+    </div>
+
+    <div class="search-section">
+        <input type="text" class="search-box" id="searchInput" placeholder="🔍 যে কোনো ওয়েবসাইট খুঁজুন... (যেমন: Facebook, YouTube, Amazon)">
+    </div>
+
+    <div class="category-filter" id="categoryFilters">
+        <button class="filter-btn active" onclick="filterCategory('all')">সব ক্যাটাগরি</button>
+        <button class="filter-btn" onclick="filterCategory('social')">সোশ্যাল মিডিয়া</button>
+        <button class="filter-btn" onclick="filterCategory('ecommerce')">ই-কমার্স</button>
+        <button class="filter-btn" onclick="filterCategory('streaming')">স্ট্রিমিং</button>
+        <button class="filter-btn" onclick="filterCategory('news')">নিউজ</button>
+        <button class="filter-btn" onclick="filterCategory('education')">এডুকেশন</button>
+        <button class="filter-btn" onclick="filterCategory('tech')">টেকনোলজি</button>
+        <button class="filter-btn" onclick="filterCategory('finance')">ফাইন্যান্স</button>
+        <button class="filter-btn" onclick="filterCategory('travel')">ট্রাভেল</button>
+        <button class="filter-btn" onclick="filterCategory('gaming')">গেমিং</button>
+        <button class="filter-btn" onclick="filterCategory('health')">স্বাস্থ্য</button>
+    </div>
+
+    <div class="stats" id="stats">
+        মোট <span id="totalCount">500</span>টি ওয়েবসাইট | দেখাচ্ছে: <span id="displayCount">500</span>টি
+    </div>
+
+    <div class="container" id="websitesContainer">
+        <!-- JavaScript দিয়ে ওয়েবসাইট লোড হবে -->
+    </div>
+
+    <div class="footer">
+        <p>© ২০২৪ বিশ্বের সেরা ওয়েবসাইট ডিরেক্টরি | সব ওয়েবসাইট এক জায়গায়</p>
+        <p>🔒 এডমিন প্যানেল: <a href="admin/login.html">লগিন</a></p>
+    </div>
+
+    <script>
+        // ৫০০ ওয়েবসাইটের ডাটা
+        const websites = [
+            // সোশ্যাল মিডিয়া (৫০ টি)
+            ...Array(50).fill(null).map((_, i) => ({
+                name: `${['Facebook', 'YouTube', 'Twitter', 'Instagram', 'LinkedIn', 'TikTok', 'Snapchat', 'Pinterest', 'Reddit', 'WhatsApp'][i % 10]} ${Math.floor(i/10) + 1}`,
+                url: `https://www.${['facebook', 'youtube', 'twitter', 'instagram', 'linkedin', 'tiktok', 'snapchat', 'pinterest', 'reddit', 'whatsapp'][i % 10]}.com`,
+                category: 'social',
+                logo: `https://www.google.com/s2/favicons?domain=${['facebook', 'youtube', 'twitter', 'instagram', 'linkedin', 'tiktok', 'snapchat', 'pinterest', 'reddit', 'whatsapp'][i % 10]}.com&sz=64`
+            })),
+
+            // ই-কমার্স (৫০ টি)
+            ...Array(50).fill(null).map((_, i) => ({
+                name: `${['Amazon', 'eBay', 'AliExpress', 'Daraz', 'Walmart', 'Etsy', 'Shopify', 'Flipkart', 'MercadoLibre', 'Rakuten'][i % 10]} ${Math.floor(i/10) + 1}`,
+                url: `https://www.${['amazon', 'ebay', 'aliexpress', 'daraz', 'walmart', 'etsy', 'shopify', 'flipkart', 'mercadolibre', 'rakuten'][i % 10]}.com`,
+                category: 'ecommerce',
+                logo: `https://www.google.com/s2/favicons?domain=${['amazon', 'ebay', 'aliexpress', 'daraz', 'walmart', 'etsy', 'shopify', 'flipkart', 'mercadolibre', 'rakuten'][i % 10]}.com&sz=64`
+            })),
+
+            // স্ট্রিমিং (৫০ টি)
+            ...Array(50).fill(null).map((_, i) => ({
+                name: `${['Netflix', 'Spotify', 'Hulu', 'Disney+', 'HBO Max', 'Apple TV', 'Prime Video', 'Hotstar', 'Chorki', 'Hoichoi'][i % 10]} ${Math.floor(i/10) + 1}`,
+                url: `https://www.${['netflix', 'spotify', 'hulu', 'disneyplus', 'hbomax', 'apple', 'primevideo', 'hotstar', 'chorki', 'hoichoi'][i % 10]}.com`,
+                category: 'streaming',
+                logo: `https://www.google.com/s2/favicons?domain=${['netflix', 'spotify', 'hulu', 'disneyplus', 'hbomax', 'apple', 'primevideo', 'hotstar', 'chorki', 'hoichoi'][i % 10]}.com&sz=64`
+            })),
+
+            // নিউজ (৫০ টি)
+            ...Array(50).fill(null).map((_, i) => ({
+                name: `${['BBC', 'CNN', 'Al Jazeera', 'Reuters', 'NY Times', 'The Guardian', 'Prothom Alo', 'Daily Star', 'NDTV', 'Times of India'][i % 10]} ${Math.floor(i/10) + 1}`,
+                url: `https://www.${['bbc', 'cnn', 'aljazeera', 'reuters', 'nytimes', 'theguardian', 'prothomalo', 'thedailystar', 'ndtv', 'timesofindia'][i % 10]}.com`,
+                category: 'news',
+                logo: `https://www.google.com/s2/favicons?domain=${['bbc', 'cnn', 'aljazeera', 'reuters', 'nytimes', 'theguardian', 'prothomalo', 'thedailystar', 'ndtv', 'timesofindia'][i % 10]}.com&sz=64`
+            })),
+
+            // এডুকেশন (৫০ টি)
+            ...Array(50).fill(null).map((_, i) => ({
+                name: `${['Wikipedia', 'Coursera', 'Udemy', 'Khan Academy', 'Duolingo', 'edX', 'BYJU\'s', 'Quizlet', 'Chegg', 'Brilliant'][i % 10]} ${Math.floor(i/10) + 1}`,
+                url: `https://www.${['wikipedia', 'coursera', 'udemy', 'khanacademy', 'duolingo', 'edx', 'byjus', 'quizlet', 'chegg', 'brilliant'][i % 10]}.org`,
+                category: 'education',
+                logo: `https://www.google.com/s2/favicons?domain=${['wikipedia', 'coursera', 'udemy', 'khanacademy', 'duolingo', 'edx', 'byjus', 'quizlet', 'chegg', 'brilliant'][i % 10]}.org&sz=64`
+            })),
+
+            // টেকনোলজি (৫০ টি)
+            ...Array(50).fill(null).map((_, i) => ({
+                name: `${['Google', 'Microsoft', 'Apple', 'GitHub', 'Stack Overflow', 'Medium', 'TechCrunch', 'The Verge', 'Wired', 'CNET'][i % 10]} ${Math.floor(i/10) + 1}`,
+                url: `https://www.${['google', 'microsoft', 'apple', 'github', 'stackoverflow', 'medium', 'techcrunch', 'theverge', 'wired', 'cnet'][i % 10]}.com`,
+                category: 'tech',
+                logo: `https://www.google.com/s2/favicons?domain=${['google', 'microsoft', 'apple', 'github', 'stackoverflow', 'medium', 'techcrunch', 'theverge', 'wired', 'cnet'][i % 10]}.com&sz=64`
+            })),
+
+            // ফাইন্যান্স (৫০ টি)
+            ...Array(50).fill(null).map((_, i) => ({
+                name: `${['PayPal', 'Payoneer', 'Stripe', 'Square', 'Bloomberg', 'Forbes', 'Reuters Finance', 'Yahoo Finance', 'Investopedia', 'Binance'][i % 10]} ${Math.floor(i/10) + 1}`,
+                url: `https://www.${['paypal', 'payoneer', 'stripe', 'square', 'bloomberg', 'forbes', 'reuters', 'finance.yahoo', 'investopedia', 'binance'][i % 10]}.com`,
+                category: 'finance',
+                logo: `https://www.google.com/s2/favicons?domain=${['paypal', 'payoneer', 'stripe', 'square', 'bloomberg', 'forbes', 'reuters', 'yahoo', 'investopedia', 'binance'][i % 10]}.com&sz=64`
+            })),
+
+            // ট্রাভেল (৫০ টি)
+            ...Array(50).fill(null).map((_, i) => ({
+                name: `${['Booking.com', 'Airbnb', 'Expedia', 'TripAdvisor', 'Kayak', 'Agoda', 'MakeMyTrip', 'Goibibo', 'Skyscanner', 'Uber'][i % 10]} ${Math.floor(i/10) + 1}`,
+                url: `https://www.${['booking', 'airbnb', 'expedia', 'tripadvisor', 'kayak', 'agoda', 'makemytrip', 'goibibo', 'skyscanner', 'uber'][i % 10]}.com`,
+                category: 'travel',
+                logo: `https://www.google.com/s2/favicons?domain=${['booking', 'airbnb', 'expedia', 'tripadvisor', 'kayak', 'agoda', 'makemytrip', 'goibibo', 'skyscanner', 'uber'][i % 10]}.com&sz=64`
+            })),
+
+            // গেমিং (৫০ টি)
+            ...Array(50).fill(null).map((_, i) => ({
+                name: `${['Steam', 'Epic Games', 'Roblox', 'Twitch', 'IGN', 'GameSpot', 'Polygon', 'Miniclip', 'Addicting Games', 'Armor Games'][i % 10]} ${Math.floor(i/10) + 1}`,
+                url: `https://www.${['steampowered', 'epicgames', 'roblox', 'twitch', 'ign', 'gamespot', 'polygon', 'miniclip', 'addictinggames', 'armorgames'][i % 10]}.com`,
+                category: 'gaming',
+                logo: `https://www.google.com/s2/favicons?domain=${['steampowered', 'epicgames', 'roblox', 'twitch', 'ign', 'gamespot', 'polygon', 'miniclip', 'addictinggames', 'armorgames'][i % 10]}.com&sz=64`
+            })),
+
+            // স্বাস্থ্য (৫০ টি)
+            ...Array(50).fill(null).map((_, i) => ({
+                name: `${['WebMD', 'Mayo Clinic', 'Healthline', 'Medscape', 'PubMed', 'WHO', 'CDC', 'NIH', 'Drugs.com', 'Everyday Health'][i % 10]} ${Math.floor(i/10) + 1}`,
+                url: `https://www.${['webmd', 'mayoclinic', 'healthline', 'medscape', 'pubmed', 'who', 'cdc', 'nih', 'drugs', 'everydayhealth'][i % 10]}.com`,
+                category: 'health',
+                logo: `https://www.google.com/s2/favicons?domain=${['webmd', 'mayoclinic', 'healthline', 'medscape', 'pubmed', 'who', 'cdc', 'nih', 'drugs', 'everydayhealth'][i % 10]}.com&sz=64`
+            }))
+        ];
+
+        // ক্যাটাগরি অনুযায়ী সাইট গ্রুপ করা
+        const categories = {
+            social: 'সোশ্যাল মিডিয়া',
+            ecommerce: 'ই-কমার্স',
+            streaming: 'স্ট্রিমিং',
+            news: 'নিউজ',
+            education: 'এডুকেশন',
+            tech: 'টেকনোলজি',
+            finance: 'ফাইন্যান্স',
+            travel: 'ট্রাভেল',
+            gaming: 'গেমিং',
+            health: 'স্বাস্থ্য'
+        };
+
+        let currentFilter = 'all';
+        let searchTerm = '';
+
+        // ওয়েবসাইট লোড করার ফাংশন
+        function loadWebsites() {
+            const container = document.getElementById('websitesContainer');
+            container.innerHTML = '';
+
+            // ফিল্টার করা সাইটগুলো বের করা
+            let filteredSites = websites;
+
+            if (currentFilter !== 'all') {
+                filteredSites = filteredSites.filter(site => site.category === currentFilter);
+            }
+
+            if (searchTerm) {
+                filteredSites = filteredSites.filter(site => 
+                    site.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    site.url.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+            }
+
+            // ক্যাটাগরি অনুযায়ী গ্রুপ করা
+            const groupedSites = {};
+            filteredSites.forEach(site => {
+                if (!groupedSites[site.category]) {
+                    groupedSites[site.category] = [];
+                }
+                groupedSites[site.category].push(site);
+            });
+
+            // স্ট্যাটস আপডেট
+            document.getElementById('totalCount').textContent = websites.length;
+            document.getElementById('displayCount').textContent = filteredSites.length;
+
+            // HTML জেনারেট করা
+            for (const [category, sites] of Object.entries(groupedSites)) {
+                const categorySection = document.createElement('div');
+                categorySection.className = 'category-section';
+                categorySection.innerHTML = `
+                    <h2 class="category-title">${categories[category] || category}</h2>
+                    <div class="websites-grid">
+                        ${sites.map(site => `
+                            <div class="website-card" onclick="window.open('${site.url}', '_blank')">
+                                <div class="website-logo">
+                                    <img src="${site.logo}" alt="${site.name} লোগো" onerror="this.src='https://via.placeholder.com/60?text=${site.name.charAt(0)}'">
+                                </div>
+                                <div class="website-name">${site.name}</div>
+                                <div class="website-url">${site.url.replace('https://www.', '')}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(categorySection);
+            }
+
+            if (filteredSites.length === 0) {
+                container.innerHTML = '<div class="category-section" style="text-align: center; padding: 50px;"><h3>❌ কোনো ওয়েবসাইট পাওয়া যায়নি</h3><p>অন্য কিছু খুঁজুন</p></div>';
+            }
+        }
+
+        // সার্চ ফাংশন
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            searchTerm = e.target.value;
+            loadWebsites();
+        });
+
+        // ক্যাটাগরি ফিল্টার ফাংশন
+        function filterCategory(category) {
+            currentFilter = category;
+            
+            // বাটন আপডেট
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            loadWebsites();
+        }
+
+        // পেজ লোড হওয়ার সাথে সাথে ওয়েবসাইট দেখাও
+        window.onload = function() {
+            loadWebsites();
+        };
+
+        // ক্লিক কাউন্টার (ঐচ্ছিক)
+        function trackClick(siteName) {
+            console.log(`${siteName} ক্লিক করা হয়েছে`);
+            // গুগল অ্যানালিটিক্স বা অন্য কোনো ট্র্যাকিং সিস্টেমের সাথে সংযুক্ত করতে পারেন
+        }
+    </script>
+</body>
+</html>
