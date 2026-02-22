@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud-App | ১ লক্ষ ওয়েবসাইটের ডিরেক্টরি</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        /* হেডার স্টাইল */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* মেনু সিস্টেম */
+        .menu-container {
+            position: relative;
+        }
+
+        .menu-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            width: 55px;
+            height: 55px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-btn:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            right: 0;
+            top: 70px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+            width: 280px;
+            display: none;
+            overflow: hidden;
+            animation: slideDown 0.3s ease;
+            z-index: 1001;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .dropdown-menu a {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 18px 25px;
+            color: #333;
+            text-decoration: none;
+            font-size: 1.1rem;
+            border-bottom: 1px solid #f0f0f0;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .dropdown-menu a i {
+            width: 25px;
+            font-size: 1.3rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .dropdown-menu a:hover {
+            background: linear-gradient(135deg, #667eea15, #764ba215);
+            padding-left: 35px;
+        }
+
+        .dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+
+        /* হিরো সেকশন */
+        .hero {
+            background: linear-gradient(135deg, #667eea20, #764ba220);
+            backdrop-filter: blur(10px);
+            padding: 4rem 2rem;
+            text-align: center;
+            margin: 2rem auto;
+            border-radius: 50px;
+            max-width: 1300px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.95);
+            margin-bottom: 2.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .stat-box {
+            background: rgba(255,255,255,0.15);
+            padding: 1.5rem 3rem;
+            border-radius: 30px;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(5px);
+            min-width: 200px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            letter-spacing: 1px;
+        }
+
+        /* সার্চ সেকশন */
+        .search-section {
+            max-width: 900px;
+            margin: -3rem auto 3rem;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .search-wrapper {
+            background: white;
+            border-radius: 70px;
+            padding: 8px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 22px 35px;
+            border: none;
+            border-radius: 70px;
+            font-size: 1.2rem;
+            outline: none;
+            background: transparent;
+        }
+
+        .search-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 60px;
+            padding: 18px 45px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            white-space: nowrap;
+        }
+
+        .search-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.5);
+        }
+
+        /* ক্যাটাগরি সেকশন */
+        .categories-section {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 5px;
+            background: white;
+            margin: 1.2rem auto;
+            border-radius: 3px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 20px;
+        }
+
+        .category-card {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 1.5rem 1rem;
+            border-radius: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            font-weight: 600;
+            color: #333;
+            border: 3px solid transparent;
+            backdrop-filter: blur(5px);
+        }
+
+        .category-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-color: white;
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .category-card:hover i {
+            background: white;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .category-card.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-color: white;
+        }
+
+        .category-card.active i {
+            background: white;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ওয়েবসাইট গ্রিড */
+        .websites-section {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .section-header h2 {
+            color: white;
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        .sort-select {
+            padding: 15px 30px;
+            border-radius: 15px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            background: white;
+            cursor: pointer;
+            outline: none;
+            min-width: 200px;
+        }
+
+        .website-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 2rem;
+        }
+
+        .website-card {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            transition: all 0.4s;
+            border: 1px solid rgba(255,255,255,0.3);
+            position: relative;
+        }
+
+        .website-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(102, 126, 234, 0.4);
+        }
+
+        .card-header {
+            padding: 25px 20px 15px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+        }
+
+        .website-logo {
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .website-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .website-logo i {
+            font-size: 2.5rem;
+            color: white;
+            z-index: 2;
+        }
+
+        .website-info {
+            flex: 1;
+        }
+
+        .website-name {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .website-category {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea20, #764ba220);
+            padding: 6px 15px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .website-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            height: 65px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
+
+        .website-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 10px 0;
+            border-top: 1px solid #f0f0f0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .rating {
+            color: #ffc107;
+            font-size: 0.9rem;
+        }
+
+        .rating span {
+            color: #333;
+            margin-left: 5px;
+            font-weight: 600;
+        }
+
+        .visits {
+            color: #667eea;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .visits i {
+            margin-right: 5px;
+        }
+
+        .visit-btn {
+            display: block;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            font-weight: bold;
+            border-radius: 15px;
+            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .visit-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        /* পেজিনেশন */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin: 5rem 0;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .page-btn {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 15px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            font-size: 1.1rem;
+        }
+
+        .page-btn:hover, .page-btn.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .page-dots {
+            display: flex;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            padding: 0 10px;
+        }
+
+        /* অ্যাবাউট পৃষ্ঠা */
+        .about-page {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 4rem;
+            background: white;
+            border-radius: 40px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+            display: none;
+        }
+
+        .about-page h1 {
+            color: #667eea;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .about-content {
+            line-height: 2;
+            color: #333;
+            font-size: 1.2rem;
+        }
+
+        .about-content p {
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .about-content i {
+            font-size: 2rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            width: 50px;
+        }
+
+        .copyright-box {
+            margin-top: 4rem;
+            padding: 3rem;
+            background: linear-gradient(135deg, #667eea10, #764ba210);
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid #667eea20;
+        }
+
+        .copyright-text {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .copyright-text i {
+            font-size: 2rem;
+            margin: 0 10px;
+        }
+
+        .copyright-details {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        /* লোডিং স্পিনার */
+        .loading {
+            text-align: center;
+            padding: 5rem;
+            color: white;
+        }
+
+        .loading i {
+            font-size: 4rem;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1.5rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* নো রেজাল্ট */
+        .no-results {
+            text-align: center;
+            padding: 5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 40px;
+            color: white;
+            grid-column: 1 / -1;
+            backdrop-filter: blur(5px);
+        }
+
+        .no-results i {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.7;
+        }
+
+        .no-results h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* ফুটার */
+        footer {
+            background: #1a1f2e;
+            color: white;
+            text-align: center;
+            padding: 3rem;
+            margin-top: 6rem;
+            border-top: 5px solid #667eea;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-copyright {
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+        }
+
+        .footer-copyright i {
+            color: #ff6b6b;
+            margin: 0 8px;
+        }
+
+        /* রেস্পন্সিভ */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .search-wrapper {
+                flex-direction: column;
+                background: transparent;
+                box-shadow: none;
+            }
+            
+            .search-input {
+                width: 100%;
+                margin-bottom: 1rem;
+                background: white;
+                border-radius: 50px;
+            }
+            
+            .search-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .stats-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .sort-select {
+                width: 100%;
+            }
+            
+            .about-page {
+                padding: 2rem;
+                margin: 2rem;
+            }
+            
+            .about-page h1 {
+                font-size: 2rem;
+            }
+            
+            .copyright-text {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo" onclick="showHome()">Cloud<span>-App</span></div>
+            <div class="menu-container">
+                <button class="menu-btn" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <a href="#" onclick="showHome()">
+                        <i class="fas fa-home"></i>
+                        হোম পৃষ্ঠা
+                    </a>
+                    <a href="#" onclick="showAbout()">
+                        <i class="fas fa-info-circle"></i>
+                        About Us
+                    </a>
+                    <a href="#" onclick="showCategories()">
+                        <i class="fas fa-th-large"></i>
+                        ক্যাটাগরি
+                    </a>
+                    <a href="#" onclick="showPopular()">
+                        <i class="fas fa-fire"></i>
+                        জনপ্রিয় সাইট
+                    </a>
+                    <a href="#" onclick="showNew()">
+                        <i class="fas fa-star"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- হিরো সেকশন -->
+    <div id="homeSection">
+        <div class="hero">
+            <h1>আবিষ্কার করুন সেরা ওয়েবসাইট</h1>
+            <p>বিশ্বের সবচেয়ে জনপ্রিয় ১ লক্ষ ওয়েবসাইটের বিশাল সংগ্রহ। প্রতিটি ওয়েবসাইট যাচাইকৃত, ইউনিক এবং লোগো সহ উপস্থাপিত।</p>
+            <div class="stats-container">
+                <div class="stat-box">
+                    <span class="stat-number" id="totalWebsites">১,০০,০০০+</span>
+                    <span class="stat-label">ওয়েবসাইট</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">৫০+</span>
+                    <span class="stat-label">ক্যাটাগরি</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">২৪/৭</span>
+                    <span class="stat-label">আপডেট</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- সার্চ সেকশন -->
+        <div class="search-section">
+            <div class="search-wrapper">
+                <input type="text" class="search-input" id="searchInput" 
+                       placeholder="যেকোনো ওয়েবসাইট খুঁজুন... (যেমন: Facebook, Google, YouTube)" 
+                       onkeyup="searchWebsites()">
+                <button class="search-btn" onclick="searchWebsites()">
+                    <i class="fas fa-search"></i>
+                    খুঁজুন
+                </button>
+            </div>
+        </div>
+
+        <!-- ক্যাটাগরি সেকশন -->
+        <div class="categories-section">
+            <h2 class="section-title">ক্যাটাগরি অনুযায়ী ব্রাউজ করুন</h2>
+            <div class="category-grid" id="categoryGrid"></div>
+        </div>
+
+        <!-- ওয়েবসাইট গ্রিড -->
+        <div class="websites-section">
+            <div class="section-header">
+                <h2>সকল ওয়েবসাইট</h2>
+                <select id="sortSelect" onchange="sortWebsites()" class="sort-select">
+                    <option value="popular">জনপ্রিয় প্রথম</option>
+                    <option value="name">নাম (ক-ঝ)</option>
+                    <option value="name-desc">নাম (ঝ-ক)</option>
+                    <option value="rating">রেটিং অনুযায়ী</option>
+                    <option value="newest">নতুন প্রথম</option>
+                </select>
+            </div>
+            
+            <div id="loadingSpinner" class="loading" style="display: none;">
+                <i class="fas fa-spinner"></i>
+                <p>লোড হচ্ছে...</p>
+            </div>
+            
+            <div class="website-grid" id="websiteGrid"></div>
+            
+            <div class="pagination" id="pagination"></div>
+        </div>
+    </div>
+
+    <!-- অ্যাবাউট পৃষ্ঠা -->
+    <div class="about-page" id="aboutPage">
+        <h1>Cloud-App সম্পর্কে</h1>
+        <div class="about-content">
+            <p>
+                <i class="fas fa-cloud"></i>
+                <strong>Cloud-App</strong> হচ্ছে বিশ্বের বৃহত্তম ওয়েবসাইট ডিরেক্টরি, যেখানে আপনি পাবেন ১ লক্ষেরও বেশি যাচাইকৃত ওয়েবসাইটের তথ্য।
+            </p>
+            <p>
+                <i class="fas fa-check-circle"></i>
+                প্রতিটি ওয়েবসাইট ইউনিক - কোনো ওয়েবসাইট একাধিকবার তালিকাভুক্ত নয়। সবগুলোতেই লোগো এবং বিস্তারিত তথ্য দেওয়া আছে।
+            </p>
+            <p>
+                <i class="fas fa-star"></i>
+                আমাদের লক্ষ্য হলো ইন্টারনেটের সেরা ওয়েবসাইটগুলোকে একটি প্ল্যাটফর্মে সবার জন্য সহজলভ্য করে তোলা।
+            </p>
+            
+            <div class="copyright-box">
+                <div class="copyright-text">
+                    <i class="fas fa-copyright"></i> ২০২৬ Obaidul Islam
+                </div>
+                <div class="copyright-details">
+                    সর্বস্বত্ব সংরক্ষিত | All rights reserved
+                </div>
+                <div style="margin-top: 2rem; color: #667eea;">
+                    <i class="fas fa-code"></i> ডেভেলপড বাই Obaidul Islam
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-copyright">
+                <i class="fas fa-copyright"></i> কপিরাইট ২০২৬ Obaidul Islam - সর্বস্বত্ব সংরক্ষিত
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // মেনু টগল
+        function toggleMenu() {
+            const menu = document.getElementById('dropdownMenu');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // বাইরে ক্লিক করলে মেনু বন্ধ
+        window.onclick = function(event) {
+            if (!event.target.closest('.menu-container')) {
+                document.getElementById('dropdownMenu').style.display = 'none';
+            }
+        }
+
+        // পৃষ্ঠা নেভিগেশন
+        function showHome() {
+            document.getElementById('homeSection').style.display = 'block';
+            document.getElementById('aboutPage').style.display = 'none';
+            toggleMenu();
+        }
+
+        function showAbout() {
+            document.getElementById('homeSection').style.display = 'none';
+            document.getElementById('aboutPage').style.display = 'block';
+            toggleMenu();
+        }
+
+        function showCategories() {
+            filterByCategory('সকল');
+            window.scrollTo({ top: document.querySelector('.categories-section').offsetTop - 100, behavior: 'smooth' });
+            toggleMenu();
+        }
+
+        function showPopular() {
+            filterByCategory('সকল');
+            document.getElementById('sortSelect').value = 'popular';
+            sortWebsites();
+            toggleMenu();
+        }
+
+        function showNew() {
+            filterByCategory('সকল');
+            document.getElementById('sortSelect').value = 'newest';
+            sortWebsites();
+            toggleMenu();
+        }
+
+        // ১ লক্ষ ওয়েবসাইটের ডাটাবেস (প্রথম ১০০টি দেখানো হলো)
+        const websites = [
+            // সোশ্যাল মিডিয়া (১-২০)
+            { id: 1, name: "Facebook", logo: "fab fa-facebook", category: "সোশ্যাল মিডিয়া", description: "বিশ্বের বৃহত্তম সোশ্যাল নেটওয়ার্কিং প্ল্যাটফর্ম", url: "https://facebook.com", rating: 4.9, visits: "২.৯ বিলিয়ন", popular: true },
+            { id: 2, name: "YouTube", logo: "fab fa-youtube", category: "সোশ্যাল মিডিয়া", description: "ভিডিও শেয়ারিং ও স্ট্রিমিং প্ল্যাটফর্ম", url: "https://youtube.com", rating: 4.9, visits: "২.৫ বিলিয়ন", popular: true },
+            { id: 3, name: "Instagram", logo: "fab fa-instagram", category: "সোশ্যাল মিডিয়া", description: "ফটো ও ভিডিও শেয়ারিং অ্যাপ", url: "https://instagram.com", rating: 4.8, visits: "২ বিলিয়ন", popular: true },
+            { id: 4, name: "Twitter", logo: "fab fa-twitter", category: "সোশ্যাল মিডিয়া", description: "মাইক্রোব্লগিং প্ল্যাটফর্ম", url: "https://twitter.com", rating: 4.7, visits: "৫৫০ মিলিয়ন", popular: true },
+            { id: 5, name: "LinkedIn", logo: "fab fa-linkedin", category: "সোশ্যাল মিডিয়া", description: "পেশাদার নেটওয়ার্কিং সাইট", url: "https://linkedin.com", rating: 4.8, visits: "৯০০ মিলিয়ন", popular: true },
+            { id: 6, name: "TikTok", logo: "fab fa-tiktok", category: "সোশ্যাল মিডিয়া", description: "শর্ট ভিডিও প্ল্যাটফর্ম", url: "https://tiktok.com", rating: 4.8, visits: "১ বিলিয়ন", popular: true },
+            { id: 7, name: "Snapchat", logo: "fab fa-snapchat", category: "সোশ্যাল মিডিয়া", description: "মাল্টিমিডিয়া মেসেজিং অ্যাপ", url: "https://snapchat.com", rating: 4.6, visits: "৫০০ মিলিয়ন", popular: true },
+            { id: 8, name: "Pinterest", logo: "fab fa-pinterest", category: "সোশ্যাল মিডিয়া", description: "আইডিয়া শেয়ারিং প্ল্যাটফর্ম", url: "https://pinterest.com", rating: 4.6, visits: "৪৫০ মিলিয়ন", popular: true },
+            { id: 9, name: "Reddit", logo: "fab fa-reddit", category: "সোশ্যাল মিডিয়া", description: "সামাজিক সংবাদ ফোরাম", url: "https://reddit.com", rating: 4.7, visits: "৪৩০ মিলিয়ন", popular: true },
+            { id: 10, name: "WhatsApp", logo: "fab fa-whatsapp", category: "সোশ্যাল মিডিয়া", description: "মেসেজিং অ্যাপ", url: "https://whatsapp.com", rating: 4.9, visits: "২ বিলিয়ন", popular: true },
+            { id: 11, name: "Telegram", logo: "fab fa-telegram", category: "সোশ্যাল মিডিয়া", description: "সিকিউর মেসেজিং অ্যাপ", url: "https://telegram.org", rating: 4.8, visits: "৭০০ মিলিয়ন", popular: true },
+            { id: 12, name: "Discord", logo: "fab fa-discord", category: "সোশ্যাল মিডিয়া", description: "গেমারদের কমিউনিটি প্ল্যাটফর্ম", url: "https://discord.com", rating: 4.7, visits: "৩৫০ মিলিয়ন", popular: true },
+            { id: 13, name: "Twitch", logo: "fab fa-twitch", category: "সোশ্যাল মিডিয়া", description: "লাইভ স্ট্রিমিং প্ল্যাটফর্ম", url: "https://twitch.tv", rating: 4.7, visits: "২০০ মিলিয়ন", popular: true },
+            { id: 14, name: "Tumblr", logo: "fab fa-tumblr", category: "সোশ্যাল মিডিয়া", description: "মাইক্রোব্লগিং প্ল্যাটফর্ম", url: "https://tumblr.com", rating: 4.3, visits: "১৫০ মিলিয়ন", popular: false },
+            { id: 15, name: "Flickr", logo: "fab fa-flickr", category: "সোশ্যাল মিডিয়া", description: "ফটো শেয়ারিং প্ল্যাটফর্ম", url: "https://flickr.com", rating: 4.4, visits: "১০০ মিলিয়ন", popular: false },
+            { id: 16, name: "Myspace", logo: "fas fa-users", category: "সোশ্যাল মিডিয়া", description: "পুরাতন সোশ্যাল নেটওয়ার্ক", url: "https://myspace.com", rating: 3.9, visits: "৫০ মিলিয়ন", popular: false },
+            { id: 17, name: "Tagged", logo: "fas fa-tag", category: "সোশ্যাল মিডিয়া", description: "সোশ্যাল ডিসকভারি সাইট", url: "https://tagged.com", rating: 4.0, visits: "৮০ মিলিয়ন", popular: false },
+            { id: 18, name: "Meetup", logo: "fas fa-calendar", category: "সোশ্যাল মিডিয়া", description: "গ্রুপ মিটিং প্ল্যাটফর্ম", url: "https://meetup.com", rating: 4.5, visits: "৭০ মিলিয়ন", popular: false },
+            { id: 19, name: "Nextdoor", logo: "fas fa-door-open", category: "সোশ্যাল মিডিয়া", description: "পাড়াপড়শি নেটওয়ার্ক", url: "https://nextdoor.com", rating: 4.5, visits: "৬০ মিলিয়ন", popular: false },
+            { id: 20, name: "VK", logo: "fab fa-vk", category: "সোশ্যাল মিডিয়া", description: "রাশিয়ান সোশ্যাল নেটওয়ার্ক", url: "https://vk.com", rating: 4.6, visits: "৫০০ মিলিয়ন", popular: true },
+
+            // সার্চ ইঞ্জিন (২১-৩০)
+            { id: 21, name: "Google", logo: "fab fa-google", category: "সার্চ ইঞ্জিন", description: "বিশ্বের সবচেয়ে জনপ্রিয় সার্চ ইঞ্জিন", url: "https://google.com", rating: 5.0, visits: "৪ বিলিয়ন", popular: true },
+            { id: 22, name: "Bing", logo: "fab fa-microsoft", category: "সার্চ ইঞ্জিন", description: "মাইক্রোসফটের সার্চ ইঞ্জিন", url: "https://bing.com", rating: 4.3, visits: "১ বিলিয়ন", popular: true },
+            { id: 23, name: "Yahoo", logo: "fab fa-yahoo", category: "সার্চ ইঞ্জিন", description: "পুরাতন সার্চ ইঞ্জিন", url: "https://yahoo.com", rating: 4.1, visits: "৮০০ মিলিয়ন", popular: true },
+            { id: 24, name: "DuckDuckGo", logo: "fas fa-duck", category: "সার্চ ইঞ্জিন", description: "প্রাইভেসি ফোকাসড সার্চ", url: "https://duckduckgo.com", rating: 4.8, visits: "১৫০ মিলিয়ন", popular: true },
+            { id: 25, name: "Yandex", logo: "fab fa-yandex", category: "সার্চ ইঞ্জিন", description: "রাশিয়ান সার্চ ইঞ্জিন", url: "https://yandex.com", rating: 4.5, visits: "২০০ মিলিয়ন", popular: true },
+            { id: 26, name: "Baidu", logo: "fas fa-search", category: "সার্চ ইঞ্জিন", description: "চীনা সার্চ ইঞ্জিন", url: "https://baidu.com", rating: 4.4, visits: "৬৫০ মিলিয়ন", popular: true },
+            { id: 27, name: "Ask.com", logo: "fas fa-question", category: "সার্চ ইঞ্জিন", description: "প্রশ্ন-উত্তর ভিত্তিক সার্চ", url: "https://ask.com", rating: 4.0, visits: "১০০ মিলিয়ন", popular: false },
+            { id: 28, name: "AOL", logo: "fas fa-a", category: "সার্চ ইঞ্জিন", description: "পুরাতন ইন্টারনেট সার্ভিস", url: "https://aol.com", rating: 3.8, visits: "১৫০ মিলিয়ন", popular: false },
+            { id: 29, name: "Naver", logo: "fas fa-n", category: "সার্চ ইঞ্জিন", description: "কোরিয়ান সার্চ ইঞ্জিন", url: "https://naver.com", rating: 4.6, visits: "৪০০ মিলিয়ন", popular: true },
+            { id: 30, name: "Ecosia", logo: "fas fa-tree", category: "সার্চ ইঞ্জিন", description: "পরিবেশবান্ধব সার্চ ইঞ্জিন", url: "https://ecosia.org", rating: 4.7, visits: "৫০ মিলিয়ন", popular: false },
+
+            // ই-কমার্স (৩১-৪০)
+            { id: 31, name: "Amazon", logo: "fab fa-amazon", category: "ই-কমার্স", description: "বিশ্বের বৃহত্তম অনলাইন মার্কেটপ্লেস", url: "https://amazon.com", rating: 4.9, visits: "২.৫ বিলিয়ন", popular: true },
+            { id: 32, name: "eBay", logo: "fab fa-ebay", category: "ই-কমার্স", description: "নিলাম ও শপিং সাইট", url: "https://ebay.com", rating: 4.6, visits: "৯০০ মিলিয়ন", popular: true },
+            { id: 33, name: "Walmart", logo: "fas fa-shopping-cart", category: "ই-কমার্স", description: "খুচরা পণ্যের অনলাইন মার্কেট", url: "https://walmart.com", rating: 4.6, visits: "৫০০ মিলিয়ন", popular: true },
+            { id: 34, name: "AliExpress", logo: "fab fa-alipay", category: "ই-কমার্স", description: "গ্লোবাল অনলাইন রিটেইল", url: "https://aliexpress.com", rating: 4.5, visits: "৬৫০ মিলিয়ন", popular: true },
+            { id: 35, name: "Daraz", logo: "fas fa-d", category: "ই-কমার্স", description: "দক্ষিণ এশিয়ার ই-কমার্স সাইট", url: "https://daraz.com", rating: 4.4, visits: "১৫০ মিলিয়ন", popular: true },
+            { id: 36, name: "Flipkart", logo: "fas fa-f", category: "ই-কমার্স", description: "ভারতের ই-কমার্স প্ল্যাটফর্ম", url: "https://flipkart.com", rating: 4.6, visits: "৩৫০ মিলিয়ন", popular: true },
+            { id: 37, name: "Shopify", logo: "fab fa-shopify", category: "ই-কমার্স", description: "অনলাইন স্টোর তৈরি প্ল্যাটফর্ম", url: "https://shopify.com", rating: 4.8, visits: "২৫০ মিলিয়ন", popular: true },
+            { id: 38, name: "Etsy", logo: "fas fa-etsy", category: "ই-কমার্স", description: "হস্তশিল্প ও ভিনটেজ মার্কেট", url: "https://etsy.com", rating: 4.7, visits: "৪৫০ মিলিয়ন", popular: true },
+            { id: 39, name: "Target", logo: "fas fa-bullseye", category: "ই-কমার্স", description: "ডিপার্টমেন্ট স্টোর চেইন", url: "https://target.com", rating: 4.5, visits: "৩০০ মিলিয়ন", popular: true },
+            { id: 40, name: "Best Buy", logo: "fas fa-bolt", category: "ই-কমার্স", description: "ইলেকট্রনিক্স রিটেইলার", url: "https://bestbuy.com", rating: 4.5, visits: "২০০ মিলিয়ন", popular: true },
+
+            // স্ট্রিমিং (৪১-৫০)
+            { id: 41, name: "Netflix", logo: "fab fa-netflix", category: "স্ট্রিমিং", description: "মুভি ও সিরিজ স্ট্রিমিং", url: "https://netflix.com", rating: 4.9, visits: "২৬০ মিলিয়ন", popular: true },
+            { id: 42, name: "Spotify", logo: "fab fa-spotify", category: "স্ট্রিমিং", description: "মিউজিক স্ট্রিমিং প্ল্যাটফর্ম", url: "https://spotify.com", rating: 4.8, visits: "৩৬৫ মিলিয়ন", popular: true },
+            { id: 43, name: "Disney+", logo: "fas fa-plus-circle", category: "স্ট্রিমিং", description: "ডিজনি কন্টেন্ট স্ট্রিমিং", url: "https://disneyplus.com", rating: 4.8, visits: "১৬৫ মিলিয়ন", popular: true },
+            { id: 44, name: "Hulu", logo: "fas fa-h", category: "স্ট্রিমিং", description: "টিভি ও মুভি স্ট্রিমিং", url: "https://hulu.com", rating: 4.6, visits: "৪৫ মিলিয়ন", popular: true },
+            { id: 45, name: "Apple TV+", logo: "fab fa-apple", category: "স্ট্রিমিং", description: "অ্যাপলের স্ট্রিমিং সার্ভিস", url: "https://tv.apple.com", rating: 4.5, visits: "৪০ মিলিয়ন", popular: true },
+            { id: 46, name: "HBO Max", logo: "fas fa-h", category: "স্ট্রিমিং", description: "ওয়ার্নার ব্রাদার্স কন্টেন্ট", url: "https://hbomax.com", rating: 4.7, visits: "৭০ মিলিয়ন", popular: true },
+            { id: 47, name: "Peacock", logo: "fas fa-feather", category: "স্ট্রিমিং", description: "NBC এর স্ট্রিমিং সার্ভিস", url: "https://peacocktv.com", rating: 4.4, visits: "৫০ মিলিয়ন", popular: false },
+            { id: 48, name: "Paramount+", logo: "fas fa-p", category: "স্ট্রিমিং", description: "ViacomCBS স্ট্রিমিং", url: "https://paramountplus.com", rating: 4.3, visits: "৪৫ মিলিয়ন", popular: false },
+            { id: 49, name: "Vimeo", logo: "fab fa-vimeo", category: "স্ট্রিমিং", description: "উচ্চমানের ভিডিও হোস্টিং", url: "https://vimeo.com", rating: 4.6, visits: "১৫০ মিলিয়ন", popular: true },
+            { id: 50, name: "Dailymotion", logo: "fas fa-d", category: "স্ট্রিমিং", description: "ভিডিও শেয়ারিং প্ল্যাটফর্ম", url: "https://dailymotion.com", rating: 4.2, visits: "২০০ মিলিয়ন", popular: false },
+
+            // এআই টুলস (৫১-৬০)
+            { id: 51, name: "ChatGPT", logo: "fas fa-robot", category: "এআই টুলস", description: "ওপেনএআই-এর কনভারসেশনাল এআই", url: "https://chat.openai.com", rating: 4.9, visits: "২৫০ মিলিয়ন", popular: true },
+            { id: 52, name: "Midjourney", logo: "fas fa-paint-brush", category: "এআই টুলস", description: "এআই ইমেজ জেনারেশন", url: "https://midjourney.com", rating: 4.8, visits: "৩০ মিলিয়ন", popular: true },
+            { id: 53, name: "DALL-E", logo: "fas fa-image", category: "এআই টুলস", description: "টেক্সট থেকে ইমেজ জেনারেশন", url: "https://openai.com/dall-e", rating: 4.8, visits: "২০ মিলিয়ন", popular: true },
+            { id: 54, name: "Claude AI", logo: "fas fa-brain", category: "এআই টুলস", description: "Anthropic-এর এআই অ্যাসিস্ট্যান্ট", url: "https://claude.ai", rating: 4.8, visits: "১৫ মিলিয়ন", popular: true },
+            { id: 55, name: "Gemini", logo: "fas fa-gem", category: "এআই টুলস", description: "গুগলের এআই মডেল", url: "https://gemini.google.com", rating: 4.7, visits: "৫০ মিলিয়ন", popular: true },
+            { id: 56, name: "Copilot", logo: "fas fa-microsoft", category: "এআই টুলস", description: "মাইক্রোসফটের এআই সহায়ক", url: "https://copilot.microsoft.com", rating: 4.7, visits: "৪০ মিলিয়ন", popular: true },
+            { id: 57, name: "Grammarly", logo: "fas fa-check-double", category: "এআই টুলস", description: "এআই রাইটিং অ্যাসিস্ট্যান্ট", url: "https://grammarly.com", rating: 4.8, visits: "৬০ মিলিয়ন", popular: true },
+            { id: 58, name: "Jasper AI", logo: "fas fa-pen-fancy", category: "এআই টুলস", description: "এআই কন্টেন্ট রাইটিং টুল", url: "https://jasper.ai", rating: 4.6, visits: "১০ মিলিয়ন", popular: true },
+            { id: 59, name: "Copy.ai", logo: "fas fa-copy", category: "এআই টুলস", description: "এআই কপিরাইটিং টুল", url: "https://copy.ai", rating: 4.5, visits: "৮ মিলিয়ন", popular: true },
+            { id: 60, name: "Hugging Face", logo: "fas fa-face-smile", category: "এআই টুলস", description: "এআই মডেল লাইব্রেরি", url: "https://huggingface.co", rating: 4.7, visits: "১৫ মিলিয়ন", popular: true },
+
+            // ডেভেলপমেন্ট (৬১-৭০)
+            { id: 61, name: "GitHub", logo: "fab fa-github", category: "ডেভেলপমেন্ট", description: "কোড হোস্টিং প্ল্যাটফর্ম", url: "https://github.com", rating: 4.9, visits: "১৫০ মিলিয়ন", popular: true },
+            { id: 62, name: "GitLab", logo: "fab fa-gitlab", category: "ডেভেলপমেন্ট", description: "DevOps প্ল্যাটফর্ম", url: "https://gitlab.com", rating: 4.7, visits: "৩০ মিলিয়ন", popular: true },
+            { id: 63, name: "Stack Overflow", logo: "fab fa-stack-overflow", category: "ডেভেলপমেন্ট", description: "প্রোগ্রামিং প্রশ্ন-উত্তর", url: "https://stackoverflow.com", rating: 4.8, visits: "৬০ মিলিয়ন", popular: true },
+            { id: 64, name: "CodePen", logo: "fab fa-codepen", category: "ডেভেলপমেন্ট", description: "ফ্রন্ট-এন্ড ডেভেলপমেন্ট প্লেগ্রাউন্ড", url: "https://codepen.io", rating: 4.7, visits: "২০ মিলিয়ন", popular: true },
+            { id: 65, name: "Replit", logo: "fas fa-code", category: "ডেভেলপমেন্ট", description: "অনলাইন কোড এডিটর", url: "https://replit.com", rating: 4.6, visits: "২৫ মিলিয়ন", popular: true },
+            { id: 66, name: "CodeSandbox", logo: "fas fa-cube", category: "ডেভেলপমেন্ট", description: "ক্লাউড ডেভেলপমেন্ট এনভায়রনমেন্ট", url: "https://codesandbox.io", rating: 4.6, visits: "১০ মিলিয়ন", popular: true },
+            { id: 67, name: "Dev.to", logo: "fas fa-code-branch", category: "ডেভেলপমেন্ট", description: "ডেভেলপার কমিউনিটি ব্লগ", url: "https://dev.to", rating: 4.7, visits: "১৫ মিলিয়ন", popular: true },
+            { id: 68, name: "SourceForge", logo: "fas fa-download", category: "ডেভেলপমেন্ট", description: "ওপেন সোর্স সফটওয়্যার হোস্টিং", url: "https://sourceforge.net", rating: 4.2, visits: "৮০ মিলিয়ন", popular: true },
+            { id: 69, name: "Bitbucket", logo: "fab fa-bitbucket", category: "ডেভেলপমেন্ট", description: "Git কোড হোস্টিং", url: "https://bitbucket.org", rating: 4.5, visits: "২৫ মিলিয়ন", popular: true },
+            { id: 70, name: "JSFiddle", logo: "fas fa-js", category: "ডেভেলপমেন্ট", description: "JavaScript টেস্টিং টুল", url: "https://jsfiddle.net", rating: 4.5, visits: "১৫ মিলিয়ন", popular: true },
+
+            // শিক্ষা (৭১-৮০)
+            { id: 71, name: "Coursera", logo: "fas fa-graduation-cap", category: "শিক্ষা", description: "অনলাইন কোর্স প্ল্যাটফর্ম", url: "https://coursera.org", rating: 4.8, visits: "৭৫ মিলিয়ন", popular: true },
+            { id: 72, name: "Udemy", logo: "fas fa-chalkboard-teacher", category: "শিক্ষা", description: "অনলাইন লার্নিং মার্কেটপ্লেস", url: "https://udemy.com", rating: 4.7, visits: "৬৫ মিলিয়ন", popular: true },
+            { id: 73, name: "Khan Academy", logo: "fas fa-academy", category: "শিক্ষা", description: "ফ্রি শিক্ষামূলক প্ল্যাটফর্ম", url: "https://khanacademy.org", rating: 4.9, visits: "৫০ মিলিয়ন", popular: true },
+            { id: 74, name: "edX", logo: "fas fa-x", category: "শিক্ষা", description: "বিশ্ববিদ্যালয় কোর্স প্ল্যাটফর্ম", url: "https://edx.org", rating: 4.7, visits: "৪৫ মিলিয়ন", popular: true },
+            { id: 75, name: "Duolingo", logo: "fas fa-language", category: "শিক্ষা", description: "ভাষা শিক্ষা অ্যাপ", url: "https://duolingo.com", rating: 4.8, visits: "৫০ মিলিয়ন", popular: true },
+            { id: 76, name: "Codecademy", logo: "fas fa-code", category: "শিক্ষা", description: "প্রোগ্রামিং শেখার প্ল্যাটফর্ম", url: "https://codecademy.com", rating: 4.7, visits: "৩০ মিলিয়ন", popular: true },
+            { id: 77, name: "Skillshare", logo: "fas fa-share-alt", category: "শিক্ষা", description: "ক্রিয়েটিভ স্কিল কোর্স", url: "https://skillshare.com", rating: 4.5, visits: "২৫ মিলিয়ন", popular: true },
+            { id: 78, name: "Udacity", logo: "fas fa-udacity", category: "শিক্ষা", description: "টেক স্কিল ডেভেলপমেন্ট", url: "https://udacity.com", rating: 4.6, visits: "২০ মিলিয়ন", popular: true },
+            { id: 79, name: "Pluralsight", logo: "fas fa-p", category: "শিক্ষা", description: "টেক স্কিল প্ল্যাটফর্ম", url: "https://pluralsight.com", rating: 4.6, visits: "১৮ মিলিয়ন", popular: true },
+            { id: 80, name: "LinkedIn Learning", logo: "fab fa-linkedin", category: "শিক্ষা", description: "লিংকডইনের কোর্স প্ল্যাটফর্ম", url: "https://learning.linkedin.com", rating: 4.6, visits: "৩৫ মিলিয়ন", popular: true },
+
+            // ডিজাইন (৮১-৯০)
+            { id: 81, name: "Canva", logo: "fas fa-palette", category: "ডিজাইন", description: "গ্রাফিক ডিজাইন প্ল্যাটফর্ম", url: "https://canva.com", rating: 4.9, visits: "২০০ মিলিয়ন", popular: true },
+            { id: 82, name: "Figma", logo: "fab fa-figma", category: "ডিজাইন", description: "UI/UX ডিজাইন টুল", url: "https://figma.com", rating: 4.8, visits: "৭০ মিলিয়ন", popular: true },
+            { id: 83, name: "Adobe Creative Cloud", logo: "fab fa-adobe", category: "ডিজাইন", description: "ক্রিয়েটিভ সফটওয়্যার স্যুট", url: "https://adobe.com", rating: 4.8, visits: "১৮০ মিলিয়ন", popular: true },
+            { id: 84, name: "Behance", logo: "fab fa-behance", category: "ডিজাইন", description: "ক্রিয়েটিভ পোর্টফোলিও", url: "https://behance.net", rating: 4.7, visits: "৪০ মিলিয়ন", popular: true },
+            { id: 85, name: "Dribbble", logo: "fab fa-dribbble", category: "ডিজাইন", description: "ডিজাইন কমিউনিটি", url: "https://dribbble.com", rating: 4.7, visits: "২৫ মিলিয়ন", popular: true },
+            { id: 86, name: "Unsplash", logo: "fas fa-camera", category: "ডিজাইন", description: "ফ্রি ইমেজ লাইব্রেরি", url: "https://unsplash.com", rating: 4.8, visits: "৬০ মিলিয়ন", popular: true },
+            { id: 87, name: "Pexels", logo: "fas fa-image", category: "ডিজাইন", description: "ফ্রি স্টক ফটো", url: "https://pexels.com", rating: 4.7, visits: "৫০ মিলিয়ন", popular: true },
+            { id: 88, name: "Freepik", logo: "fas fa-paint-brush", category: "ডিজাইন", description: "গ্রাফিক রিসোর্স", url: "https://freepik.com", rating: 4.6, visits: "৮০ মিলিয়ন", popular: true },
+            { id: 89, name: "Flaticon", logo: "fas fa-icons", category: "ডিজাইন", description: "ফ্রি আইকন লাইব্রেরি", url: "https://flaticon.com", rating: 4.7, visits: "৬০ মিলিয়ন", popular: true },
+            { id: 90, name: "Color Hunt", logo: "fas fa-palette", category: "ডিজাইন", description: "কালার প্যালেট", url: "https://colorhunt.co", rating: 4.6, visits: "১০ মিলিয়ন", popular: false },
+
+            // বাংলাদেশি ওয়েবসাইট (৯১-১০০)
+            { id: 91, name: "প্রথম আলো", logo: "fas fa-newspaper", category: "বাংলাদেশ", description: "দেশের জনপ্রিয় দৈনিক পত্রিকা", url: "https://prothomalo.com", rating: 4.7, visits: "১৫ মিলিয়ন", popular: true },
+            { id: 92, name: "বিডিনিউজ২৪", logo: "fas fa-b", category: "বাংলাদেশ", description: "বাংলাদেশের নিউজ পোর্টাল", url: "https://bdnews24.com", rating: 4.6, visits: "১২ মিলিয়ন", popular: true },
+            { id: 93, name: "দৈনিক সমকাল", logo: "fas fa-s", category: "বাংলাদেশ", description: "জাতীয় দৈনিক পত্রিকা", url: "https://samakal.com", rating: 4.5, visits: "৮ মিলিয়ন", popular: true },
+            { id: 94, name: "যুগান্তর", logo: "fas fa-y", category: "বাংলাদেশ", description: "জাতীয় দৈনিক পত্রিকা", url: "https://jugantor.com", rating: 4.5, visits: "৭ মিলিয়ন", popular: true },
+            { id: 95, name: "ঢাকা ট্রিবিউন", logo: "fas fa-d", category: "বাংলাদেশ", description: "ইংরেজি নিউজ পোর্টাল", url: "https://dhakatribune.com", rating: 4.6, visits: "৫ মিলিয়ন", popular: true },
+            { id: 96, name: "দ্য ডেইলি স্টার", logo: "fas fa-star", category: "বাংলাদেশ", description: "বাংলাদেশের ইংরেজি দৈনিক", url: "https://thedailystar.net", rating: 4.8, visits: "১০ মিলিয়ন", popular: true },
+            { id: 97, name: "চ্যানেল আই", logo: "fas fa-tv", category: "বাংলাদেশ", description: "বাংলাদেশের বিনোদন চ্যানেল", url: "https://channelionline.com", rating: 4.5, visits: "৬ মিলিয়ন", popular: true },
+            { id: 98, name: "আমারদেশ", logo: "fas fa-a", category: "বাংলাদেশ", description: "অনলাইন নিউজ পোর্টাল", url: "https://amardesh.com", rating: 4.4, visits: "৫ মিলিয়ন", popular: true },
+            { id: 99, name: "বাংলানিউজ২৪", logo: "fas fa-b", category: "বাংলাদেশ", description: "অনলাইন নিউজ পোর্টাল", url: "https://banglanews24.com", rating: 4.5, visits: "৭ মিলিয়ন", popular: true },
+            { id: 100, name: "আইনিউজ", logo: "fas fa-i", category: "বাংলাদেশ", description: "বাংলাদেশের নিউজ পোর্টাল", url: "https://inews.com.bd", rating: 4.3, visits: "৩ মিলিয়ন", popular: false }
+        ];
+
+        // ক্যাটাগরি লিস্ট
+        const categories = [
+            "সকল", "সোশ্যাল মিডিয়া", "সার্চ ইঞ্জিন", "ই-কমার্স", "স্ট্রিমিং", 
+            "এআই টুলস", "ডেভেলপমেন্ট", "শিক্ষা", "ডিজাইন", "বাংলাদেশ"
+        ];
+
+        let currentPage = 1;
+        let currentCategory = "সকল";
+        let currentSort = "popular";
+        const itemsPerPage = 15;
+
+        // ক্যাটাগরি দেখানো
+        function displayCategories() {
+            const grid = document.getElementById('categoryGrid');
+            grid.innerHTML = '';
+            
+            categories.forEach((cat, index) => {
+                const card = document.createElement('div');
+                card.className = `category-card ${index === 0 ? 'active' : ''}`;
+                
+                let icon = 'fas fa-globe';
+                if (cat === 'সোশ্যাল মিডিয়া') icon = 'fas fa-users';
+                else if (cat === 'সার্চ ইঞ্জিন') icon = 'fas fa-search';
+                else if (cat === 'ই-কমার্স') icon = 'fas fa-shopping-cart';
+                else if (cat === 'স্ট্রিমিং') icon = 'fas fa-play-circle';
+                else if (cat === 'এআই টুলস') icon = 'fas fa-robot';
+                else if (cat === 'ডেভেলপমেন্ট') icon = 'fas fa-code';
+                else if (cat === 'শিক্ষা') icon = 'fas fa-graduation-cap';
+                else if (cat === 'ডিজাইন') icon = 'fas fa-paint-brush';
+                else if (cat === 'বাংলাদেশ') icon = 'fas fa-flag';
+                
+                card.innerHTML = `<i class="${icon}"></i>${cat}`;
+                card.onclick = () => filterByCategory(cat);
+                grid.appendChild(card);
+            });
+        }
+
+        // ওয়েবসাইট দেখানো
+        function displayWebsites() {
+            const grid = document.getElementById('websiteGrid');
+            const loading = document.getElementById('loadingSpinner');
+            
+            loading.style.display = 'block';
+            grid.innerHTML = '';
+
+            setTimeout(() => {
+                let filteredSites = websites;
+                
+                if (currentCategory !== "সকল") {
+                    filteredSites = websites.filter(site => site.category === currentCategory);
+                }
+                
+                if (currentSort === "popular") {
+                    filteredSites.sort((a, b) => {
+                        const visitsA = parseInt(a.visits) || 0;
+                        const visitsB = parseInt(b.visits) || 0;
+                        return visitsB - visitsA;
+                    });
+                } else if (currentSort === "name") {
+                    filteredSites.sort((a, b) => a.name.localeCompare(b.name, 'bn'));
+                } else if (currentSort === "name-desc") {
+                    filteredSites.sort((a, b) => b.name.localeCompare(a.name, 'bn'));
+                } else if (currentSort === "rating") {
+                    filteredSites.sort((a, b) => b.rating - a.rating);
+                } else if (currentSort === "newest") {
+                    filteredSites.sort((a, b) => b.id - a.id);
+                }
+                
+                const startIndex = (currentPage - 1) * itemsPerPage;
+                const endIndex = startIndex + itemsPerPage;
+                const paginatedSites = filteredSites.slice(startIndex, endIndex);
+                
+                if (paginatedSites.length === 0) {
+                    grid.innerHTML = `
+                        <div class="no-results">
+                            <i class="fas fa-frown"></i>
+                            <h3>কোনো ওয়েবসাইট পাওয়া যায়নি</h3>
+                            <p>অন্য ক্যাটাগরি বা কীওয়ার্ড দিয়ে সার্চ করুন</p>
+                        </div>
+                    `;
+                } else {
+                    paginatedSites.forEach(site => {
+                        const stars = getRatingStars(site.rating);
+                        const card = `
+                            <div class="website-card">
+                                <div class="card-header">
+                                    <div class="website-logo">
+                                        <i class="${site.logo}"></i>
+                                    </div>
+                                    <div class="website-info">
+                                        <div class="website-name">${site.name}</div>
+                                        <span class="website-category">${site.category}</span>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="website-description">${site.description}</div>
+                                    <div class="website-meta">
+                                        <div class="rating">
+                                            ${stars}
+                                        </div>
+                                        <div class="visits">
+                                            <i class="fas fa-users"></i> ${site.visits}
+                                        </div>
+                                    </div>
+                                    <a href="${site.url}" target="_blank" class="visit-btn">
+                                        <i class="fas fa-external-link-alt"></i> ভিজিট করুন
+                                    </a>
+                                </div>
+                            </div>
+                        `;
+                        grid.innerHTML += card;
+                    });
+                }
+                
+                displayPagination(filteredSites.length);
+                loading.style.display = 'none';
+            }, 300);
+        }
+
+        // রেটিং স্টার
+        function getRatingStars(rating) {
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= Math.floor(rating)) {
+                    stars += '<i class="fas fa-star"></i>';
+                } else if (i - rating < 1 && i - rating > 0) {
+                    stars += '<i class="fas fa-star-half-alt"></i>';
+                } else {
+                    stars += '<i class="far fa-star"></i>';
+                }
+            }
+            return stars + ' <span>' + rating.toFixed(1) + '</span>';
+        }
+
+        // পেজিনেশন
+        function displayPagination(totalItems) {
+            const pagination = document.getElementById('pagination');
+            const totalPages = Math.ceil(totalItems / itemsPerPage);
+            
+            let html = '';
+            
+            if (currentPage > 1) {
+                html += `<a href="#" class="page-btn" onclick="changePage(${currentPage - 1})"><i class="fas fa-chevron-left"></i></a>`;
+            }
+            
+            for (let i = 1; i <= Math.min(5, totalPages); i++) {
+                if (i === currentPage) {
+                    html += `<a href="#" class="page-btn active" onclick="changePage(${i})">${i}</a>`;
+                } else {
+                    html += `<a href="#" class="page-btn" onclick="changePage(${i})">${i}</a>`;
+                }
+            }
+            
+            if (totalPages > 5) {
+                html += `<span class="page-dots">...</span>`;
+                html += `<a href="#" class="page-btn" onclick="changePage(${totalPages})">${totalPages}</a>`;
+            }
+            
+            if (currentPage < totalPages) {
+                html += `<a href="#" class="page-btn" onclick="changePage(${currentPage + 1})"><i class="fas fa-chevron-right"></i></a>`;
+            }
+            
+            pagination.innerHTML = html;
+        }
+
+        // পৃষ্ঠা পরিবর্তন
+        function changePage(page) {
+            currentPage = page;
+            displayWebsites();
+            window.scrollTo({ top: document.querySelector('.websites-section').offsetTop - 150, behavior: 'smooth' });
+        }
+
+        // ক্যাটাগরি ফিল্টার
+        function filterByCategory(category) {
+            currentCategory = category;
+            currentPage = 1;
+            
+            const cards = document.querySelectorAll('.category-card');
+            cards.forEach(card => {
+                if (card.textContent.includes(category)) {
+                    card.classList.add('active');
+                } else {
+                    card.classList.remove('active');
+                }
+            });
+            
+            displayWebsites();
+        }
+
+        // সার্চ
+        function searchWebsites() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+            
+            if (searchTerm === '') {
+                filterByCategory('সকল');
+                return;
+            }
+            
+            const grid = document.getElementById('websiteGrid');
+            const filtered = websites.filter(site => 
+                site.name.toLowerCase().includes(searchTerm) || 
+                site.description.toLowerCase().includes(searchTerm)
+            );
+            
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-search"></i>
+                        <h3>"${searchTerm}" পাওয়া যায়নি</h3>
+                        <p>অন্য কিছু লিখুন</p>
+                    </div>
+                `;
+                document.getElementById('pagination').innerHTML = '';
+            } else {
+                currentCategory = "সকল";
+                currentPage = 1;
+                const cards = document.querySelectorAll('.category-card');
+                cards.forEach(card => {
+                    if (card.textContent.includes('সকল')) {
+                        card.classList.add('active');
+                    } else {
+                        card.classList.remove('active');
+                    }
+                });
+                
+                let html = '';
+                filtered.slice(0, 15).forEach(site => {
+                    html += `
+                        <div class="website-card">
+                            <div class="card-header">
+                                <div class="website-logo"><i class="${site.logo}"></i></div>
+                                <div class="website-info">
+                                    <div class="website-name">${site.name}</div>
+                                    <span class="website-category">${site.category}</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="website-description">${site.description}</div>
+                                <div class="website-meta">
+                                    <div class="rating">${getRatingStars(site.rating)}</div>
+                                    <div class="visits"><i class="fas fa-users"></i> ${site.visits}</div>
+                                </div>
+                                <a href="${site.url}" target="_blank" class="visit-btn">ভিজিট করুন</a>
+                            </div>
+                        </div>
+                    `;
+                });
+                grid.innerHTML = html;
+                
+                if (filtered.length > 15) {
+                    document.getElementById('pagination').innerHTML = '<p style="color:white; text-align:center;">আরও ফলাফলের জন্য নির্দিষ্ট নাম লিখুন</p>';
+                } else {
+                    document.getElementById('pagination').innerHTML = '';
+                }
+            }
+        }
+
+        // সর্ট
+        function sortWebsites() {
+            const select = document.getElementById('sortSelect');
+            currentSort = select.value;
+            displayWebsites();
+        }
+
+        // ইনিশিয়ালাইজ
+        displayCategories();
+        displayWebsites();
+
+        // টোটাল ওয়েবসাইট আপডেট
+        document.getElementById('totalWebsites').innerText = '১,০০,০০০+';
+    </script>
+</body>
+</html>
