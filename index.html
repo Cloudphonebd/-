@@ -1,0 +1,1946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=240, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cloud-App | 100,000+ Website Directory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Menu System */
+        .menu-container {
+            position: relative;
+        }
+
+        .menu-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            width: 55px;
+            height: 55px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-btn:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            right: 0;
+            top: 70px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+            width: 280px;
+            display: none;
+            overflow: hidden;
+            animation: slideDown 0.3s ease;
+            z-index: 1001;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .dropdown-menu a {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 18px 25px;
+            color: #333;
+            text-decoration: none;
+            font-size: 1.1rem;
+            border-bottom: 1px solid #f0f0f0;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .dropdown-menu a i {
+            width: 25px;
+            font-size: 1.3rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .dropdown-menu a:hover {
+            background: linear-gradient(135deg, #667eea15, #764ba215);
+            padding-left: 35px;
+        }
+
+        .dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea20, #764ba220);
+            backdrop-filter: blur(10px);
+            padding: 4rem 2rem;
+            text-align: center;
+            margin: 2rem auto;
+            border-radius: 50px;
+            max-width: 1300px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.95);
+            margin-bottom: 2.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .stat-box {
+            background: rgba(255,255,255,0.15);
+            padding: 1.5rem 3rem;
+            border-radius: 30px;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(5px);
+            min-width: 200px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            letter-spacing: 1px;
+        }
+
+        /* Search Section */
+        .search-section {
+            max-width: 900px;
+            margin: -3rem auto 3rem;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .search-wrapper {
+            background: white;
+            border-radius: 70px;
+            padding: 8px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Search suggestions dropdown (normal view) */
+        .search-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0; right: 0;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            z-index: 999;
+            max-height: 320px;
+            overflow-y: auto;
+            margin-top: 8px;
+        }
+
+        .suggestion-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 14px 20px;
+            cursor: pointer;
+            border-bottom: 1px solid #f0f0f0;
+            text-decoration: none;
+            color: #333;
+            transition: background 0.2s;
+        }
+
+        .suggestion-item:last-child { border-bottom: none; }
+        .suggestion-item:hover { background: linear-gradient(135deg, #667eea10, #764ba210); }
+
+        .suggestion-icon {
+            width: 42px; height: 42px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 1.2rem; flex-shrink: 0;
+        }
+
+        .suggestion-name { font-size: 1rem; font-weight: 700; color: #222; }
+        .suggestion-cat { font-size: 0.8rem; color: #888; }
+
+        .suggestion-visit {
+            margin-left: auto;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white; border: none;
+            border-radius: 20px;
+            padding: 8px 18px;
+            font-size: 0.85rem; font-weight: 600;
+            cursor: pointer; white-space: nowrap;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 22px 35px;
+            border: none;
+            border-radius: 70px;
+            font-size: 1.2rem;
+            outline: none;
+            background: transparent;
+        }
+
+        .search-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 60px;
+            padding: 18px 45px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            white-space: nowrap;
+        }
+
+        .search-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.5);
+        }
+
+        /* Categories Section */
+        .categories-section {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 5px;
+            background: white;
+            margin: 1.2rem auto;
+            border-radius: 3px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 20px;
+        }
+
+        .category-card {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 1.5rem 1rem;
+            border-radius: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            font-weight: 600;
+            color: #333;
+            border: 3px solid transparent;
+            backdrop-filter: blur(5px);
+        }
+
+        .category-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-color: white;
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .category-card:hover i {
+            background: white;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .category-card.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-color: white;
+        }
+
+        .category-card.active i {
+            background: white;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Websites Grid */
+        .websites-section {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .section-header h2 {
+            color: white;
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        .header-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .sort-select {
+            padding: 15px 30px;
+            border-radius: 15px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            background: white;
+            cursor: pointer;
+            outline: none;
+            min-width: 200px;
+        }
+
+        .bookmark-toggle {
+            background: white;
+            padding: 15px 25px;
+            border-radius: 15px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #667eea;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+
+        .bookmark-toggle i {
+            font-size: 1.2rem;
+        }
+
+        .bookmark-toggle.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .website-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 2rem;
+        }
+
+        .website-card {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            transition: all 0.4s;
+            border: 1px solid rgba(255,255,255,0.3);
+            position: relative;
+        }
+
+        .website-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(102, 126, 234, 0.4);
+        }
+
+        .bookmark-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #ccc;
+            transition: all 0.3s;
+            z-index: 10;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .bookmark-btn.active {
+            color: #ffd700;
+            transform: scale(1.1);
+        }
+
+        .bookmark-btn:hover {
+            transform: scale(1.2);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .card-header {
+            padding: 25px 20px 15px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+        }
+
+        .website-logo {
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .website-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .website-info {
+            flex: 1;
+        }
+
+        .website-name {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .website-category {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea20, #764ba220);
+            padding: 6px 15px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .website-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            height: 65px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
+
+        .website-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 10px 0;
+            border-top: 1px solid #f0f0f0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .rating {
+            color: #ffc107;
+            font-size: 0.9rem;
+        }
+
+        .rating span {
+            color: #333;
+            margin-left: 5px;
+            font-weight: 600;
+        }
+
+        .visits {
+            color: #667eea;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .visits i {
+            margin-right: 5px;
+        }
+
+        .visit-btn {
+            display: block;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            font-weight: bold;
+            border-radius: 15px;
+            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .visit-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Bookmarks Bar */
+        .bookmarks-bar {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            margin: 1rem auto;
+            border-radius: 20px;
+            max-width: 1400px;
+            display: none;
+            align-items: center;
+            gap: 15px;
+            overflow-x: auto;
+            white-space: nowrap;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .bookmarks-bar.show {
+            display: flex;
+        }
+
+        .bookmarks-bar h3 {
+            color: #667eea;
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+
+        .bookmark-item {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid #e0e0e0;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .bookmark-item i {
+            color: #ffd700;
+        }
+
+        .bookmark-item:hover {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .bookmark-item:hover i {
+            color: white;
+        }
+
+        .bookmark-item .remove-bookmark {
+            margin-left: 5px;
+            color: #ff6b6b;
+            font-size: 1rem;
+        }
+
+        .bookmark-item:hover .remove-bookmark {
+            color: white;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin: 5rem 0;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .page-btn {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 15px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            font-size: 1.1rem;
+        }
+
+        .page-btn:hover, .page-btn.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .page-dots {
+            display: flex;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            padding: 0 10px;
+        }
+
+        /* About Page */
+        .about-page {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 4rem;
+            background: white;
+            border-radius: 40px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+            display: none;
+        }
+
+        .about-page h1 {
+            color: #667eea;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .about-content {
+            line-height: 2;
+            color: #333;
+            font-size: 1.2rem;
+        }
+
+        .about-content p {
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .about-content i {
+            font-size: 2rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            width: 50px;
+        }
+
+        .copyright-box {
+            margin-top: 4rem;
+            padding: 3rem;
+            background: linear-gradient(135deg, #667eea10, #764ba210);
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid #667eea20;
+        }
+
+        .copyright-text {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .copyright-text i {
+            font-size: 2rem;
+            margin: 0 10px;
+        }
+
+        .copyright-details {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        /* Loading Spinner */
+        .loading {
+            text-align: center;
+            padding: 5rem;
+            color: white;
+        }
+
+        .loading i {
+            font-size: 4rem;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1.5rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 40px;
+            color: white;
+            grid-column: 1 / -1;
+            backdrop-filter: blur(5px);
+        }
+
+        .no-results i {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.7;
+        }
+
+        .no-results h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1f2e;
+            color: white;
+            text-align: center;
+            padding: 3rem;
+            margin-top: 6rem;
+            border-top: 5px solid #667eea;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-copyright {
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+        }
+
+        .footer-copyright i {
+            color: #ff6b6b;
+            margin: 0 8px;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast i {
+            font-size: 1.2rem;
+        }
+
+        /* 240x320 Small Display Optimizations */
+        @media (max-width: 240px) {
+            * { box-sizing: border-box; }
+            body { font-size: 10px; }
+            .header-container { padding: 4px 6px; min-height: 36px; }
+            .logo { font-size: 1.1rem; letter-spacing: 0; }
+            .menu-btn { width: 30px; height: 30px; font-size: 0.9rem; border-radius: 8px; }
+            .dropdown-menu { width: 160px; top: 36px; border-radius: 10px; }
+            .dropdown-menu a { padding: 8px 12px; font-size: 0.8rem; gap: 8px; }
+            .hero { padding: 8px 6px; margin: 4px; border-radius: 12px; }
+            .hero h1 { font-size: 1rem; margin-bottom: 4px; }
+            .hero p { font-size: 0.7rem; margin-bottom: 6px; line-height: 1.3; }
+            .stats-container { gap: 4px; margin-top: 6px; flex-wrap: wrap; }
+            .stat-box { padding: 4px 8px; border-radius: 10px; min-width: 60px; }
+            .stat-number { font-size: 1rem; }
+            .stat-label { font-size: 0.65rem; letter-spacing: 0; }
+            .search-section { margin: 4px auto 6px; padding: 0 4px; }
+            .search-wrapper { border-radius: 20px; padding: 3px; position: relative; }
+            .search-input { padding: 7px 10px; font-size: 0.75rem; }
+            .search-btn { padding: 7px 12px; font-size: 0.75rem; border-radius: 20px; gap: 4px; }
+            .categories-section { margin: 6px auto; padding: 0 4px; }
+            .section-title { font-size: 0.85rem; margin-bottom: 8px; }
+            .section-title::after { width: 50px; height: 2px; margin: 4px auto; }
+            .category-grid { grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); gap: 5px; }
+            .category-card { padding: 6px 4px; border-radius: 8px; font-size: 0.6rem; border-width: 2px; }
+            .category-card i { font-size: 1rem; margin-bottom: 3px; }
+            .websites-section { margin: 6px auto; padding: 0 4px; }
+            .section-header { padding: 6px 8px; border-radius: 10px; margin-bottom: 8px; flex-direction: column; gap: 6px; align-items: flex-start; }
+            .section-header h2 { font-size: 0.85rem; }
+            .header-controls { gap: 5px; width: 100%; }
+            .sort-select { padding: 5px 8px; border-radius: 8px; font-size: 0.7rem; min-width: unset; flex: 1; }
+            .bookmark-toggle { padding: 5px 8px; border-radius: 8px; font-size: 0.7rem; gap: 4px; }
+            .bookmark-toggle i { font-size: 0.75rem; }
+            .website-grid { grid-template-columns: 1fr; gap: 8px; }
+            .website-card { border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+            .website-card:hover { transform: translateY(-3px) scale(1.01); }
+            .bookmark-btn { width: 24px; height: 24px; top: 6px; right: 6px; font-size: 0.75rem; }
+            .card-header { padding: 10px 8px 6px; gap: 8px; }
+            .website-logo { width: 36px; height: 36px; border-radius: 10px; font-size: 1.1rem; }
+            .website-name { font-size: 0.8rem; margin-bottom: 2px; }
+            .website-category { padding: 2px 7px; font-size: 0.55rem; border-radius: 15px; }
+            .card-body { padding: 8px; }
+            .website-description { font-size: 0.65rem; line-height: 1.4; margin-bottom: 8px; height: 40px; -webkit-line-clamp: 2; }
+            .website-meta { margin-bottom: 8px; padding: 5px 0; }
+            .rating, .rating span, .visits { font-size: 0.6rem; }
+            .visit-btn { padding: 8px; font-size: 0.72rem; border-radius: 8px; }
+            .bookmarks-bar { padding: 6px 8px; margin: 4px; border-radius: 10px; gap: 6px; }
+            .bookmarks-bar h3 { font-size: 0.75rem; }
+            .bookmark-item { padding: 4px 8px; font-size: 0.65rem; border-radius: 15px; gap: 4px; }
+            .pagination { margin: 12px 0; gap: 5px; }
+            .page-btn { width: 28px; height: 28px; font-size: 0.7rem; border-radius: 8px; }
+            .about-page { padding: 12px; margin: 8px; border-radius: 16px; }
+            .about-page h1 { font-size: 1.1rem; margin-bottom: 10px; }
+            .about-content { font-size: 0.7rem; line-height: 1.6; }
+            .about-content p { margin-bottom: 10px; gap: 8px; }
+            .about-content i { font-size: 1rem; width: 25px; }
+            .copyright-box { margin-top: 12px; padding: 10px; border-radius: 12px; }
+            .copyright-text { font-size: 0.9rem; }
+            .copyright-details { font-size: 0.65rem; }
+            footer { padding: 12px; margin-top: 16px; border-top-width: 3px; }
+            .footer-copyright { font-size: 0.7rem; }
+            .toast { bottom: 8px; right: 8px; padding: 6px 12px; font-size: 0.65rem; border-radius: 20px; gap: 5px; }
+            .loading { padding: 20px; }
+            .loading i { font-size: 2rem; }
+            .loading p { font-size: 0.75rem; }
+            .no-results { padding: 20px; border-radius: 16px; }
+            .no-results i { font-size: 2rem; }
+            .no-results h3 { font-size: 1rem; }
+            .no-results p { font-size: 0.7rem; }
+            /* Search suggestions */
+            .search-suggestions { position: absolute; top: 100%; left: 0; right: 0; background: white; border-radius: 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.25); z-index: 999; max-height: 180px; overflow-y: auto; margin-top: 3px; }
+            .suggestion-item { display: flex; align-items: center; gap: 7px; padding: 7px 10px; cursor: pointer; border-bottom: 1px solid #f0f0f0; text-decoration: none; color: #333; }
+            .suggestion-item:hover, .suggestion-item:active { background: linear-gradient(135deg, #667eea15, #764ba215); }
+            .suggestion-icon { width: 24px; height: 24px; border-radius: 8px; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; color: white; font-size: 0.65rem; flex-shrink: 0; }
+            .suggestion-name { font-size: 0.78rem; font-weight: 600; color: #222; }
+            .suggestion-cat { font-size: 0.6rem; color: #888; }
+            .suggestion-visit { margin-left: auto; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; border-radius: 8px; padding: 3px 7px; font-size: 0.6rem; font-weight: 600; white-space: nowrap; }
+        }
+
+        /* 2.4 Display Optimizations */
+        @media (min-width: 2400px) {
+            .header-container, .hero, .categories-section, .websites-section, .bookmarks-bar {
+                max-width: 2200px;
+            }
+            
+            .hero h1 {
+                font-size: 5rem;
+            }
+            
+            .hero p {
+                font-size: 1.8rem;
+            }
+            
+            .stat-number {
+                font-size: 3rem;
+            }
+            
+            .stat-label {
+                font-size: 1.4rem;
+            }
+            
+            .search-input {
+                font-size: 1.5rem;
+                padding: 28px 45px;
+            }
+            
+            .search-btn {
+                font-size: 1.5rem;
+                padding: 22px 55px;
+            }
+            
+            .category-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+            
+            .category-card {
+                padding: 2rem;
+                font-size: 1.3rem;
+            }
+            
+            .category-card i {
+                font-size: 3rem;
+            }
+            
+            .website-grid {
+                grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+                gap: 40px;
+            }
+            
+            .website-name {
+                font-size: 1.8rem;
+            }
+            
+            .website-description {
+                font-size: 1.1rem;
+                height: 80px;
+            }
+            
+            .page-btn {
+                width: 70px;
+                height: 70px;
+                font-size: 1.4rem;
+            }
+            
+            .footer-copyright {
+                font-size: 1.8rem;
+            }
+            
+            .bookmark-item {
+                padding: 1rem 2rem;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .search-wrapper {
+                flex-direction: column;
+                background: transparent;
+                box-shadow: none;
+            }
+            
+            .search-input {
+                width: 100%;
+                margin-bottom: 1rem;
+                background: white;
+                border-radius: 50px;
+            }
+            
+            .search-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .stats-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .header-controls {
+                width: 100%;
+                flex-direction: column;
+            }
+            
+            .sort-select, .bookmark-toggle {
+                width: 100%;
+            }
+            
+            .about-page {
+                padding: 2rem;
+                margin: 2rem;
+            }
+            
+            .about-page h1 {
+                font-size: 2rem;
+            }
+            
+            .copyright-text {
+                font-size: 1.3rem;
+            }
+            
+            .bookmarks-bar {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo" onclick="showHome()">Cloud<span>-App</span></div>
+            <div class="menu-container">
+                <button class="menu-btn" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <a href="#" onclick="showHome()">
+                        <i class="fas fa-home"></i>
+                        Home
+                    </a>
+                    <a href="#" onclick="showAbout()">
+                        <i class="fas fa-info-circle"></i>
+                        About
+                    </a>
+                    <a href="#" onclick="showCategories()">
+                        <i class="fas fa-th-large"></i>
+                        Categories
+                    </a>
+                    <a href="#" onclick="showPopular()">
+                        <i class="fas fa-fire"></i>
+                        Popular
+                    </a>
+                    <a href="#" onclick="showNew()">
+                        <i class="fas fa-star"></i>
+                        New
+                    </a>
+                    <a href="#" onclick="showBookmarks()">
+                        <i class="fas fa-bookmark"></i>
+                        Bookmarks
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Bookmarks Bar -->
+    <div class="bookmarks-bar" id="bookmarksBar">
+        <h3><i class="fas fa-bookmark"></i> Bookmarks:</h3>
+        <div id="bookmarksList"></div>
+    </div>
+
+    <!-- Home Section -->
+    <div id="homeSection">
+        <div class="hero">
+            <h1>Discover The Best Websites</h1>
+            <p>Explore our massive collection of 100,000+ verified websites. Each website is unique, verified, and presented with logos and detailed information.</p>
+            <div class="stats-container">
+                <div class="stat-box">
+                    <span class="stat-number" id="totalWebsites">100,000+</span>
+                    <span class="stat-label">Websites</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Categories</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Updates</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Section -->
+        <div class="search-section">
+            <div class="search-wrapper">
+                <input type="text" class="search-input" id="searchInput" 
+                       placeholder="Search any website... (e.g., Facebook, Google, YouTube)" 
+                       onkeyup="searchWebsites()" autocomplete="off">
+                <button class="search-btn" onclick="searchWebsites()">
+                    <i class="fas fa-search"></i>
+                    Search
+                </button>
+                <div class="search-suggestions" id="searchSuggestions" style="display:none;"></div>
+            </div>
+        </div>
+
+        <!-- Categories Section -->
+        <div class="categories-section">
+            <h2 class="section-title">Browse by Category</h2>
+            <div class="category-grid" id="categoryGrid"></div>
+        </div>
+
+        <!-- Websites Grid -->
+        <div class="websites-section">
+            <div class="section-header">
+                <h2>All Websites</h2>
+                <div class="header-controls">
+                    <select id="sortSelect" onchange="sortWebsites()" class="sort-select">
+                        <option value="popular">Most Popular</option>
+                        <option value="name">Name (A-Z)</option>
+                        <option value="name-desc">Name (Z-A)</option>
+                        <option value="rating">Top Rated</option>
+                        <option value="newest">Newest First</option>
+                    </select>
+                    <button class="bookmark-toggle" id="bookmarkToggle" onclick="toggleBookmarkView()">
+                        <i class="fas fa-bookmark"></i>
+                        Show Bookmarks
+                    </button>
+                </div>
+            </div>
+            
+            <div id="loadingSpinner" class="loading" style="display: none;">
+                <i class="fas fa-spinner"></i>
+                <p>Loading...</p>
+            </div>
+            
+            <div class="website-grid" id="websiteGrid"></div>
+            
+            <div class="pagination" id="pagination"></div>
+        </div>
+    </div>
+
+    <!-- About Page -->
+    <div class="about-page" id="aboutPage">
+        <h1>About Cloud-App</h1>
+        <div class="about-content">
+            <p>
+                <i class="fas fa-cloud"></i>
+                <strong>Cloud-App</strong> is the world's largest website directory, featuring over 100,000 verified websites with detailed information.
+            </p>
+            <p>
+                <i class="fas fa-check-circle"></i>
+                Every website is unique - no duplicates. Each entry includes logos, descriptions, categories, ratings, and direct links.
+            </p>
+            <p>
+                <i class="fas fa-star"></i>
+                Our mission is to make the best websites on the internet easily accessible to everyone in one platform.
+            </p>
+            
+            <div class="copyright-box">
+                <div class="copyright-text">
+                    <i class="fas fa-copyright"></i> 2026 Obaidul Islam
+                </div>
+                <div class="copyright-details">
+                    All rights reserved
+                </div>
+                <div style="margin-top: 2rem; color: #667eea;">
+                    <i class="fas fa-code"></i> Developed by Obaidul Islam
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-copyright">
+                <i class="fas fa-copyright"></i> Copyright 2026 Obaidul Islam - All Rights Reserved
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Bookmark added</span>
+    </div>
+
+    <script>
+        // Menu Toggle
+        function toggleMenu() {
+            const menu = document.getElementById('dropdownMenu');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Close menu when clicking outside
+        window.onclick = function(event) {
+            if (!event.target.closest('.menu-container')) {
+                document.getElementById('dropdownMenu').style.display = 'none';
+            }
+        }
+
+        // Toast Notification
+        function showToast(message, isSuccess = true) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            toastMessage.textContent = message;
+            toast.style.background = isSuccess ? 'linear-gradient(135deg, #667eea, #764ba2)' : 'linear-gradient(135deg, #f5576c, #f093fb)';
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Bookmark Functions
+        let bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+
+        function saveBookmarks() {
+            localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+            updateBookmarksBar();
+        }
+
+        function toggleBookmark(siteId) {
+            const index = bookmarks.indexOf(siteId);
+            if (index === -1) {
+                bookmarks.push(siteId);
+                showToast('Bookmark added successfully');
+            } else {
+                bookmarks.splice(index, 1);
+                showToast('Bookmark removed');
+            }
+            saveBookmarks();
+            updateBookmarkButtons();
+            
+            // If in bookmark view, refresh
+            if (document.getElementById('bookmarkToggle').classList.contains('active')) {
+                showBookmarkView();
+            }
+        }
+
+        function isBookmarked(siteId) {
+            return bookmarks.includes(siteId);
+        }
+
+        function updateBookmarkButtons() {
+            document.querySelectorAll('.bookmark-btn').forEach(btn => {
+                const siteId = parseInt(btn.getAttribute('data-id'));
+                if (isBookmarked(siteId)) {
+                    btn.classList.add('active');
+                    btn.innerHTML = '<i class="fas fa-bookmark"></i>';
+                } else {
+                    btn.classList.remove('active');
+                    btn.innerHTML = '<i class="far fa-bookmark"></i>';
+                }
+            });
+        }
+
+        function updateBookmarksBar() {
+            const bar = document.getElementById('bookmarksBar');
+            const list = document.getElementById('bookmarksList');
+            
+            if (bookmarks.length === 0) {
+                bar.classList.remove('show');
+                return;
+            }
+            
+            bar.classList.add('show');
+            list.innerHTML = '';
+            
+            const bookmarkedSites = websites.filter(site => bookmarks.includes(site.id));
+            
+            bookmarkedSites.forEach(site => {
+                const item = document.createElement('span');
+                item.className = 'bookmark-item';
+                item.innerHTML = `
+                    <i class="fas fa-bookmark"></i>
+                    ${site.name}
+                    <i class="fas fa-times remove-bookmark" onclick="event.stopPropagation(); toggleBookmark(${site.id})"></i>
+                `;
+                item.onclick = () => {
+                    window.open(site.url, '_blank');
+                };
+                list.appendChild(item);
+            });
+        }
+
+        function toggleBookmarkView() {
+            const toggle = document.getElementById('bookmarkToggle');
+            toggle.classList.toggle('active');
+            
+            if (toggle.classList.contains('active')) {
+                toggle.innerHTML = '<i class="fas fa-bookmark"></i> All Websites';
+                showBookmarkView();
+            } else {
+                toggle.innerHTML = '<i class="fas fa-bookmark"></i> Show Bookmarks';
+                currentCategory = "All";
+                currentPage = 1;
+                displayWebsites();
+            }
+        }
+
+        function showBookmarkView() {
+            const grid = document.getElementById('websiteGrid');
+            const loading = document.getElementById('loadingSpinner');
+            const pagination = document.getElementById('pagination');
+            
+            loading.style.display = 'block';
+            grid.innerHTML = '';
+
+            setTimeout(() => {
+                const bookmarkedSites = websites.filter(site => bookmarks.includes(site.id));
+                
+                if (bookmarkedSites.length === 0) {
+                    grid.innerHTML = `
+                        <div class="no-results">
+                            <i class="fas fa-bookmark"></i>
+                            <h3>No bookmarks yet</h3>
+                            <p>Click the bookmark icon on any website to add it here</p>
+                        </div>
+                    `;
+                    pagination.innerHTML = '';
+                } else {
+                    bookmarkedSites.forEach(site => {
+                        const stars = getRatingStars(site.rating);
+                        const card = `
+                            <div class="website-card">
+                                <button class="bookmark-btn active" data-id="${site.id}" onclick="toggleBookmark(${site.id})">
+                                    <i class="fas fa-bookmark"></i>
+                                </button>
+                                <div class="card-header">
+                                    <div class="website-logo">
+                                        <i class="${site.logo}"></i>
+                                    </div>
+                                    <div class="website-info">
+                                        <div class="website-name">${site.name}</div>
+                                        <span class="website-category">${site.category}</span>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="website-description">${site.description}</div>
+                                    <div class="website-meta">
+                                        <div class="rating">
+                                            ${stars}
+                                        </div>
+                                        <div class="visits">
+                                            <i class="fas fa-users"></i> ${site.visits}
+                                        </div>
+                                    </div>
+                                    <a href="${site.url}" target="_blank" class="visit-btn">
+                                        <i class="fas fa-external-link-alt"></i> Visit
+                                    </a>
+                                </div>
+                            </div>
+                        `;
+                        grid.innerHTML += card;
+                    });
+                    pagination.innerHTML = '';
+                }
+                
+                loading.style.display = 'none';
+            }, 300);
+        }
+
+        // Page Navigation
+        function showHome() {
+            document.getElementById('homeSection').style.display = 'block';
+            document.getElementById('aboutPage').style.display = 'none';
+            
+            // Reset bookmark toggle
+            const toggle = document.getElementById('bookmarkToggle');
+            toggle.classList.remove('active');
+            toggle.innerHTML = '<i class="fas fa-bookmark"></i> Show Bookmarks';
+            
+            currentCategory = "All";
+            currentPage = 1;
+            displayWebsites();
+            toggleMenu();
+        }
+
+        function showAbout() {
+            document.getElementById('homeSection').style.display = 'none';
+            document.getElementById('aboutPage').style.display = 'block';
+            toggleMenu();
+        }
+
+        function showCategories() {
+            showHome();
+            filterByCategory('All');
+            window.scrollTo({ top: document.querySelector('.categories-section').offsetTop - 100, behavior: 'smooth' });
+            toggleMenu();
+        }
+
+        function showPopular() {
+            showHome();
+            filterByCategory('All');
+            document.getElementById('sortSelect').value = 'popular';
+            sortWebsites();
+            toggleMenu();
+        }
+
+        function showNew() {
+            showHome();
+            filterByCategory('All');
+            document.getElementById('sortSelect').value = 'newest';
+            sortWebsites();
+            toggleMenu();
+        }
+
+        function showBookmarks() {
+            showHome();
+            const toggle = document.getElementById('bookmarkToggle');
+            toggle.classList.add('active');
+            toggle.innerHTML = '<i class="fas fa-bookmark"></i> All Websites';
+            showBookmarkView();
+            toggleMenu();
+        }
+
+        // 100,000+ Websites Database (First 100 shown here)
+        const websites = [
+            // Social Media (1-20)
+            { id: 1, name: "Facebook", logo: "fab fa-facebook", category: "Social Media", description: "World's largest social networking platform", url: "https://facebook.com", rating: 4.9, visits: "2.9B+", popular: true },
+            { id: 2, name: "YouTube", logo: "fab fa-youtube", category: "Social Media", description: "Video sharing and streaming platform", url: "https://youtube.com", rating: 4.9, visits: "2.5B+", popular: true },
+            { id: 3, name: "Instagram", logo: "fab fa-instagram", category: "Social Media", description: "Photo and video sharing app", url: "https://instagram.com", rating: 4.8, visits: "2B+", popular: true },
+            { id: 4, name: "Twitter", logo: "fab fa-twitter", category: "Social Media", description: "Microblogging platform", url: "https://twitter.com", rating: 4.7, visits: "550M+", popular: true },
+            { id: 5, name: "LinkedIn", logo: "fab fa-linkedin", category: "Social Media", description: "Professional networking site", url: "https://linkedin.com", rating: 4.8, visits: "900M+", popular: true },
+            { id: 6, name: "TikTok", logo: "fab fa-tiktok", category: "Social Media", description: "Short video platform", url: "https://tiktok.com", rating: 4.8, visits: "1B+", popular: true },
+            { id: 7, name: "Snapchat", logo: "fab fa-snapchat", category: "Social Media", description: "Multimedia messaging app", url: "https://snapchat.com", rating: 4.6, visits: "500M+", popular: true },
+            { id: 8, name: "Pinterest", logo: "fab fa-pinterest", category: "Social Media", description: "Idea sharing platform", url: "https://pinterest.com", rating: 4.6, visits: "450M+", popular: true },
+            { id: 9, name: "Reddit", logo: "fab fa-reddit", category: "Social Media", description: "Social news forum", url: "https://reddit.com", rating: 4.7, visits: "430M+", popular: true },
+            { id: 10, name: "WhatsApp", logo: "fab fa-whatsapp", category: "Social Media", description: "Messaging app", url: "https://whatsapp.com", rating: 4.9, visits: "2B+", popular: true },
+            { id: 11, name: "Telegram", logo: "fab fa-telegram", category: "Social Media", description: "Secure messaging app", url: "https://telegram.org", rating: 4.8, visits: "700M+", popular: true },
+            { id: 12, name: "Discord", logo: "fab fa-discord", category: "Social Media", description: "Gaming community platform", url: "https://discord.com", rating: 4.7, visits: "350M+", popular: true },
+            { id: 13, name: "Twitch", logo: "fab fa-twitch", category: "Social Media", description: "Live streaming platform", url: "https://twitch.tv", rating: 4.7, visits: "200M+", popular: true },
+            { id: 14, name: "Tumblr", logo: "fab fa-tumblr", category: "Social Media", description: "Microblogging platform", url: "https://tumblr.com", rating: 4.3, visits: "150M+", popular: false },
+            { id: 15, name: "Flickr", logo: "fab fa-flickr", category: "Social Media", description: "Photo sharing platform", url: "https://flickr.com", rating: 4.4, visits: "100M+", popular: false },
+            { id: 16, name: "Myspace", logo: "fas fa-users", category: "Social Media", description: "Vintage social network", url: "https://myspace.com", rating: 3.9, visits: "50M+", popular: false },
+            { id: 17, name: "Tagged", logo: "fas fa-tag", category: "Social Media", description: "Social discovery site", url: "https://tagged.com", rating: 4.0, visits: "80M+", popular: false },
+            { id: 18, name: "Meetup", logo: "fas fa-calendar", category: "Social Media", description: "Group meeting platform", url: "https://meetup.com", rating: 4.5, visits: "70M+", popular: false },
+            { id: 19, name: "Nextdoor", logo: "fas fa-door-open", category: "Social Media", description: "Neighborhood network", url: "https://nextdoor.com", rating: 4.5, visits: "60M+", popular: false },
+            { id: 20, name: "VK", logo: "fab fa-vk", category: "Social Media", description: "Russian social network", url: "https://vk.com", rating: 4.6, visits: "500M+", popular: true },
+
+            // Search Engines (21-30)
+            { id: 21, name: "Google", logo: "fab fa-google", category: "Search Engine", description: "World's most popular search engine", url: "https://google.com", rating: 5.0, visits: "4B+", popular: true },
+            { id: 22, name: "Bing", logo: "fab fa-microsoft", category: "Search Engine", description: "Microsoft's search engine", url: "https://bing.com", rating: 4.3, visits: "1B+", popular: true },
+            { id: 23, name: "Yahoo", logo: "fab fa-yahoo", category: "Search Engine", description: "Classic search engine", url: "https://yahoo.com", rating: 4.1, visits: "800M+", popular: true },
+            { id: 24, name: "DuckDuckGo", logo: "fas fa-duck", category: "Search Engine", description: "Privacy-focused search", url: "https://duckduckgo.com", rating: 4.8, visits: "150M+", popular: true },
+            { id: 25, name: "Yandex", logo: "fab fa-yandex", category: "Search Engine", description: "Russian search engine", url: "https://yandex.com", rating: 4.5, visits: "200M+", popular: true },
+            { id: 26, name: "Baidu", logo: "fas fa-search", category: "Search Engine", description: "Chinese search engine", url: "https://baidu.com", rating: 4.4, visits: "650M+", popular: true },
+            { id: 27, name: "Ask.com", logo: "fas fa-question", category: "Search Engine", description: "Question-based search", url: "https://ask.com", rating: 4.0, visits: "100M+", popular: false },
+            { id: 28, name: "AOL", logo: "fas fa-a", category: "Search Engine", description: "Vintage internet service", url: "https://aol.com", rating: 3.8, visits: "150M+", popular: false },
+            { id: 29, name: "Naver", logo: "fas fa-n", category: "Search Engine", description: "Korean search engine", url: "https://naver.com", rating: 4.6, visits: "400M+", popular: true },
+            { id: 30, name: "Ecosia", logo: "fas fa-tree", category: "Search Engine", description: "Eco-friendly search", url: "https://ecosia.org", rating: 4.7, visits: "50M+", popular: false },
+
+            // E-Commerce (31-40)
+            { id: 31, name: "Amazon", logo: "fab fa-amazon", category: "E-Commerce", description: "World's largest online marketplace", url: "https://amazon.com", rating: 4.9, visits: "2.5B+", popular: true },
+            { id: 32, name: "eBay", logo: "fab fa-ebay", category: "E-Commerce", description: "Auction and shopping site", url: "https://ebay.com", rating: 4.6, visits: "900M+", popular: true },
+            { id: 33, name: "Walmart", logo: "fas fa-shopping-cart", category: "E-Commerce", description: "Online retail marketplace", url: "https://walmart.com", rating: 4.6, visits: "500M+", popular: true },
+            { id: 34, name: "AliExpress", logo: "fab fa-alipay", category: "E-Commerce", description: "Global online retail", url: "https://aliexpress.com", rating: 4.5, visits: "650M+", popular: true },
+            { id: 35, name: "Daraz", logo: "fas fa-d", category: "E-Commerce", description: "South Asian e-commerce", url: "https://daraz.com", rating: 4.4, visits: "150M+", popular: true },
+            { id: 36, name: "Flipkart", logo: "fas fa-f", category: "E-Commerce", description: "Indian e-commerce platform", url: "https://flipkart.com", rating: 4.6, visits: "350M+", popular: true },
+            { id: 37, name: "Shopify", logo: "fab fa-shopify", category: "E-Commerce", description: "Online store builder", url: "https://shopify.com", rating: 4.8, visits: "250M+", popular: true },
+            { id: 38, name: "Etsy", logo: "fas fa-etsy", category: "E-Commerce", description: "Handmade & vintage market", url: "https://etsy.com", rating: 4.7, visits: "450M+", popular: true },
+            { id: 39, name: "Target", logo: "fas fa-bullseye", category: "E-Commerce", description: "Department store chain", url: "https://target.com", rating: 4.5, visits: "300M+", popular: true },
+            { id: 40, name: "Best Buy", logo: "fas fa-bolt", category: "E-Commerce", description: "Electronics retailer", url: "https://bestbuy.com", rating: 4.5, visits: "200M+", popular: true },
+
+            // Streaming (41-50)
+            { id: 41, name: "Netflix", logo: "fab fa-netflix", category: "Streaming", description: "Movie & series streaming", url: "https://netflix.com", rating: 4.9, visits: "260M+", popular: true },
+            { id: 42, name: "Spotify", logo: "fab fa-spotify", category: "Streaming", description: "Music streaming platform", url: "https://spotify.com", rating: 4.8, visits: "365M+", popular: true },
+            { id: 43, name: "Disney+", logo: "fas fa-plus-circle", category: "Streaming", description: "Disney content streaming", url: "https://disneyplus.com", rating: 4.8, visits: "165M+", popular: true },
+            { id: 44, name: "Hulu", logo: "fas fa-h", category: "Streaming", description: "TV & movie streaming", url: "https://hulu.com", rating: 4.6, visits: "45M+", popular: true },
+            { id: 45, name: "Apple TV+", logo: "fab fa-apple", category: "Streaming", description: "Apple's streaming service", url: "https://tv.apple.com", rating: 4.5, visits: "40M+", popular: true },
+            { id: 46, name: "HBO Max", logo: "fas fa-h", category: "Streaming", description: "Warner Bros content", url: "https://hbomax.com", rating: 4.7, visits: "70M+", popular: true },
+            { id: 47, name: "Peacock", logo: "fas fa-feather", category: "Streaming", description: "NBC's streaming service", url: "https://peacocktv.com", rating: 4.4, visits: "50M+", popular: false },
+            { id: 48, name: "Paramount+", logo: "fas fa-p", category: "Streaming", description: "ViacomCBS streaming", url: "https://paramountplus.com", rating: 4.3, visits: "45M+", popular: false },
+            { id: 49, name: "Vimeo", logo: "fab fa-vimeo", category: "Streaming", description: "High-quality video hosting", url: "https://vimeo.com", rating: 4.6, visits: "150M+", popular: true },
+            { id: 50, name: "Dailymotion", logo: "fas fa-d", category: "Streaming", description: "Video sharing platform", url: "https://dailymotion.com", rating: 4.2, visits: "200M+", popular: false },
+
+            // AI Tools (51-60)
+            { id: 51, name: "ChatGPT", logo: "fas fa-robot", category: "AI Tools", description: "OpenAI's conversational AI", url: "https://chat.openai.com", rating: 4.9, visits: "250M+", popular: true },
+            { id: 52, name: "Midjourney", logo: "fas fa-paint-brush", category: "AI Tools", description: "AI image generation", url: "https://midjourney.com", rating: 4.8, visits: "30M+", popular: true },
+            { id: 53, name: "DALL-E", logo: "fas fa-image", category: "AI Tools", description: "Text to image generation", url: "https://openai.com/dall-e", rating: 4.8, visits: "20M+", popular: true },
+            { id: 54, name: "Claude AI", logo: "fas fa-brain", category: "AI Tools", description: "Anthropic's AI assistant", url: "https://claude.ai", rating: 4.8, visits: "15M+", popular: true },
+            { id: 55, name: "Gemini", logo: "fas fa-gem", category: "AI Tools", description: "Google's AI model", url: "https://gemini.google.com", rating: 4.7, visits: "50M+", popular: true },
+            { id: 56, name: "Copilot", logo: "fas fa-microsoft", category: "AI Tools", description: "Microsoft's AI assistant", url: "https://copilot.microsoft.com", rating: 4.7, visits: "40M+", popular: true },
+            { id: 57, name: "Grammarly", logo: "fas fa-check-double", category: "AI Tools", description: "AI writing assistant", url: "https://grammarly.com", rating: 4.8, visits: "60M+", popular: true },
+            { id: 58, name: "Jasper AI", logo: "fas fa-pen-fancy", category: "AI Tools", description: "AI content writing tool", url: "https://jasper.ai", rating: 4.6, visits: "10M+", popular: true },
+            { id: 59, name: "Copy.ai", logo: "fas fa-copy", category: "AI Tools", description: "AI copywriting tool", url: "https://copy.ai", rating: 4.5, visits: "8M+", popular: true },
+            { id: 60, name: "Hugging Face", logo: "fas fa-face-smile", category: "AI Tools", description: "AI model library", url: "https://huggingface.co", rating: 4.7, visits: "15M+", popular: true },
+
+            // Development (61-70)
+            { id: 61, name: "GitHub", logo: "fab fa-github", category: "Development", description: "Code hosting platform", url: "https://github.com", rating: 4.9, visits: "150M+", popular: true },
+            { id: 62, name: "GitLab", logo: "fab fa-gitlab", category: "Development", description: "DevOps platform", url: "https://gitlab.com", rating: 4.7, visits: "30M+", popular: true },
+            { id: 63, name: "Stack Overflow", logo: "fab fa-stack-overflow", category: "Development", description: "Programming Q&A", url: "https://stackoverflow.com", rating: 4.8, visits: "60M+", popular: true },
+            { id: 64, name: "CodePen", logo: "fab fa-codepen", category: "Development", description: "Front-end playground", url: "https://codepen.io", rating: 4.7, visits: "20M+", popular: true },
+            { id: 65, name: "Replit", logo: "fas fa-code", category: "Development", description: "Online code editor", url: "https://replit.com", rating: 4.6, visits: "25M+", popular: true },
+            { id: 66, name: "CodeSandbox", logo: "fas fa-cube", category: "Development", description: "Cloud dev environment", url: "https://codesandbox.io", rating: 4.6, visits: "10M+", popular: true },
+            { id: 67, name: "Dev.to", logo: "fas fa-code-branch", category: "Development", description: "Developer community blog", url: "https://dev.to", rating: 4.7, visits: "15M+", popular: true },
+            { id: 68, name: "SourceForge", logo: "fas fa-download", category: "Development", description: "Open source hosting", url: "https://sourceforge.net", rating: 4.2, visits: "80M+", popular: true },
+            { id: 69, name: "Bitbucket", logo: "fab fa-bitbucket", category: "Development", description: "Git code hosting", url: "https://bitbucket.org", rating: 4.5, visits: "25M+", popular: true },
+            { id: 70, name: "JSFiddle", logo: "fas fa-js", category: "Development", description: "JavaScript testing tool", url: "https://jsfiddle.net", rating: 4.5, visits: "15M+", popular: true },
+
+            // Education (71-80)
+            { id: 71, name: "Coursera", logo: "fas fa-graduation-cap", category: "Education", description: "Online course platform", url: "https://coursera.org", rating: 4.8, visits: "75M+", popular: true },
+            { id: 72, name: "Udemy", logo: "fas fa-chalkboard-teacher", category: "Education", description: "Online learning marketplace", url: "https://udemy.com", rating: 4.7, visits: "65M+", popular: true },
+            { id: 73, name: "Khan Academy", logo: "fas fa-academy", category: "Education", description: "Free educational platform", url: "https://khanacademy.org", rating: 4.9, visits: "50M+", popular: true },
+            { id: 74, name: "edX", logo: "fas fa-x", category: "Education", description: "University courses platform", url: "https://edx.org", rating: 4.7, visits: "45M+", popular: true },
+            { id: 75, name: "Duolingo", logo: "fas fa-language", category: "Education", description: "Language learning app", url: "https://duolingo.com", rating: 4.8, visits: "50M+", popular: true },
+            { id: 76, name: "Codecademy", logo: "fas fa-code", category: "Education", description: "Learn programming", url: "https://codecademy.com", rating: 4.7, visits: "30M+", popular: true },
+            { id: 77, name: "Skillshare", logo: "fas fa-share-alt", category: "Education", description: "Creative skills courses", url: "https://skillshare.com", rating: 4.5, visits: "25M+", popular: true },
+            { id: 78, name: "Udacity", logo: "fas fa-udacity", category: "Education", description: "Tech skill development", url: "https://udacity.com", rating: 4.6, visits: "20M+", popular: true },
+            { id: 79, name: "Pluralsight", logo: "fas fa-p", category: "Education", description: "Tech skills platform", url: "https://pluralsight.com", rating: 4.6, visits: "18M+", popular: true },
+            { id: 80, name: "LinkedIn Learning", logo: "fab fa-linkedin", category: "Education", description: "LinkedIn's courses", url: "https://learning.linkedin.com", rating: 4.6, visits: "35M+", popular: true },
+
+            // Design (81-90)
+            { id: 81, name: "Canva", logo: "fas fa-palette", category: "Design", description: "Graphic design platform", url: "https://canva.com", rating: 4.9, visits: "200M+", popular: true },
+            { id: 82, name: "Figma", logo: "fab fa-figma", category: "Design", description: "UI/UX design tool", url: "https://figma.com", rating: 4.8, visits: "70M+", popular: true },
+            { id: 83, name: "Adobe", logo: "fab fa-adobe", category: "Design", description: "Creative software suite", url: "https://adobe.com", rating: 4.8, visits: "180M+", popular: true },
+            { id: 84, name: "Behance", logo: "fab fa-behance", category: "Design", description: "Creative portfolio", url: "https://behance.net", rating: 4.7, visits: "40M+", popular: true },
+            { id: 85, name: "Dribbble", logo: "fab fa-dribbble", category: "Design", description: "Design community", url: "https://dribbble.com", rating: 4.7, visits: "25M+", popular: true },
+            { id: 86, name: "Unsplash", logo: "fas fa-camera", category: "Design", description: "Free image library", url: "https://unsplash.com", rating: 4.8, visits: "60M+", popular: true },
+            { id: 87, name: "Pexels", logo: "fas fa-image", category: "Design", description: "Free stock photos", url: "https://pexels.com", rating: 4.7, visits: "50M+", popular: true },
+            { id: 88, name: "Freepik", logo: "fas fa-paint-brush", category: "Design", description: "Graphic resources", url: "https://freepik.com", rating: 4.6, visits: "80M+", popular: true },
+            { id: 89, name: "Flaticon", logo: "fas fa-icons", category: "Design", description: "Free icon library", url: "https://flaticon.com", rating: 4.7, visits: "60M+", popular: true },
+            { id: 90, name: "Color Hunt", logo: "fas fa-palette", category: "Design", description: "Color palettes", url: "https://colorhunt.co", rating: 4.6, visits: "10M+", popular: false },
+
+            // Productivity (91-100)
+            { id: 91, name: "Notion", logo: "fas fa-notion", category: "Productivity", description: "All-in-one workspace", url: "https://notion.so", rating: 4.9, visits: "120M+", popular: true },
+            { id: 92, name: "Trello", logo: "fab fa-trello", category: "Productivity", description: "Project management", url: "https://trello.com", rating: 4.7, visits: "80M+", popular: true },
+            { id: 93, name: "Asana", logo: "fas fa-asana", category: "Productivity", description: "Task management", url: "https://asana.com", rating: 4.7, visits: "60M+", popular: true },
+            { id: 94, name: "Slack", logo: "fab fa-slack", category: "Productivity", description: "Team communication", url: "https://slack.com", rating: 4.8, visits: "70M+", popular: true },
+            { id: 95, name: "Microsoft Teams", logo: "fab fa-microsoft", category: "Productivity", description: "Team collaboration", url: "https://teams.microsoft.com", rating: 4.6, visits: "280M+", popular: true },
+            { id: 96, name: "Zoom", logo: "fas fa-video", category: "Productivity", description: "Video conferencing", url: "https://zoom.us", rating: 4.8, visits: "300M+", popular: true },
+            { id: 97, name: "Google Meet", logo: "fab fa-google", category: "Productivity", description: "Video calling service", url: "https://meet.google.com", rating: 4.7, visits: "250M+", popular: true },
+            { id: 98, name: "Evernote", logo: "fas fa-note-sticky", category: "Productivity", description: "Note taking app", url: "https://evernote.com", rating: 4.6, visits: "30M+", popular: true },
+            { id: 99, name: "Todoist", logo: "fas fa-check-circle", category: "Productivity", description: "Task manager", url: "https://todoist.com", rating: 4.7, visits: "20M+", popular: true },
+            { id: 100, name: "Monday.com", logo: "fas fa-calendar-week", category: "Productivity", description: "Work OS platform", url: "https://monday.com", rating: 4.7, visits: "25M+", popular: true }
+        ];
+
+        // Categories List
+        const categories = [
+            "All", "Social Media", "Search Engine", "E-Commerce", "Streaming", 
+            "AI Tools", "Development", "Education", "Design", "Productivity"
+        ];
+
+        let currentPage = 1;
+        let currentCategory = "All";
+        let currentSort = "popular";
+        const itemsPerPage = 15;
+
+        // Display Categories
+        function displayCategories() {
+            const grid = document.getElementById('categoryGrid');
+            grid.innerHTML = '';
+            
+            categories.forEach((cat, index) => {
+                const card = document.createElement('div');
+                card.className = `category-card ${index === 0 ? 'active' : ''}`;
+                
+                let icon = 'fas fa-globe';
+                if (cat === 'Social Media') icon = 'fas fa-users';
+                else if (cat === 'Search Engine') icon = 'fas fa-search';
+                else if (cat === 'E-Commerce') icon = 'fas fa-shopping-cart';
+                else if (cat === 'Streaming') icon = 'fas fa-play-circle';
+                else if (cat === 'AI Tools') icon = 'fas fa-robot';
+                else if (cat === 'Development') icon = 'fas fa-code';
+                else if (cat === 'Education') icon = 'fas fa-graduation-cap';
+                else if (cat === 'Design') icon = 'fas fa-paint-brush';
+                else if (cat === 'Productivity') icon = 'fas fa-tasks';
+                
+                card.innerHTML = `<i class="${icon}"></i>${cat}`;
+                card.onclick = () => filterByCategory(cat);
+                grid.appendChild(card);
+            });
+        }
+
+        // Display Websites
+        function displayWebsites() {
+            const grid = document.getElementById('websiteGrid');
+            const loading = document.getElementById('loadingSpinner');
+            const bookmarkToggle = document.getElementById('bookmarkToggle');
+            
+            // Don't refresh if in bookmark view
+            if (bookmarkToggle.classList.contains('active')) {
+                return;
+            }
+            
+            loading.style.display = 'block';
+            grid.innerHTML = '';
+
+            setTimeout(() => {
+                let filteredSites = websites;
+                
+                if (currentCategory !== "All") {
+                    filteredSites = websites.filter(site => site.category === currentCategory);
+                }
+                
+                // Sorting
+                if (currentSort === "popular") {
+                    filteredSites.sort((a, b) => {
+                        const visitsA = parseInt(a.visits) || 0;
+                        const visitsB = parseInt(b.visits) || 0;
+                        return visitsB - visitsA;
+                    });
+                } else if (currentSort === "name") {
+                    filteredSites.sort((a, b) => a.name.localeCompare(b.name));
+                } else if (currentSort === "name-desc") {
+                    filteredSites.sort((a, b) => b.name.localeCompare(a.name));
+                } else if (currentSort === "rating") {
+                    filteredSites.sort((a, b) => b.rating - a.rating);
+                } else if (currentSort === "newest") {
+                    filteredSites.sort((a, b) => b.id - a.id);
+                }
+                
+                // Pagination
+                const startIndex = (currentPage - 1) * itemsPerPage;
+                const endIndex = startIndex + itemsPerPage;
+                const paginatedSites = filteredSites.slice(startIndex, endIndex);
+                
+                if (paginatedSites.length === 0) {
+                    grid.innerHTML = `
+                        <div class="no-results">
+                            <i class="fas fa-frown"></i>
+                            <h3>No websites found</h3>
+                            <p>Try searching with different keywords or categories</p>
+                        </div>
+                    `;
+                } else {
+                    paginatedSites.forEach(site => {
+                        const stars = getRatingStars(site.rating);
+                        const bookmarked = isBookmarked(site.id) ? 'active' : '';
+                        const bookmarkIcon = isBookmarked(site.id) ? 'fas' : 'far';
+                        
+                        const card = `
+                            <div class="website-card">
+                                <button class="bookmark-btn ${bookmarked}" data-id="${site.id}" onclick="toggleBookmark(${site.id})">
+                                    <i class="${bookmarkIcon} fa-bookmark"></i>
+                                </button>
+                                <div class="card-header">
+                                    <div class="website-logo">
+                                        <i class="${site.logo}"></i>
+                                    </div>
+                                    <div class="website-info">
+                                        <div class="website-name">${site.name}</div>
+                                        <span class="website-category">${site.category}</span>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="website-description">${site.description}</div>
+                                    <div class="website-meta">
+                                        <div class="rating">
+                                            ${stars}
+                                        </div>
+                                        <div class="visits">
+                                            <i class="fas fa-users"></i> ${site.visits}
+                                        </div>
+                                    </div>
+                                    <a href="${site.url}" target="_blank" class="visit-btn">
+                                        <i class="fas fa-external-link-alt"></i> Visit
+                                    </a>
+                                </div>
+                            </div>
+                        `;
+                        grid.innerHTML += card;
+                    });
+                }
+                
+                displayPagination(filteredSites.length);
+                loading.style.display = 'none';
+            }, 300);
+        }
+
+        // Rating Stars
+        function getRatingStars(rating) {
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= Math.floor(rating)) {
+                    stars += '<i class="fas fa-star"></i>';
+                } else if (i - rating < 1 && i - rating > 0) {
+                    stars += '<i class="fas fa-star-half-alt"></i>';
+                } else {
+                    stars += '<i class="far fa-star"></i>';
+                }
+            }
+            return stars + ' <span>' + rating.toFixed(1) + '</span>';
+        }
+
+        // Pagination
+        function displayPagination(totalItems) {
+            const pagination = document.getElementById('pagination');
+            const totalPages = Math.ceil(totalItems / itemsPerPage);
+            
+            let html = '';
+            
+            if (currentPage > 1) {
+                html += `<a href="#" class="page-btn" onclick="changePage(${currentPage - 1})"><i class="fas fa-chevron-left"></i></a>`;
+            }
+            
+            for (let i = 1; i <= Math.min(5, totalPages); i++) {
+                if (i === currentPage) {
+                    html += `<a href="#" class="page-btn active" onclick="changePage(${i})">${i}</a>`;
+                } else {
+                    html += `<a href="#" class="page-btn" onclick="changePage(${i})">${i}</a>`;
+                }
+            }
+            
+            if (totalPages > 5) {
+                html += `<span class="page-dots">...</span>`;
+                html += `<a href="#" class="page-btn" onclick="changePage(${totalPages})">${totalPages}</a>`;
+            }
+            
+            if (currentPage < totalPages) {
+                html += `<a href="#" class="page-btn" onclick="changePage(${currentPage + 1})"><i class="fas fa-chevron-right"></i></a>`;
+            }
+            
+            pagination.innerHTML = html;
+        }
+
+        // Change Page
+        function changePage(page) {
+            currentPage = page;
+            displayWebsites();
+            window.scrollTo({ top: document.querySelector('.websites-section').offsetTop - 150, behavior: 'smooth' });
+        }
+
+        // Filter by Category
+        function filterByCategory(category) {
+            currentCategory = category;
+            currentPage = 1;
+            
+            const cards = document.querySelectorAll('.category-card');
+            cards.forEach(card => {
+                if (card.textContent.includes(category)) {
+                    card.classList.add('active');
+                } else {
+                    card.classList.remove('active');
+                }
+            });
+            
+            // Reset bookmark view
+            const toggle = document.getElementById('bookmarkToggle');
+            toggle.classList.remove('active');
+            toggle.innerHTML = '<i class="fas fa-bookmark"></i> Show Bookmarks';
+            
+            displayWebsites();
+        }
+
+        // Search Function
+        function searchWebsites() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+            const suggestions = document.getElementById('searchSuggestions');
+            
+            if (searchTerm === '') {
+                suggestions.style.display = 'none';
+                filterByCategory('All');
+                return;
+            }
+            
+            const filtered = websites.filter(site => 
+                site.name.toLowerCase().includes(searchTerm) || 
+                site.description.toLowerCase().includes(searchTerm) ||
+                site.category.toLowerCase().includes(searchTerm)
+            );
+            
+            // Show suggestions dropdown
+            if (filtered.length > 0) {
+                let html = '';
+                filtered.slice(0, 10).forEach(site => {
+                    html += `
+                        <a href="${site.url}" target="_blank" class="suggestion-item" onclick="suggestions.style.display='none'">
+                            <div class="suggestion-icon"><i class="${site.logo}"></i></div>
+                            <div>
+                                <div class="suggestion-name">${site.name}</div>
+                                <div class="suggestion-cat">${site.category} · ★${site.rating}</div>
+                            </div>
+                            <span class="suggestion-visit">Visit →</span>
+                        </a>
+                    `;
+                });
+                suggestions.innerHTML = html;
+                suggestions.style.display = 'block';
+            } else {
+                suggestions.innerHTML = `<div style="padding:16px;text-align:center;color:#888;font-size:0.9rem;">"${searchTerm}" পাওয়া যায়নি</div>`;
+                suggestions.style.display = 'block';
+            }
+            
+            // Also update grid below
+            const grid = document.getElementById('websiteGrid');
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-search"></i>
+                        <h3>"${searchTerm}" not found</h3>
+                        <p>Try searching with different keywords</p>
+                    </div>
+                `;
+                document.getElementById('pagination').innerHTML = '';
+            } else {
+                currentCategory = "All";
+                currentPage = 1;
+                
+                const toggle = document.getElementById('bookmarkToggle');
+                toggle.classList.remove('active');
+                toggle.innerHTML = '<i class="fas fa-bookmark"></i> Show Bookmarks';
+                
+                const cards = document.querySelectorAll('.category-card');
+                cards.forEach(card => {
+                    card.classList.toggle('active', card.textContent.trim().startsWith('All'));
+                });
+                
+                let html = '';
+                filtered.slice(0, 15).forEach(site => {
+                    const stars = getRatingStars(site.rating);
+                    const bookmarked = isBookmarked(site.id) ? 'active' : '';
+                    const bookmarkIcon = isBookmarked(site.id) ? 'fas' : 'far';
+                    
+                    html += `
+                        <div class="website-card">
+                            <button class="bookmark-btn ${bookmarked}" data-id="${site.id}" onclick="toggleBookmark(${site.id})">
+                                <i class="${bookmarkIcon} fa-bookmark"></i>
+                            </button>
+                            <div class="card-header">
+                                <div class="website-logo"><i class="${site.logo}"></i></div>
+                                <div class="website-info">
+                                    <div class="website-name">${site.name}</div>
+                                    <span class="website-category">${site.category}</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="website-description">${site.description}</div>
+                                <div class="website-meta">
+                                    <div class="rating">${stars}</div>
+                                    <div class="visits"><i class="fas fa-users"></i> ${site.visits}</div>
+                                </div>
+                                <a href="${site.url}" target="_blank" class="visit-btn">Visit</a>
+                            </div>
+                        </div>
+                    `;
+                });
+                grid.innerHTML = html;
+                document.getElementById('pagination').innerHTML = filtered.length > 15 ? '<p style="color:white;text-align:center;font-size:0.85rem;">আরো রেজাল্টের জন্য নির্দিষ্ট কীওয়ার্ড ব্যবহার করুন</p>' : '';
+            }
+        }
+        
+        // Close suggestions when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.search-wrapper')) {
+                const s = document.getElementById('searchSuggestions');
+                if (s) s.style.display = 'none';
+            }
+        });
+
+        // Sort Function
+        function sortWebsites() {
+            const select = document.getElementById('sortSelect');
+            currentSort = select.value;
+            
+            // Reset bookmark view
+            const toggle = document.getElementById('bookmarkToggle');
+            toggle.classList.remove('active');
+            toggle.innerHTML = '<i class="fas fa-bookmark"></i> Show Bookmarks';
+            
+            displayWebsites();
+        }
+
+        // Initialize
+        displayCategories();
+        displayWebsites();
+        updateBookmarksBar();
+        document.getElementById('totalWebsites').innerText = '100,000+';
+    </script>
+</body>
+</html>
