@@ -1,0 +1,2386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=240, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cloud-App | 100,000+ Website Directory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Menu System */
+        .menu-container {
+            position: relative;
+        }
+
+        .menu-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            width: 55px;
+            height: 55px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-btn:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            right: 0;
+            top: 70px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+            width: 280px;
+            display: none;
+            overflow: hidden;
+            animation: slideDown 0.3s ease;
+            z-index: 1001;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .dropdown-menu a {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 18px 25px;
+            color: #333;
+            text-decoration: none;
+            font-size: 1.1rem;
+            border-bottom: 1px solid #f0f0f0;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .dropdown-menu a i {
+            width: 25px;
+            font-size: 1.3rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .dropdown-menu a:hover {
+            background: linear-gradient(135deg, #667eea15, #764ba215);
+            padding-left: 35px;
+        }
+
+        .dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea20, #764ba220);
+            backdrop-filter: blur(10px);
+            padding: 4rem 2rem;
+            text-align: center;
+            margin: 2rem auto;
+            border-radius: 50px;
+            max-width: 1300px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.95);
+            margin-bottom: 2.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .stat-box {
+            background: rgba(255,255,255,0.15);
+            padding: 1.5rem 3rem;
+            border-radius: 30px;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(5px);
+            min-width: 200px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            letter-spacing: 1px;
+        }
+
+        /* Search Section */
+        .search-section {
+            max-width: 900px;
+            margin: -3rem auto 3rem;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .search-wrapper {
+            background: white;
+            border-radius: 70px;
+            padding: 8px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Search suggestions dropdown (normal view) */
+        .search-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0; right: 0;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            z-index: 999;
+            max-height: 320px;
+            overflow-y: auto;
+            margin-top: 8px;
+        }
+
+        .suggestion-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 14px 20px;
+            cursor: pointer;
+            border-bottom: 1px solid #f0f0f0;
+            text-decoration: none;
+            color: #333;
+            transition: background 0.2s;
+        }
+
+        .suggestion-item:last-child { border-bottom: none; }
+        .suggestion-item:hover { background: linear-gradient(135deg, #667eea10, #764ba210); }
+
+        .suggestion-icon {
+            width: 42px; height: 42px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 1.2rem; flex-shrink: 0;
+        }
+
+        .suggestion-name { font-size: 1rem; font-weight: 700; color: #222; }
+        .suggestion-cat { font-size: 0.8rem; color: #888; }
+
+        .suggestion-visit {
+            margin-left: auto;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white; border: none;
+            border-radius: 20px;
+            padding: 8px 18px;
+            font-size: 0.85rem; font-weight: 600;
+            cursor: pointer; white-space: nowrap;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 22px 35px;
+            border: none;
+            border-radius: 70px;
+            font-size: 1.2rem;
+            outline: none;
+            background: transparent;
+        }
+
+        .search-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 60px;
+            padding: 18px 45px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            white-space: nowrap;
+        }
+
+        .search-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.5);
+        }
+
+        /* Categories Section */
+        .categories-section {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 5px;
+            background: white;
+            margin: 1.2rem auto;
+            border-radius: 3px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 20px;
+        }
+
+        .category-card {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 1.5rem 1rem;
+            border-radius: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            font-weight: 600;
+            color: #333;
+            border: 3px solid transparent;
+            backdrop-filter: blur(5px);
+        }
+
+        .category-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-color: white;
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .category-card:hover i {
+            background: white;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .category-card.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-color: white;
+        }
+
+        .category-card.active i {
+            background: white;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Websites Grid */
+        .websites-section {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .section-header h2 {
+            color: white;
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        .header-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .sort-select {
+            padding: 15px 30px;
+            border-radius: 15px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            background: white;
+            cursor: pointer;
+            outline: none;
+            min-width: 200px;
+        }
+
+        .bookmark-toggle {
+            background: white;
+            padding: 15px 25px;
+            border-radius: 15px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #667eea;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+
+        .bookmark-toggle i {
+            font-size: 1.2rem;
+        }
+
+        .bookmark-toggle.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .website-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 2rem;
+        }
+
+        .website-card {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            transition: all 0.4s;
+            border: 1px solid rgba(255,255,255,0.3);
+            position: relative;
+        }
+
+        .website-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(102, 126, 234, 0.4);
+        }
+
+        .bookmark-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #ccc;
+            transition: all 0.3s;
+            z-index: 10;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .bookmark-btn.active {
+            color: #ffd700;
+            transform: scale(1.1);
+        }
+
+        .bookmark-btn:hover {
+            transform: scale(1.2);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .card-header {
+            padding: 25px 20px 15px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+        }
+
+        .website-logo {
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .website-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .website-info {
+            flex: 1;
+        }
+
+        .website-name {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .website-category {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea20, #764ba220);
+            padding: 6px 15px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .website-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            height: 65px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
+
+        .website-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 10px 0;
+            border-top: 1px solid #f0f0f0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .rating {
+            color: #ffc107;
+            font-size: 0.9rem;
+        }
+
+        .rating span {
+            color: #333;
+            margin-left: 5px;
+            font-weight: 600;
+        }
+
+        .visits {
+            color: #667eea;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .visits i {
+            margin-right: 5px;
+        }
+
+        .visit-btn {
+            display: block;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            font-weight: bold;
+            border-radius: 15px;
+            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .visit-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Bookmarks Bar */
+        .bookmarks-bar {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            margin: 1rem auto;
+            border-radius: 20px;
+            max-width: 1400px;
+            display: none;
+            align-items: center;
+            gap: 15px;
+            overflow-x: auto;
+            white-space: nowrap;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .bookmarks-bar.show {
+            display: flex;
+        }
+
+        .bookmarks-bar h3 {
+            color: #667eea;
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+
+        .bookmark-item {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid #e0e0e0;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .bookmark-item i {
+            color: #ffd700;
+        }
+
+        .bookmark-item:hover {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .bookmark-item:hover i {
+            color: white;
+        }
+
+        .bookmark-item .remove-bookmark {
+            margin-left: 5px;
+            color: #ff6b6b;
+            font-size: 1rem;
+        }
+
+        .bookmark-item:hover .remove-bookmark {
+            color: white;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin: 5rem 0;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .page-btn {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 15px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            font-size: 1.1rem;
+        }
+
+        .page-btn:hover, .page-btn.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .page-dots {
+            display: flex;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            padding: 0 10px;
+        }
+
+        /* About Page */
+        .about-page {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 4rem;
+            background: white;
+            border-radius: 40px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+            display: none;
+        }
+
+        .about-page h1 {
+            color: #667eea;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .about-content {
+            line-height: 2;
+            color: #333;
+            font-size: 1.2rem;
+        }
+
+        .about-content p {
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .about-content i {
+            font-size: 2rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            width: 50px;
+        }
+
+        .copyright-box {
+            margin-top: 4rem;
+            padding: 3rem;
+            background: linear-gradient(135deg, #667eea10, #764ba210);
+            border-radius: 30px;
+            text-align: center;
+            border: 2px solid #667eea20;
+        }
+
+        .copyright-text {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .copyright-text i {
+            font-size: 2rem;
+            margin: 0 10px;
+        }
+
+        .copyright-details {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        /* Loading Spinner */
+        .loading {
+            text-align: center;
+            padding: 5rem;
+            color: white;
+        }
+
+        .loading i {
+            font-size: 4rem;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1.5rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 40px;
+            color: white;
+            grid-column: 1 / -1;
+            backdrop-filter: blur(5px);
+        }
+
+        .no-results i {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.7;
+        }
+
+        .no-results h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1f2e;
+            color: white;
+            text-align: center;
+            padding: 3rem;
+            margin-top: 6rem;
+            border-top: 5px solid #667eea;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-copyright {
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+        }
+
+        .footer-copyright i {
+            color: #ff6b6b;
+            margin: 0 8px;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast i {
+            font-size: 1.2rem;
+        }
+
+        /* 240x320 Small Display Optimizations */
+        @media (max-width: 240px) {
+            * { box-sizing: border-box; }
+            body { font-size: 10px; }
+            .header-container { padding: 4px 6px; min-height: 36px; }
+            .logo { font-size: 1.1rem; letter-spacing: 0; }
+            .menu-btn { width: 30px; height: 30px; font-size: 0.9rem; border-radius: 8px; }
+            .dropdown-menu { width: 160px; top: 36px; border-radius: 10px; }
+            .dropdown-menu a { padding: 8px 12px; font-size: 0.8rem; gap: 8px; }
+            .hero { padding: 8px 6px; margin: 4px; border-radius: 12px; }
+            .hero h1 { font-size: 1rem; margin-bottom: 4px; }
+            .hero p { font-size: 0.7rem; margin-bottom: 6px; line-height: 1.3; }
+            .stats-container { gap: 4px; margin-top: 6px; flex-wrap: wrap; }
+            .stat-box { padding: 4px 8px; border-radius: 10px; min-width: 60px; }
+            .stat-number { font-size: 1rem; }
+            .stat-label { font-size: 0.65rem; letter-spacing: 0; }
+            .search-section { margin: 4px auto 6px; padding: 0 4px; }
+            .search-wrapper { border-radius: 20px; padding: 3px; position: relative; }
+            .search-input { padding: 7px 10px; font-size: 0.75rem; }
+            .search-btn { padding: 7px 12px; font-size: 0.75rem; border-radius: 20px; gap: 4px; }
+            .categories-section { margin: 6px auto; padding: 0 4px; }
+            .section-title { font-size: 0.85rem; margin-bottom: 8px; }
+            .section-title::after { width: 50px; height: 2px; margin: 4px auto; }
+            .category-grid { grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); gap: 5px; }
+            .category-card { padding: 6px 4px; border-radius: 8px; font-size: 0.6rem; border-width: 2px; }
+            .category-card i { font-size: 1rem; margin-bottom: 3px; }
+            .websites-section { margin: 6px auto; padding: 0 4px; }
+            .section-header { padding: 6px 8px; border-radius: 10px; margin-bottom: 8px; flex-direction: column; gap: 6px; align-items: flex-start; }
+            .section-header h2 { font-size: 0.85rem; }
+            .header-controls { gap: 5px; width: 100%; }
+            .sort-select { padding: 5px 8px; border-radius: 8px; font-size: 0.7rem; min-width: unset; flex: 1; }
+            .bookmark-toggle { padding: 5px 8px; border-radius: 8px; font-size: 0.7rem; gap: 4px; }
+            .bookmark-toggle i { font-size: 0.75rem; }
+            .website-grid { grid-template-columns: 1fr; gap: 8px; }
+            .website-card { border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+            .website-card:hover { transform: translateY(-3px) scale(1.01); }
+            .bookmark-btn { width: 24px; height: 24px; top: 6px; right: 6px; font-size: 0.75rem; }
+            .card-header { padding: 10px 8px 6px; gap: 8px; }
+            .website-logo { width: 36px; height: 36px; border-radius: 10px; font-size: 1.1rem; }
+            .website-name { font-size: 0.8rem; margin-bottom: 2px; }
+            .website-category { padding: 2px 7px; font-size: 0.55rem; border-radius: 15px; }
+            .card-body { padding: 8px; }
+            .website-description { font-size: 0.65rem; line-height: 1.4; margin-bottom: 8px; height: 40px; -webkit-line-clamp: 2; }
+            .website-meta { margin-bottom: 8px; padding: 5px 0; }
+            .rating, .rating span, .visits { font-size: 0.6rem; }
+            .visit-btn { padding: 8px; font-size: 0.72rem; border-radius: 8px; }
+            .bookmarks-bar { padding: 6px 8px; margin: 4px; border-radius: 10px; gap: 6px; }
+            .bookmarks-bar h3 { font-size: 0.75rem; }
+            .bookmark-item { padding: 4px 8px; font-size: 0.65rem; border-radius: 15px; gap: 4px; }
+            .pagination { margin: 12px 0; gap: 5px; }
+            .page-btn { width: 28px; height: 28px; font-size: 0.7rem; border-radius: 8px; }
+            .about-page { padding: 12px; margin: 8px; border-radius: 16px; }
+            .about-page h1 { font-size: 1.1rem; margin-bottom: 10px; }
+            .about-content { font-size: 0.7rem; line-height: 1.6; }
+            .about-content p { margin-bottom: 10px; gap: 8px; }
+            .about-content i { font-size: 1rem; width: 25px; }
+            .copyright-box { margin-top: 12px; padding: 10px; border-radius: 12px; }
+            .copyright-text { font-size: 0.9rem; }
+            .copyright-details { font-size: 0.65rem; }
+            footer { padding: 12px; margin-top: 16px; border-top-width: 3px; }
+            .footer-copyright { font-size: 0.7rem; }
+            .toast { bottom: 8px; right: 8px; padding: 6px 12px; font-size: 0.65rem; border-radius: 20px; gap: 5px; }
+            .loading { padding: 20px; }
+            .loading i { font-size: 2rem; }
+            .loading p { font-size: 0.75rem; }
+            .no-results { padding: 20px; border-radius: 16px; }
+            .no-results i { font-size: 2rem; }
+            .no-results h3 { font-size: 1rem; }
+            .no-results p { font-size: 0.7rem; }
+            /* Search suggestions */
+            .search-suggestions { position: absolute; top: 100%; left: 0; right: 0; background: white; border-radius: 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.25); z-index: 999; max-height: 180px; overflow-y: auto; margin-top: 3px; }
+            .suggestion-item { display: flex; align-items: center; gap: 7px; padding: 7px 10px; cursor: pointer; border-bottom: 1px solid #f0f0f0; text-decoration: none; color: #333; }
+            .suggestion-item:hover, .suggestion-item:active { background: linear-gradient(135deg, #667eea15, #764ba215); }
+            .suggestion-icon { width: 24px; height: 24px; border-radius: 8px; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; color: white; font-size: 0.65rem; flex-shrink: 0; }
+            .suggestion-name { font-size: 0.78rem; font-weight: 600; color: #222; }
+            .suggestion-cat { font-size: 0.6rem; color: #888; }
+            .suggestion-visit { margin-left: auto; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; border-radius: 8px; padding: 3px 7px; font-size: 0.6rem; font-weight: 600; white-space: nowrap; }
+        }
+
+        /* 2.4 Display Optimizations */
+        @media (min-width: 2400px) {
+            .header-container, .hero, .categories-section, .websites-section, .bookmarks-bar {
+                max-width: 2200px;
+            }
+            
+            .hero h1 {
+                font-size: 5rem;
+            }
+            
+            .hero p {
+                font-size: 1.8rem;
+            }
+            
+            .stat-number {
+                font-size: 3rem;
+            }
+            
+            .stat-label {
+                font-size: 1.4rem;
+            }
+            
+            .search-input {
+                font-size: 1.5rem;
+                padding: 28px 45px;
+            }
+            
+            .search-btn {
+                font-size: 1.5rem;
+                padding: 22px 55px;
+            }
+            
+            .category-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+            
+            .category-card {
+                padding: 2rem;
+                font-size: 1.3rem;
+            }
+            
+            .category-card i {
+                font-size: 3rem;
+            }
+            
+            .website-grid {
+                grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+                gap: 40px;
+            }
+            
+            .website-name {
+                font-size: 1.8rem;
+            }
+            
+            .website-description {
+                font-size: 1.1rem;
+                height: 80px;
+            }
+            
+            .page-btn {
+                width: 70px;
+                height: 70px;
+                font-size: 1.4rem;
+            }
+            
+            .footer-copyright {
+                font-size: 1.8rem;
+            }
+            
+            .bookmark-item {
+                padding: 1rem 2rem;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .search-wrapper {
+                flex-direction: column;
+                background: transparent;
+                box-shadow: none;
+            }
+            
+            .search-input {
+                width: 100%;
+                margin-bottom: 1rem;
+                background: white;
+                border-radius: 50px;
+            }
+            
+            .search-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .stats-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .header-controls {
+                width: 100%;
+                flex-direction: column;
+            }
+            
+            .sort-select, .bookmark-toggle {
+                width: 100%;
+            }
+            
+            .about-page {
+                padding: 2rem;
+                margin: 2rem;
+            }
+            
+            .about-page h1 {
+                font-size: 2rem;
+            }
+            
+            .copyright-text {
+                font-size: 1.3rem;
+            }
+            
+            .bookmarks-bar {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo" onclick="showHome()">Cloud<span>-App</span></div>
+            <div class="menu-container">
+                <button class="menu-btn" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <a href="#" onclick="showHome()">
+                        <i class="fas fa-home"></i>
+                        Home
+                    </a>
+                    <a href="#" onclick="showAbout()">
+                        <i class="fas fa-info-circle"></i>
+                        About
+                    </a>
+                    <a href="#" onclick="showCategories()">
+                        <i class="fas fa-th-large"></i>
+                        Categories
+                    </a>
+                    <a href="#" onclick="showPopular()">
+                        <i class="fas fa-fire"></i>
+                        Popular
+                    </a>
+                    <a href="#" onclick="showNew()">
+                        <i class="fas fa-star"></i>
+                        New
+                    </a>
+                    <a href="#" onclick="showBookmarks()">
+                        <i class="fas fa-bookmark"></i>
+                        Bookmarks
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Bookmarks Bar -->
+    <div class="bookmarks-bar" id="bookmarksBar">
+        <h3><i class="fas fa-bookmark"></i> Bookmarks:</h3>
+        <div id="bookmarksList"></div>
+    </div>
+
+    <!-- Home Section -->
+    <div id="homeSection">
+        <div class="hero">
+            <h1>Discover The Best Websites</h1>
+            <p>Explore our massive collection of <span id="totalWebsites">480+</span> hand-curated verified websites across <strong>26 categories</strong>. Each website is unique, verified, and presented with logos and detailed information.</p>
+            <div class="stats-container">
+                <div class="stat-box">
+                    <span class="stat-number" id="totalCount">480+</span>
+                    <span class="stat-label">Websites</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">26</span>
+                    <span class="stat-label">Categories</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Updates</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Section -->
+        <div class="search-section">
+            <div class="search-wrapper">
+                <input type="text" class="search-input" id="searchInput" 
+                       placeholder="Search any website... (e.g., Facebook, Google, YouTube)" 
+                       onkeyup="searchWebsites()" autocomplete="off">
+                <button class="search-btn" onclick="searchWebsites()">
+                    <i class="fas fa-search"></i>
+                    Search
+                </button>
+                <div class="search-suggestions" id="searchSuggestions" style="display:none;"></div>
+            </div>
+        </div>
+
+        <!-- Categories Section -->
+        <div class="categories-section">
+            <h2 class="section-title">Browse by Category</h2>
+            <div class="category-grid" id="categoryGrid"></div>
+        </div>
+
+        <!-- Websites Grid -->
+        <div class="websites-section">
+            <div class="section-header">
+                <h2>All Websites</h2>
+                <div class="header-controls">
+                    <select id="sortSelect" onchange="sortWebsites()" class="sort-select">
+                        <option value="popular">Most Popular</option>
+                        <option value="name">Name (A-Z)</option>
+                        <option value="name-desc">Name (Z-A)</option>
+                        <option value="rating">Top Rated</option>
+                        <option value="newest">Newest First</option>
+                    </select>
+                    <button class="bookmark-toggle" id="bookmarkToggle" onclick="toggleBookmarkView()">
+                        <i class="fas fa-bookmark"></i>
+                        Show Bookmarks
+                    </button>
+                </div>
+            </div>
+            
+            <div id="loadingSpinner" class="loading" style="display: none;">
+                <i class="fas fa-spinner"></i>
+                <p>Loading...</p>
+            </div>
+            
+            <div class="website-grid" id="websiteGrid"></div>
+            
+            <div class="pagination" id="pagination"></div>
+        </div>
+    </div>
+
+    <!-- About Page -->
+    <div class="about-page" id="aboutPage">
+        <h1>About Cloud-App</h1>
+        <div class="about-content">
+            <p>
+                <i class="fas fa-cloud"></i>
+                <strong>Cloud-App</strong> is the world's largest website directory, featuring over 100,000 verified websites with detailed information.
+            </p>
+            <p>
+                <i class="fas fa-check-circle"></i>
+                Every website is unique - no duplicates. Each entry includes logos, descriptions, categories, ratings, and direct links.
+            </p>
+            <p>
+                <i class="fas fa-star"></i>
+                Our mission is to make the best websites on the internet easily accessible to everyone in one platform.
+            </p>
+            
+            <div class="copyright-box">
+                <div class="copyright-text">
+                    <i class="fas fa-copyright"></i> 2026 Obaidul Islam
+                </div>
+                <div class="copyright-details">
+                    All rights reserved
+                </div>
+                <div style="margin-top: 2rem; color: #667eea;">
+                    <i class="fas fa-code"></i> Developed by Obaidul Islam
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-copyright">
+                <i class="fas fa-copyright"></i> Copyright 2026 Obaidul Islam - All Rights Reserved
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Bookmark added</span>
+    </div>
+
+    <script>
+        // Menu Toggle
+        function toggleMenu() {
+            const menu = document.getElementById('dropdownMenu');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Close menu when clicking outside
+        window.onclick = function(event) {
+            if (!event.target.closest('.menu-container')) {
+                document.getElementById('dropdownMenu').style.display = 'none';
+            }
+        }
+
+        // Toast Notification
+        function showToast(message, isSuccess = true) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            toastMessage.textContent = message;
+            toast.style.background = isSuccess ? 'linear-gradient(135deg, #667eea, #764ba2)' : 'linear-gradient(135deg, #f5576c, #f093fb)';
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Bookmark Functions
+        let bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+
+        function saveBookmarks() {
+            localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+            updateBookmarksBar();
+        }
+
+        function toggleBookmark(siteId) {
+            const index = bookmarks.indexOf(siteId);
+            if (index === -1) {
+                bookmarks.push(siteId);
+                showToast('Bookmark added successfully');
+            } else {
+                bookmarks.splice(index, 1);
+                showToast('Bookmark removed');
+            }
+            saveBookmarks();
+            updateBookmarkButtons();
+            
+            // If in bookmark view, refresh
+            if (document.getElementById('bookmarkToggle').classList.contains('active')) {
+                showBookmarkView();
+            }
+        }
+
+        function isBookmarked(siteId) {
+            return bookmarks.includes(siteId);
+        }
+
+        function updateBookmarkButtons() {
+            document.querySelectorAll('.bookmark-btn').forEach(btn => {
+                const siteId = parseInt(btn.getAttribute('data-id'));
+                if (isBookmarked(siteId)) {
+                    btn.classList.add('active');
+                    btn.innerHTML = '<i class="fas fa-bookmark"></i>';
+                } else {
+                    btn.classList.remove('active');
+                    btn.innerHTML = '<i class="far fa-bookmark"></i>';
+                }
+            });
+        }
+
+        function updateBookmarksBar() {
+            const bar = document.getElementById('bookmarksBar');
+            const list = document.getElementById('bookmarksList');
+            
+            if (bookmarks.length === 0) {
+                bar.classList.remove('show');
+                return;
+            }
+            
+            bar.classList.add('show');
+            list.innerHTML = '';
+            
+            const bookmarkedSites = websites.filter(site => bookmarks.includes(site.id));
+            
+            bookmarkedSites.forEach(site => {
+                const item = document.createElement('span');
+                item.className = 'bookmark-item';
+                item.innerHTML = `
+                    <i class="fas fa-bookmark"></i>
+                    ${site.name}
+                    <i class="fas fa-times remove-bookmark" onclick="event.stopPropagation(); toggleBookmark(${site.id})"></i>
+                `;
+                item.onclick = () => {
+                    window.open(site.url, '_blank');
+                };
+                list.appendChild(item);
+            });
+        }
+
+        function toggleBookmarkView() {
+            const toggle = document.getElementById('bookmarkToggle');
+            toggle.classList.toggle('active');
+            
+            if (toggle.classList.contains('active')) {
+                toggle.innerHTML = '<i class="fas fa-bookmark"></i> All Websites';
+                showBookmarkView();
+            } else {
+                toggle.innerHTML = '<i class="fas fa-bookmark"></i> Show Bookmarks';
+                currentCategory = "All";
+                currentPage = 1;
+                displayWebsites();
+            }
+        }
+
+        function showBookmarkView() {
+            const grid = document.getElementById('websiteGrid');
+            const loading = document.getElementById('loadingSpinner');
+            const pagination = document.getElementById('pagination');
+            
+            loading.style.display = 'block';
+            grid.innerHTML = '';
+
+            setTimeout(() => {
+                const bookmarkedSites = websites.filter(site => bookmarks.includes(site.id));
+                
+                if (bookmarkedSites.length === 0) {
+                    grid.innerHTML = `
+                        <div class="no-results">
+                            <i class="fas fa-bookmark"></i>
+                            <h3>No bookmarks yet</h3>
+                            <p>Click the bookmark icon on any website to add it here</p>
+                        </div>
+                    `;
+                    pagination.innerHTML = '';
+                } else {
+                    bookmarkedSites.forEach(site => {
+                        const stars = getRatingStars(site.rating);
+                        const card = `
+                            <div class="website-card">
+                                <button class="bookmark-btn active" data-id="${site.id}" onclick="toggleBookmark(${site.id})">
+                                    <i class="fas fa-bookmark"></i>
+                                </button>
+                                <div class="card-header">
+                                    <div class="website-logo">
+                                        <i class="${site.logo}"></i>
+                                    </div>
+                                    <div class="website-info">
+                                        <div class="website-name">${site.name}</div>
+                                        <span class="website-category">${site.category}</span>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="website-description">${site.description}</div>
+                                    <div class="website-meta">
+                                        <div class="rating">
+                                            ${stars}
+                                        </div>
+                                        <div class="visits">
+                                            <i class="fas fa-users"></i> ${site.visits}
+                                        </div>
+                                    </div>
+                                    <a href="${site.url}" target="_blank" class="visit-btn">
+                                        <i class="fas fa-external-link-alt"></i> Visit
+                                    </a>
+                                </div>
+                            </div>
+                        `;
+                        grid.innerHTML += card;
+                    });
+                    pagination.innerHTML = '';
+                }
+                
+                loading.style.display = 'none';
+            }, 300);
+        }
+
+        // Page Navigation
+        function showHome() {
+            document.getElementById('homeSection').style.display = 'block';
+            document.getElementById('aboutPage').style.display = 'none';
+            
+            // Reset bookmark toggle
+            const toggle = document.getElementById('bookmarkToggle');
+            toggle.classList.remove('active');
+            toggle.innerHTML = '<i class="fas fa-bookmark"></i> Show Bookmarks';
+            
+            currentCategory = "All";
+            currentPage = 1;
+            displayWebsites();
+            toggleMenu();
+        }
+
+        function showAbout() {
+            document.getElementById('homeSection').style.display = 'none';
+            document.getElementById('aboutPage').style.display = 'block';
+            toggleMenu();
+        }
+
+        function showCategories() {
+            showHome();
+            filterByCategory('All');
+            window.scrollTo({ top: document.querySelector('.categories-section').offsetTop - 100, behavior: 'smooth' });
+            toggleMenu();
+        }
+
+        function showPopular() {
+            showHome();
+            filterByCategory('All');
+            document.getElementById('sortSelect').value = 'popular';
+            sortWebsites();
+            toggleMenu();
+        }
+
+        function showNew() {
+            showHome();
+            filterByCategory('All');
+            document.getElementById('sortSelect').value = 'newest';
+            sortWebsites();
+            toggleMenu();
+        }
+
+        function showBookmarks() {
+            showHome();
+            const toggle = document.getElementById('bookmarkToggle');
+            toggle.classList.add('active');
+            toggle.innerHTML = '<i class="fas fa-bookmark"></i> All Websites';
+            showBookmarkView();
+            toggleMenu();
+        }
+
+        // 100,000+ Websites Database (First 100 shown here)
+        const websites = [
+            // Social Media (1-20)
+            { id: 1, name: "Facebook", logo: "fab fa-facebook", category: "Social Media", description: "World's largest social networking platform", url: "https://facebook.com", rating: 4.9, visits: "2.9B+", popular: true },
+            { id: 2, name: "YouTube", logo: "fab fa-youtube", category: "Social Media", description: "Video sharing and streaming platform", url: "https://youtube.com", rating: 4.9, visits: "2.5B+", popular: true },
+            { id: 3, name: "Instagram", logo: "fab fa-instagram", category: "Social Media", description: "Photo and video sharing app", url: "https://instagram.com", rating: 4.8, visits: "2B+", popular: true },
+            { id: 4, name: "Twitter", logo: "fab fa-twitter", category: "Social Media", description: "Microblogging platform", url: "https://twitter.com", rating: 4.7, visits: "550M+", popular: true },
+            { id: 5, name: "LinkedIn", logo: "fab fa-linkedin", category: "Social Media", description: "Professional networking site", url: "https://linkedin.com", rating: 4.8, visits: "900M+", popular: true },
+            { id: 6, name: "TikTok", logo: "fab fa-tiktok", category: "Social Media", description: "Short video platform", url: "https://tiktok.com", rating: 4.8, visits: "1B+", popular: true },
+            { id: 7, name: "Snapchat", logo: "fab fa-snapchat", category: "Social Media", description: "Multimedia messaging app", url: "https://snapchat.com", rating: 4.6, visits: "500M+", popular: true },
+            { id: 8, name: "Pinterest", logo: "fab fa-pinterest", category: "Social Media", description: "Idea sharing platform", url: "https://pinterest.com", rating: 4.6, visits: "450M+", popular: true },
+            { id: 9, name: "Reddit", logo: "fab fa-reddit", category: "Social Media", description: "Social news forum", url: "https://reddit.com", rating: 4.7, visits: "430M+", popular: true },
+            { id: 10, name: "WhatsApp", logo: "fab fa-whatsapp", category: "Social Media", description: "Messaging app", url: "https://whatsapp.com", rating: 4.9, visits: "2B+", popular: true },
+            { id: 11, name: "Telegram", logo: "fab fa-telegram", category: "Social Media", description: "Secure messaging app", url: "https://telegram.org", rating: 4.8, visits: "700M+", popular: true },
+            { id: 12, name: "Discord", logo: "fab fa-discord", category: "Social Media", description: "Gaming community platform", url: "https://discord.com", rating: 4.7, visits: "350M+", popular: true },
+            { id: 13, name: "Twitch", logo: "fab fa-twitch", category: "Social Media", description: "Live streaming platform", url: "https://twitch.tv", rating: 4.7, visits: "200M+", popular: true },
+            { id: 14, name: "Tumblr", logo: "fab fa-tumblr", category: "Social Media", description: "Microblogging platform", url: "https://tumblr.com", rating: 4.3, visits: "150M+", popular: false },
+            { id: 15, name: "Flickr", logo: "fab fa-flickr", category: "Social Media", description: "Photo sharing platform", url: "https://flickr.com", rating: 4.4, visits: "100M+", popular: false },
+            { id: 16, name: "Myspace", logo: "fas fa-users", category: "Social Media", description: "Vintage social network", url: "https://myspace.com", rating: 3.9, visits: "50M+", popular: false },
+            { id: 17, name: "Tagged", logo: "fas fa-tag", category: "Social Media", description: "Social discovery site", url: "https://tagged.com", rating: 4.0, visits: "80M+", popular: false },
+            { id: 18, name: "Meetup", logo: "fas fa-calendar", category: "Social Media", description: "Group meeting platform", url: "https://meetup.com", rating: 4.5, visits: "70M+", popular: false },
+            { id: 19, name: "Nextdoor", logo: "fas fa-door-open", category: "Social Media", description: "Neighborhood network", url: "https://nextdoor.com", rating: 4.5, visits: "60M+", popular: false },
+            { id: 20, name: "VK", logo: "fab fa-vk", category: "Social Media", description: "Russian social network", url: "https://vk.com", rating: 4.6, visits: "500M+", popular: true },
+
+            // Search Engines (21-30)
+            { id: 21, name: "Google", logo: "fab fa-google", category: "Search Engine", description: "World's most popular search engine", url: "https://google.com", rating: 5.0, visits: "4B+", popular: true },
+            { id: 22, name: "Bing", logo: "fab fa-microsoft", category: "Search Engine", description: "Microsoft's search engine", url: "https://bing.com", rating: 4.3, visits: "1B+", popular: true },
+            { id: 23, name: "Yahoo", logo: "fab fa-yahoo", category: "Search Engine", description: "Classic search engine", url: "https://yahoo.com", rating: 4.1, visits: "800M+", popular: true },
+            { id: 24, name: "DuckDuckGo", logo: "fas fa-duck", category: "Search Engine", description: "Privacy-focused search", url: "https://duckduckgo.com", rating: 4.8, visits: "150M+", popular: true },
+            { id: 25, name: "Yandex", logo: "fab fa-yandex", category: "Search Engine", description: "Russian search engine", url: "https://yandex.com", rating: 4.5, visits: "200M+", popular: true },
+            { id: 26, name: "Baidu", logo: "fas fa-search", category: "Search Engine", description: "Chinese search engine", url: "https://baidu.com", rating: 4.4, visits: "650M+", popular: true },
+            { id: 27, name: "Ask.com", logo: "fas fa-question", category: "Search Engine", description: "Question-based search", url: "https://ask.com", rating: 4.0, visits: "100M+", popular: false },
+            { id: 28, name: "AOL", logo: "fas fa-a", category: "Search Engine", description: "Vintage internet service", url: "https://aol.com", rating: 3.8, visits: "150M+", popular: false },
+            { id: 29, name: "Naver", logo: "fas fa-n", category: "Search Engine", description: "Korean search engine", url: "https://naver.com", rating: 4.6, visits: "400M+", popular: true },
+            { id: 30, name: "Ecosia", logo: "fas fa-tree", category: "Search Engine", description: "Eco-friendly search", url: "https://ecosia.org", rating: 4.7, visits: "50M+", popular: false },
+
+            // E-Commerce (31-40)
+            { id: 31, name: "Amazon", logo: "fab fa-amazon", category: "E-Commerce", description: "World's largest online marketplace", url: "https://amazon.com", rating: 4.9, visits: "2.5B+", popular: true },
+            { id: 32, name: "eBay", logo: "fab fa-ebay", category: "E-Commerce", description: "Auction and shopping site", url: "https://ebay.com", rating: 4.6, visits: "900M+", popular: true },
+            { id: 33, name: "Walmart", logo: "fas fa-shopping-cart", category: "E-Commerce", description: "Online retail marketplace", url: "https://walmart.com", rating: 4.6, visits: "500M+", popular: true },
+            { id: 34, name: "AliExpress", logo: "fab fa-alipay", category: "E-Commerce", description: "Global online retail", url: "https://aliexpress.com", rating: 4.5, visits: "650M+", popular: true },
+            { id: 35, name: "Daraz", logo: "fas fa-d", category: "E-Commerce", description: "South Asian e-commerce", url: "https://daraz.com", rating: 4.4, visits: "150M+", popular: true },
+            { id: 36, name: "Flipkart", logo: "fas fa-f", category: "E-Commerce", description: "Indian e-commerce platform", url: "https://flipkart.com", rating: 4.6, visits: "350M+", popular: true },
+            { id: 37, name: "Shopify", logo: "fab fa-shopify", category: "E-Commerce", description: "Online store builder", url: "https://shopify.com", rating: 4.8, visits: "250M+", popular: true },
+            { id: 38, name: "Etsy", logo: "fas fa-etsy", category: "E-Commerce", description: "Handmade & vintage market", url: "https://etsy.com", rating: 4.7, visits: "450M+", popular: true },
+            { id: 39, name: "Target", logo: "fas fa-bullseye", category: "E-Commerce", description: "Department store chain", url: "https://target.com", rating: 4.5, visits: "300M+", popular: true },
+            { id: 40, name: "Best Buy", logo: "fas fa-bolt", category: "E-Commerce", description: "Electronics retailer", url: "https://bestbuy.com", rating: 4.5, visits: "200M+", popular: true },
+
+            // Streaming (41-50)
+            { id: 41, name: "Netflix", logo: "fab fa-netflix", category: "Streaming", description: "Movie & series streaming", url: "https://netflix.com", rating: 4.9, visits: "260M+", popular: true },
+            { id: 42, name: "Spotify", logo: "fab fa-spotify", category: "Streaming", description: "Music streaming platform", url: "https://spotify.com", rating: 4.8, visits: "365M+", popular: true },
+            { id: 43, name: "Disney+", logo: "fas fa-plus-circle", category: "Streaming", description: "Disney content streaming", url: "https://disneyplus.com", rating: 4.8, visits: "165M+", popular: true },
+            { id: 44, name: "Hulu", logo: "fas fa-h", category: "Streaming", description: "TV & movie streaming", url: "https://hulu.com", rating: 4.6, visits: "45M+", popular: true },
+            { id: 45, name: "Apple TV+", logo: "fab fa-apple", category: "Streaming", description: "Apple's streaming service", url: "https://tv.apple.com", rating: 4.5, visits: "40M+", popular: true },
+            { id: 46, name: "HBO Max", logo: "fas fa-h", category: "Streaming", description: "Warner Bros content", url: "https://hbomax.com", rating: 4.7, visits: "70M+", popular: true },
+            { id: 47, name: "Peacock", logo: "fas fa-feather", category: "Streaming", description: "NBC's streaming service", url: "https://peacocktv.com", rating: 4.4, visits: "50M+", popular: false },
+            { id: 48, name: "Paramount+", logo: "fas fa-p", category: "Streaming", description: "ViacomCBS streaming", url: "https://paramountplus.com", rating: 4.3, visits: "45M+", popular: false },
+            { id: 49, name: "Vimeo", logo: "fab fa-vimeo", category: "Streaming", description: "High-quality video hosting", url: "https://vimeo.com", rating: 4.6, visits: "150M+", popular: true },
+            { id: 50, name: "Dailymotion", logo: "fas fa-d", category: "Streaming", description: "Video sharing platform", url: "https://dailymotion.com", rating: 4.2, visits: "200M+", popular: false },
+
+            // AI Tools (51-60)
+            { id: 51, name: "ChatGPT", logo: "fas fa-robot", category: "AI Tools", description: "OpenAI's conversational AI", url: "https://chat.openai.com", rating: 4.9, visits: "250M+", popular: true },
+            { id: 52, name: "Midjourney", logo: "fas fa-paint-brush", category: "AI Tools", description: "AI image generation", url: "https://midjourney.com", rating: 4.8, visits: "30M+", popular: true },
+            { id: 53, name: "DALL-E", logo: "fas fa-image", category: "AI Tools", description: "Text to image generation", url: "https://openai.com/dall-e", rating: 4.8, visits: "20M+", popular: true },
+            { id: 54, name: "Claude AI", logo: "fas fa-brain", category: "AI Tools", description: "Anthropic's AI assistant", url: "https://claude.ai", rating: 4.8, visits: "15M+", popular: true },
+            { id: 55, name: "Gemini", logo: "fas fa-gem", category: "AI Tools", description: "Google's AI model", url: "https://gemini.google.com", rating: 4.7, visits: "50M+", popular: true },
+            { id: 56, name: "Copilot", logo: "fas fa-microsoft", category: "AI Tools", description: "Microsoft's AI assistant", url: "https://copilot.microsoft.com", rating: 4.7, visits: "40M+", popular: true },
+            { id: 57, name: "Grammarly", logo: "fas fa-check-double", category: "AI Tools", description: "AI writing assistant", url: "https://grammarly.com", rating: 4.8, visits: "60M+", popular: true },
+            { id: 58, name: "Jasper AI", logo: "fas fa-pen-fancy", category: "AI Tools", description: "AI content writing tool", url: "https://jasper.ai", rating: 4.6, visits: "10M+", popular: true },
+            { id: 59, name: "Copy.ai", logo: "fas fa-copy", category: "AI Tools", description: "AI copywriting tool", url: "https://copy.ai", rating: 4.5, visits: "8M+", popular: true },
+            { id: 60, name: "Hugging Face", logo: "fas fa-face-smile", category: "AI Tools", description: "AI model library", url: "https://huggingface.co", rating: 4.7, visits: "15M+", popular: true },
+
+            // Development (61-70)
+            { id: 61, name: "GitHub", logo: "fab fa-github", category: "Development", description: "Code hosting platform", url: "https://github.com", rating: 4.9, visits: "150M+", popular: true },
+            { id: 62, name: "GitLab", logo: "fab fa-gitlab", category: "Development", description: "DevOps platform", url: "https://gitlab.com", rating: 4.7, visits: "30M+", popular: true },
+            { id: 63, name: "Stack Overflow", logo: "fab fa-stack-overflow", category: "Development", description: "Programming Q&A", url: "https://stackoverflow.com", rating: 4.8, visits: "60M+", popular: true },
+            { id: 64, name: "CodePen", logo: "fab fa-codepen", category: "Development", description: "Front-end playground", url: "https://codepen.io", rating: 4.7, visits: "20M+", popular: true },
+            { id: 65, name: "Replit", logo: "fas fa-code", category: "Development", description: "Online code editor", url: "https://replit.com", rating: 4.6, visits: "25M+", popular: true },
+            { id: 66, name: "CodeSandbox", logo: "fas fa-cube", category: "Development", description: "Cloud dev environment", url: "https://codesandbox.io", rating: 4.6, visits: "10M+", popular: true },
+            { id: 67, name: "Dev.to", logo: "fas fa-code-branch", category: "Development", description: "Developer community blog", url: "https://dev.to", rating: 4.7, visits: "15M+", popular: true },
+            { id: 68, name: "SourceForge", logo: "fas fa-download", category: "Development", description: "Open source hosting", url: "https://sourceforge.net", rating: 4.2, visits: "80M+", popular: true },
+            { id: 69, name: "Bitbucket", logo: "fab fa-bitbucket", category: "Development", description: "Git code hosting", url: "https://bitbucket.org", rating: 4.5, visits: "25M+", popular: true },
+            { id: 70, name: "JSFiddle", logo: "fas fa-js", category: "Development", description: "JavaScript testing tool", url: "https://jsfiddle.net", rating: 4.5, visits: "15M+", popular: true },
+
+            // Education (71-80)
+            { id: 71, name: "Coursera", logo: "fas fa-graduation-cap", category: "Education", description: "Online course platform", url: "https://coursera.org", rating: 4.8, visits: "75M+", popular: true },
+            { id: 72, name: "Udemy", logo: "fas fa-chalkboard-teacher", category: "Education", description: "Online learning marketplace", url: "https://udemy.com", rating: 4.7, visits: "65M+", popular: true },
+            { id: 73, name: "Khan Academy", logo: "fas fa-academy", category: "Education", description: "Free educational platform", url: "https://khanacademy.org", rating: 4.9, visits: "50M+", popular: true },
+            { id: 74, name: "edX", logo: "fas fa-x", category: "Education", description: "University courses platform", url: "https://edx.org", rating: 4.7, visits: "45M+", popular: true },
+            { id: 75, name: "Duolingo", logo: "fas fa-language", category: "Education", description: "Language learning app", url: "https://duolingo.com", rating: 4.8, visits: "50M+", popular: true },
+            { id: 76, name: "Codecademy", logo: "fas fa-code", category: "Education", description: "Learn programming", url: "https://codecademy.com", rating: 4.7, visits: "30M+", popular: true },
+            { id: 77, name: "Skillshare", logo: "fas fa-share-alt", category: "Education", description: "Creative skills courses", url: "https://skillshare.com", rating: 4.5, visits: "25M+", popular: true },
+            { id: 78, name: "Udacity", logo: "fas fa-udacity", category: "Education", description: "Tech skill development", url: "https://udacity.com", rating: 4.6, visits: "20M+", popular: true },
+            { id: 79, name: "Pluralsight", logo: "fas fa-p", category: "Education", description: "Tech skills platform", url: "https://pluralsight.com", rating: 4.6, visits: "18M+", popular: true },
+            { id: 80, name: "LinkedIn Learning", logo: "fab fa-linkedin", category: "Education", description: "LinkedIn's courses", url: "https://learning.linkedin.com", rating: 4.6, visits: "35M+", popular: true },
+
+            // Design (81-90)
+            { id: 81, name: "Canva", logo: "fas fa-palette", category: "Design", description: "Graphic design platform", url: "https://canva.com", rating: 4.9, visits: "200M+", popular: true },
+            { id: 82, name: "Figma", logo: "fab fa-figma", category: "Design", description: "UI/UX design tool", url: "https://figma.com", rating: 4.8, visits: "70M+", popular: true },
+            { id: 83, name: "Adobe", logo: "fab fa-adobe", category: "Design", description: "Creative software suite", url: "https://adobe.com", rating: 4.8, visits: "180M+", popular: true },
+            { id: 84, name: "Behance", logo: "fab fa-behance", category: "Design", description: "Creative portfolio", url: "https://behance.net", rating: 4.7, visits: "40M+", popular: true },
+            { id: 85, name: "Dribbble", logo: "fab fa-dribbble", category: "Design", description: "Design community", url: "https://dribbble.com", rating: 4.7, visits: "25M+", popular: true },
+            { id: 86, name: "Unsplash", logo: "fas fa-camera", category: "Design", description: "Free image library", url: "https://unsplash.com", rating: 4.8, visits: "60M+", popular: true },
+            { id: 87, name: "Pexels", logo: "fas fa-image", category: "Design", description: "Free stock photos", url: "https://pexels.com", rating: 4.7, visits: "50M+", popular: true },
+            { id: 88, name: "Freepik", logo: "fas fa-paint-brush", category: "Design", description: "Graphic resources", url: "https://freepik.com", rating: 4.6, visits: "80M+", popular: true },
+            { id: 89, name: "Flaticon", logo: "fas fa-icons", category: "Design", description: "Free icon library", url: "https://flaticon.com", rating: 4.7, visits: "60M+", popular: true },
+            { id: 90, name: "Color Hunt", logo: "fas fa-palette", category: "Design", description: "Color palettes", url: "https://colorhunt.co", rating: 4.6, visits: "10M+", popular: false },
+
+            // Productivity (91-100)
+            { id: 91, name: "Notion", logo: "fas fa-notion", category: "Productivity", description: "All-in-one workspace", url: "https://notion.so", rating: 4.9, visits: "120M+", popular: true },
+            { id: 92, name: "Trello", logo: "fab fa-trello", category: "Productivity", description: "Project management", url: "https://trello.com", rating: 4.7, visits: "80M+", popular: true },
+            { id: 93, name: "Asana", logo: "fas fa-asana", category: "Productivity", description: "Task management", url: "https://asana.com", rating: 4.7, visits: "60M+", popular: true },
+            { id: 94, name: "Slack", logo: "fab fa-slack", category: "Productivity", description: "Team communication", url: "https://slack.com", rating: 4.8, visits: "70M+", popular: true },
+            { id: 95, name: "Microsoft Teams", logo: "fab fa-microsoft", category: "Productivity", description: "Team collaboration", url: "https://teams.microsoft.com", rating: 4.6, visits: "280M+", popular: true },
+            { id: 96, name: "Zoom", logo: "fas fa-video", category: "Productivity", description: "Video conferencing", url: "https://zoom.us", rating: 4.8, visits: "300M+", popular: true },
+            { id: 97, name: "Google Meet", logo: "fab fa-google", category: "Productivity", description: "Video calling service", url: "https://meet.google.com", rating: 4.7, visits: "250M+", popular: true },
+            { id: 98, name: "Evernote", logo: "fas fa-note-sticky", category: "Productivity", description: "Note taking app", url: "https://evernote.com", rating: 4.6, visits: "30M+", popular: true },
+            { id: 99, name: "Todoist", logo: "fas fa-check-circle", category: "Productivity", description: "Task manager", url: "https://todoist.com", rating: 4.7, visits: "20M+", popular: true },
+            { id: 100, name: "Monday.com", logo: "fas fa-calendar-week", category: "Productivity", description: "Work OS platform", url: "https://monday.com", rating: 4.7, visits: "25M+", popular: true },
+
+            // News & Media (101-130)
+            { id: 101, name: "BBC", logo: "fas fa-broadcast-tower", category: "News & Media", description: "British Broadcasting Corporation news", url: "https://bbc.com", rating: 4.8, visits: "500M+", popular: true },
+            { id: 102, name: "CNN", logo: "fas fa-tv", category: "News & Media", description: "Cable News Network", url: "https://cnn.com", rating: 4.5, visits: "400M+", popular: true },
+            { id: 103, name: "The New York Times", logo: "fas fa-newspaper", category: "News & Media", description: "American daily newspaper", url: "https://nytimes.com", rating: 4.7, visits: "350M+", popular: true },
+            { id: 104, name: "Reuters", logo: "fas fa-rss", category: "News & Media", description: "International news agency", url: "https://reuters.com", rating: 4.8, visits: "300M+", popular: true },
+            { id: 105, name: "Al Jazeera", logo: "fas fa-globe-asia", category: "News & Media", description: "Middle East news network", url: "https://aljazeera.com", rating: 4.7, visits: "200M+", popular: true },
+            { id: 106, name: "Fox News", logo: "fas fa-satellite-dish", category: "News & Media", description: "American news channel", url: "https://foxnews.com", rating: 4.3, visits: "250M+", popular: true },
+            { id: 107, name: "The Guardian", logo: "fas fa-shield-alt", category: "News & Media", description: "British newspaper online", url: "https://theguardian.com", rating: 4.7, visits: "180M+", popular: true },
+            { id: 108, name: "Forbes", logo: "fas fa-chart-line", category: "News & Media", description: "Business & finance magazine", url: "https://forbes.com", rating: 4.6, visits: "150M+", popular: true },
+            { id: 109, name: "Bloomberg", logo: "fas fa-dollar-sign", category: "News & Media", description: "Financial news platform", url: "https://bloomberg.com", rating: 4.7, visits: "120M+", popular: true },
+            { id: 110, name: "TechCrunch", logo: "fas fa-microchip", category: "News & Media", description: "Technology news startup", url: "https://techcrunch.com", rating: 4.7, visits: "80M+", popular: true },
+            { id: 111, name: "The Verge", logo: "fas fa-bolt", category: "News & Media", description: "Tech & science news", url: "https://theverge.com", rating: 4.7, visits: "70M+", popular: true },
+            { id: 112, name: "Wired", logo: "fas fa-wifi", category: "News & Media", description: "Technology magazine", url: "https://wired.com", rating: 4.7, visits: "60M+", popular: true },
+            { id: 113, name: "Mashable", logo: "fas fa-hashtag", category: "News & Media", description: "Digital culture media", url: "https://mashable.com", rating: 4.5, visits: "50M+", popular: false },
+            { id: 114, name: "Vice", logo: "fas fa-v", category: "News & Media", description: "Youth media company", url: "https://vice.com", rating: 4.4, visits: "60M+", popular: false },
+            { id: 115, name: "BuzzFeed", logo: "fas fa-bee", category: "News & Media", description: "Digital media company", url: "https://buzzfeed.com", rating: 4.2, visits: "80M+", popular: false },
+            { id: 116, name: "HuffPost", logo: "fas fa-h", category: "News & Media", description: "American news website", url: "https://huffpost.com", rating: 4.3, visits: "90M+", popular: false },
+            { id: 117, name: "Vox", logo: "fas fa-volume-up", category: "News & Media", description: "Explanatory journalism", url: "https://vox.com", rating: 4.6, visits: "40M+", popular: false },
+            { id: 118, name: "The Atlantic", logo: "fas fa-water", category: "News & Media", description: "American magazine", url: "https://theatlantic.com", rating: 4.7, visits: "30M+", popular: false },
+            { id: 119, name: "Politico", logo: "fas fa-landmark", category: "News & Media", description: "Political journalism", url: "https://politico.com", rating: 4.5, visits: "40M+", popular: false },
+            { id: 120, name: "National Geographic", logo: "fas fa-map", category: "News & Media", description: "Science & nature magazine", url: "https://nationalgeographic.com", rating: 4.8, visits: "50M+", popular: true },
+            { id: 121, name: "Time Magazine", logo: "fas fa-clock", category: "News & Media", description: "American weekly news magazine", url: "https://time.com", rating: 4.6, visits: "60M+", popular: true },
+            { id: 122, name: "Newsweek", logo: "fas fa-newspaper", category: "News & Media", description: "American weekly news magazine", url: "https://newsweek.com", rating: 4.4, visits: "50M+", popular: false },
+            { id: 123, name: "Washington Post", logo: "fas fa-pen-nib", category: "News & Media", description: "American daily newspaper", url: "https://washingtonpost.com", rating: 4.6, visits: "80M+", popular: true },
+            { id: 124, name: "Independent", logo: "fas fa-i-cursor", category: "News & Media", description: "British online newspaper", url: "https://independent.co.uk", rating: 4.5, visits: "70M+", popular: false },
+            { id: 125, name: "Sky News", logo: "fas fa-cloud", category: "News & Media", description: "British news channel", url: "https://news.sky.com", rating: 4.5, visits: "40M+", popular: false },
+            { id: 126, name: "AP News", logo: "fas fa-globe", category: "News & Media", description: "Associated Press news", url: "https://apnews.com", rating: 4.7, visits: "100M+", popular: true },
+            { id: 127, name: "NPR", logo: "fas fa-microphone", category: "News & Media", description: "National Public Radio", url: "https://npr.org", rating: 4.7, visits: "50M+", popular: false },
+            { id: 128, name: "Economist", logo: "fas fa-chart-bar", category: "News & Media", description: "British weekly magazine", url: "https://economist.com", rating: 4.8, visits: "40M+", popular: false },
+            { id: 129, name: "Der Spiegel", logo: "fas fa-globe-europe", category: "News & Media", description: "German news magazine", url: "https://spiegel.de", rating: 4.6, visits: "30M+", popular: false },
+            { id: 130, name: "Le Monde", logo: "fas fa-globe-europe", category: "News & Media", description: "French daily newspaper", url: "https://lemonde.fr", rating: 4.6, visits: "25M+", popular: false },
+
+            // Finance & Banking (131-160)
+            { id: 131, name: "PayPal", logo: "fab fa-paypal", category: "Finance", description: "Online payment system", url: "https://paypal.com", rating: 4.7, visits: "450M+", popular: true },
+            { id: 132, name: "Stripe", logo: "fas fa-credit-card", category: "Finance", description: "Payment infrastructure", url: "https://stripe.com", rating: 4.8, visits: "50M+", popular: true },
+            { id: 133, name: "Coinbase", logo: "fab fa-bitcoin", category: "Finance", description: "Cryptocurrency exchange", url: "https://coinbase.com", rating: 4.6, visits: "100M+", popular: true },
+            { id: 134, name: "Binance", logo: "fas fa-coins", category: "Finance", description: "Crypto trading platform", url: "https://binance.com", rating: 4.7, visits: "80M+", popular: true },
+            { id: 135, name: "Robinhood", logo: "fas fa-feather", category: "Finance", description: "Commission-free investing", url: "https://robinhood.com", rating: 4.5, visits: "25M+", popular: true },
+            { id: 136, name: "Venmo", logo: "fas fa-mobile-alt", category: "Finance", description: "Digital wallet app", url: "https://venmo.com", rating: 4.7, visits: "80M+", popular: true },
+            { id: 137, name: "Cash App", logo: "fas fa-money-bill", category: "Finance", description: "Mobile payment service", url: "https://cash.app", rating: 4.6, visits: "50M+", popular: true },
+            { id: 138, name: "Wise", logo: "fas fa-exchange-alt", category: "Finance", description: "International money transfer", url: "https://wise.com", rating: 4.8, visits: "30M+", popular: true },
+            { id: 139, name: "Revolut", logo: "fas fa-r", category: "Finance", description: "Digital banking app", url: "https://revolut.com", rating: 4.7, visits: "25M+", popular: true },
+            { id: 140, name: "N26", logo: "fas fa-building", category: "Finance", description: "Mobile bank", url: "https://n26.com", rating: 4.5, visits: "10M+", popular: false },
+            { id: 141, name: "Mint", logo: "fas fa-leaf", category: "Finance", description: "Personal finance tool", url: "https://mint.intuit.com", rating: 4.5, visits: "20M+", popular: false },
+            { id: 142, name: "YNAB", logo: "fas fa-piggy-bank", category: "Finance", description: "Budget management app", url: "https://ynab.com", rating: 4.7, visits: "5M+", popular: false },
+            { id: 143, name: "Fidelity", logo: "fas fa-chart-pie", category: "Finance", description: "Investment brokerage", url: "https://fidelity.com", rating: 4.7, visits: "30M+", popular: true },
+            { id: 144, name: "Charles Schwab", logo: "fas fa-university", category: "Finance", description: "Financial services", url: "https://schwab.com", rating: 4.6, visits: "20M+", popular: false },
+            { id: 145, name: "E*TRADE", logo: "fas fa-chart-line", category: "Finance", description: "Online trading platform", url: "https://etrade.com", rating: 4.5, visits: "15M+", popular: false },
+            { id: 146, name: "Kraken", logo: "fas fa-dragon", category: "Finance", description: "Cryptocurrency exchange", url: "https://kraken.com", rating: 4.6, visits: "10M+", popular: false },
+            { id: 147, name: "eToro", logo: "fas fa-copy", category: "Finance", description: "Social trading platform", url: "https://etoro.com", rating: 4.5, visits: "30M+", popular: true },
+            { id: 148, name: "Bitfinex", logo: "fas fa-bitcoin", category: "Finance", description: "Crypto trading exchange", url: "https://bitfinex.com", rating: 4.4, visits: "5M+", popular: false },
+            { id: 149, name: "QuickBooks", logo: "fas fa-calculator", category: "Finance", description: "Accounting software", url: "https://quickbooks.intuit.com", rating: 4.6, visits: "30M+", popular: true },
+            { id: 150, name: "Xero", logo: "fas fa-file-invoice-dollar", category: "Finance", description: "Cloud accounting software", url: "https://xero.com", rating: 4.6, visits: "15M+", popular: false },
+            { id: 151, name: "Wave", logo: "fas fa-wave-square", category: "Finance", description: "Free accounting software", url: "https://waveapps.com", rating: 4.5, visits: "8M+", popular: false },
+            { id: 152, name: "Credit Karma", logo: "fas fa-star", category: "Finance", description: "Free credit score service", url: "https://creditkarma.com", rating: 4.6, visits: "120M+", popular: true },
+            { id: 153, name: "NerdWallet", logo: "fas fa-nerd", category: "Finance", description: "Financial advice platform", url: "https://nerdwallet.com", rating: 4.7, visits: "40M+", popular: true },
+            { id: 154, name: "Bankrate", logo: "fas fa-percentage", category: "Finance", description: "Financial rates & advice", url: "https://bankrate.com", rating: 4.5, visits: "50M+", popular: false },
+            { id: 155, name: "SoFi", logo: "fas fa-hand-holding-usd", category: "Finance", description: "Personal finance products", url: "https://sofi.com", rating: 4.6, visits: "10M+", popular: false },
+            { id: 156, name: "Plaid", logo: "fas fa-link", category: "Finance", description: "Financial data network", url: "https://plaid.com", rating: 4.6, visits: "5M+", popular: false },
+            { id: 157, name: "Chime", logo: "fas fa-bell", category: "Finance", description: "Neobank service", url: "https://chime.com", rating: 4.5, visits: "15M+", popular: false },
+            { id: 158, name: "GoodBudget", logo: "fas fa-envelope-open", category: "Finance", description: "Envelope budgeting", url: "https://goodbudget.com", rating: 4.4, visits: "2M+", popular: false },
+            { id: 159, name: "Personal Capital", logo: "fas fa-person-booth", category: "Finance", description: "Wealth management", url: "https://personalcapital.com", rating: 4.6, visits: "5M+", popular: false },
+            { id: 160, name: "Acorns", logo: "fas fa-seedling", category: "Finance", description: "Micro-investing app", url: "https://acorns.com", rating: 4.5, visits: "8M+", popular: false },
+
+            // Health & Medical (161-190)
+            { id: 161, name: "WebMD", logo: "fas fa-heartbeat", category: "Health", description: "Medical information website", url: "https://webmd.com", rating: 4.6, visits: "180M+", popular: true },
+            { id: 162, name: "Healthline", logo: "fas fa-plus-circle", category: "Health", description: "Health information platform", url: "https://healthline.com", rating: 4.7, visits: "150M+", popular: true },
+            { id: 163, name: "Mayo Clinic", logo: "fas fa-hospital", category: "Health", description: "Medical research center", url: "https://mayoclinic.org", rating: 4.9, visits: "100M+", popular: true },
+            { id: 164, name: "NIH", logo: "fas fa-microscope", category: "Health", description: "National Institutes of Health", url: "https://nih.gov", rating: 4.8, visits: "80M+", popular: true },
+            { id: 165, name: "CDC", logo: "fas fa-virus-slash", category: "Health", description: "Centers for Disease Control", url: "https://cdc.gov", rating: 4.8, visits: "200M+", popular: true },
+            { id: 166, name: "Medscape", logo: "fas fa-stethoscope", category: "Health", description: "Medical information for professionals", url: "https://medscape.com", rating: 4.7, visits: "50M+", popular: true },
+            { id: 167, name: "Drugs.com", logo: "fas fa-pills", category: "Health", description: "Drug information database", url: "https://drugs.com", rating: 4.6, visits: "60M+", popular: true },
+            { id: 168, name: "Zocdoc", logo: "fas fa-user-md", category: "Health", description: "Online doctor booking", url: "https://zocdoc.com", rating: 4.6, visits: "10M+", popular: false },
+            { id: 169, name: "Teladoc", logo: "fas fa-laptop-medical", category: "Health", description: "Telehealth platform", url: "https://teladoc.com", rating: 4.5, visits: "15M+", popular: false },
+            { id: 170, name: "RxList", logo: "fas fa-list", category: "Health", description: "Medication guide", url: "https://rxlist.com", rating: 4.5, visits: "30M+", popular: false },
+            { id: 171, name: "PubMed", logo: "fas fa-dna", category: "Health", description: "Biomedical literature", url: "https://pubmed.ncbi.nlm.nih.gov", rating: 4.8, visits: "30M+", popular: true },
+            { id: 172, name: "MedlinePlus", logo: "fas fa-file-medical", category: "Health", description: "Health info from NIH", url: "https://medlineplus.gov", rating: 4.7, visits: "20M+", popular: false },
+            { id: 173, name: "Everyday Health", logo: "fas fa-sun", category: "Health", description: "Health & wellness site", url: "https://everydayhealth.com", rating: 4.5, visits: "30M+", popular: false },
+            { id: 174, name: "Calm", logo: "fas fa-spa", category: "Health", description: "Meditation & sleep app", url: "https://calm.com", rating: 4.8, visits: "50M+", popular: true },
+            { id: 175, name: "Headspace", logo: "fas fa-brain", category: "Health", description: "Mindfulness meditation", url: "https://headspace.com", rating: 4.7, visits: "30M+", popular: true },
+            { id: 176, name: "MyFitnessPal", logo: "fas fa-running", category: "Health", description: "Calorie tracking app", url: "https://myfitnesspal.com", rating: 4.7, visits: "60M+", popular: true },
+            { id: 177, name: "Fitbit", logo: "fas fa-heartbeat", category: "Health", description: "Fitness tracking platform", url: "https://fitbit.com", rating: 4.6, visits: "30M+", popular: true },
+            { id: 178, name: "Noom", logo: "fas fa-weight", category: "Health", description: "Weight loss program", url: "https://noom.com", rating: 4.5, visits: "10M+", popular: false },
+            { id: 179, name: "Strava", logo: "fas fa-bicycle", category: "Health", description: "Exercise tracking app", url: "https://strava.com", rating: 4.7, visits: "95M+", popular: true },
+            { id: 180, name: "8fit", logo: "fas fa-dumbbell", category: "Health", description: "Fitness & meal planner", url: "https://8fit.com", rating: 4.5, visits: "5M+", popular: false },
+            { id: 181, name: "Cronometer", logo: "fas fa-apple-alt", category: "Health", description: "Nutrition tracker", url: "https://cronometer.com", rating: 4.7, visits: "5M+", popular: false },
+            { id: 182, name: "GoodRx", logo: "fas fa-prescription-bottle", category: "Health", description: "Prescription discount service", url: "https://goodrx.com", rating: 4.7, visits: "20M+", popular: true },
+            { id: 183, name: "Practo", logo: "fas fa-user-nurse", category: "Health", description: "Healthcare platform India", url: "https://practo.com", rating: 4.5, visits: "20M+", popular: false },
+            { id: 184, name: "Healthgrades", logo: "fas fa-star-of-life", category: "Health", description: "Find doctors & hospitals", url: "https://healthgrades.com", rating: 4.5, visits: "20M+", popular: false },
+            { id: 185, name: "PatientsLikeMe", logo: "fas fa-procedures", category: "Health", description: "Patient community network", url: "https://patientslikeme.com", rating: 4.4, visits: "2M+", popular: false },
+            { id: 186, name: "iHerb", logo: "fas fa-leaf", category: "Health", description: "Natural health products", url: "https://iherb.com", rating: 4.7, visits: "30M+", popular: true },
+            { id: 187, name: "Vitacost", logo: "fas fa-capsules", category: "Health", description: "Natural health online store", url: "https://vitacost.com", rating: 4.5, visits: "10M+", popular: false },
+            { id: 188, name: "Swanson Health", logo: "fas fa-mortar-pestle", category: "Health", description: "Health supplements store", url: "https://swansonvitamins.com", rating: 4.5, visits: "5M+", popular: false },
+            { id: 189, name: "Protein World", logo: "fas fa-cube", category: "Health", description: "Fitness supplements", url: "https://proteinworld.com", rating: 4.4, visits: "3M+", popular: false },
+            { id: 190, name: "Bulletproof", logo: "fas fa-shield", category: "Health", description: "Biohacking platform", url: "https://bulletproof.com", rating: 4.5, visits: "5M+", popular: false },
+
+            // Travel (191-220)
+            { id: 191, name: "Booking.com", logo: "fas fa-bed", category: "Travel", description: "Hotel & accommodation booking", url: "https://booking.com", rating: 4.8, visits: "800M+", popular: true },
+            { id: 192, name: "Airbnb", logo: "fab fa-airbnb", category: "Travel", description: "Home rental platform", url: "https://airbnb.com", rating: 4.8, visits: "500M+", popular: true },
+            { id: 193, name: "Expedia", logo: "fas fa-plane", category: "Travel", description: "Travel booking platform", url: "https://expedia.com", rating: 4.6, visits: "300M+", popular: true },
+            { id: 194, name: "TripAdvisor", logo: "fas fa-map-marked-alt", category: "Travel", description: "Travel review platform", url: "https://tripadvisor.com", rating: 4.7, visits: "460M+", popular: true },
+            { id: 195, name: "Kayak", logo: "fas fa-kayak", category: "Travel", description: "Flight & hotel search", url: "https://kayak.com", rating: 4.6, visits: "100M+", popular: true },
+            { id: 196, name: "Skyscanner", logo: "fas fa-search-location", category: "Travel", description: "Flight price comparison", url: "https://skyscanner.com", rating: 4.7, visits: "100M+", popular: true },
+            { id: 197, name: "Hotels.com", logo: "fas fa-hotel", category: "Travel", description: "Hotel booking service", url: "https://hotels.com", rating: 4.6, visits: "200M+", popular: true },
+            { id: 198, name: "Agoda", logo: "fas fa-concierge-bell", category: "Travel", description: "Asia-focused hotel booking", url: "https://agoda.com", rating: 4.6, visits: "150M+", popular: true },
+            { id: 199, name: "Trivago", logo: "fas fa-hotel", category: "Travel", description: "Hotel comparison site", url: "https://trivago.com", rating: 4.4, visits: "80M+", popular: false },
+            { id: 200, name: "Priceline", logo: "fas fa-tag", category: "Travel", description: "Discount travel booking", url: "https://priceline.com", rating: 4.5, visits: "80M+", popular: false },
+            { id: 201, name: "Hopper", logo: "fas fa-rabbit", category: "Travel", description: "Flight price predictor", url: "https://hopper.com", rating: 4.6, visits: "50M+", popular: true },
+            { id: 202, name: "Google Flights", logo: "fab fa-google", category: "Travel", description: "Google's flight search", url: "https://flights.google.com", rating: 4.8, visits: "200M+", popular: true },
+            { id: 203, name: "Rome2rio", logo: "fas fa-route", category: "Travel", description: "Multi-modal travel planner", url: "https://rome2rio.com", rating: 4.6, visits: "20M+", popular: false },
+            { id: 204, name: "Hostelworld", logo: "fas fa-home", category: "Travel", description: "Budget hostel booking", url: "https://hostelworld.com", rating: 4.5, visits: "15M+", popular: false },
+            { id: 205, name: "Vrbo", logo: "fas fa-house-user", category: "Travel", description: "Vacation rental platform", url: "https://vrbo.com", rating: 4.6, visits: "50M+", popular: true },
+            { id: 206, name: "GetYourGuide", logo: "fas fa-ticket-alt", category: "Travel", description: "Tours & activities booking", url: "https://getyourguide.com", rating: 4.6, visits: "20M+", popular: false },
+            { id: 207, name: "Klook", logo: "fas fa-globe-asia", category: "Travel", description: "Asia travel activities", url: "https://klook.com", rating: 4.6, visits: "15M+", popular: false },
+            { id: 208, name: "Lonely Planet", logo: "fas fa-book-open", category: "Travel", description: "Travel guide publisher", url: "https://lonelyplanet.com", rating: 4.7, visits: "25M+", popular: true },
+            { id: 209, name: "Rough Guides", logo: "fas fa-map", category: "Travel", description: "Travel guide books", url: "https://roughguides.com", rating: 4.5, visits: "5M+", popular: false },
+            { id: 210, name: "Momondo", logo: "fas fa-clock", category: "Travel", description: "Flight & hotel deals", url: "https://momondo.com", rating: 4.5, visits: "20M+", popular: false },
+            { id: 211, name: "CheapFlights", logo: "fas fa-paper-plane", category: "Travel", description: "Cheap flight finder", url: "https://cheapflights.com", rating: 4.4, visits: "30M+", popular: false },
+            { id: 212, name: "Secret Escapes", logo: "fas fa-door-open", category: "Travel", description: "Luxury travel deals", url: "https://secretescapes.com", rating: 4.6, visits: "10M+", popular: false },
+            { id: 213, name: "Roadtrippers", logo: "fas fa-car", category: "Travel", description: "Road trip planner", url: "https://roadtrippers.com", rating: 4.5, visits: "5M+", popular: false },
+            { id: 214, name: "TravelZoo", logo: "fas fa-percent", category: "Travel", description: "Travel deals newsletter", url: "https://travelzoo.com", rating: 4.4, visits: "10M+", popular: false },
+            { id: 215, name: "Viator", logo: "fas fa-binoculars", category: "Travel", description: "Tours & experiences", url: "https://viator.com", rating: 4.6, visits: "20M+", popular: false },
+            { id: 216, name: "Airalo", logo: "fas fa-sim-card", category: "Travel", description: "eSIM for travelers", url: "https://airalo.com", rating: 4.7, visits: "5M+", popular: false },
+            { id: 217, name: "Atlas Obscura", logo: "fas fa-compass", category: "Travel", description: "Unusual travel destinations", url: "https://atlasobscura.com", rating: 4.8, visits: "10M+", popular: false },
+            { id: 218, name: "Culture Trip", logo: "fas fa-globe", category: "Travel", description: "Travel inspiration site", url: "https://theculturetrip.com", rating: 4.5, visits: "10M+", popular: false },
+            { id: 219, name: "Wanderu", logo: "fas fa-bus", category: "Travel", description: "Bus & train travel", url: "https://wanderu.com", rating: 4.4, visits: "5M+", popular: false },
+            { id: 220, name: "Flixbus", logo: "fas fa-bus-alt", category: "Travel", description: "European bus service", url: "https://flixbus.com", rating: 4.5, visits: "20M+", popular: false },
+
+            // Gaming (221-250)
+            { id: 221, name: "Steam", logo: "fab fa-steam", category: "Gaming", description: "PC gaming platform", url: "https://store.steampowered.com", rating: 4.9, visits: "130M+", popular: true },
+            { id: 222, name: "Epic Games Store", logo: "fas fa-gamepad", category: "Gaming", description: "Game distribution platform", url: "https://store.epicgames.com", rating: 4.6, visits: "50M+", popular: true },
+            { id: 223, name: "GOG", logo: "fas fa-compact-disc", category: "Gaming", description: "DRM-free game store", url: "https://gog.com", rating: 4.7, visits: "15M+", popular: false },
+            { id: 224, name: "IGN", logo: "fas fa-dragon", category: "Gaming", description: "Game reviews & news", url: "https://ign.com", rating: 4.6, visits: "60M+", popular: true },
+            { id: 225, name: "Gamespot", logo: "fas fa-dice", category: "Gaming", description: "Video game coverage", url: "https://gamespot.com", rating: 4.5, visits: "40M+", popular: false },
+            { id: 226, name: "Metacritic", logo: "fas fa-star-half-alt", category: "Gaming", description: "Game review aggregator", url: "https://metacritic.com", rating: 4.7, visits: "30M+", popular: true },
+            { id: 227, name: "Roblox", logo: "fas fa-cube", category: "Gaming", description: "Online game platform", url: "https://roblox.com", rating: 4.5, visits: "200M+", popular: true },
+            { id: 228, name: "Minecraft.net", logo: "fas fa-cube", category: "Gaming", description: "Minecraft official site", url: "https://minecraft.net", rating: 4.8, visits: "100M+", popular: true },
+            { id: 229, name: "Chess.com", logo: "fas fa-chess", category: "Gaming", description: "Online chess platform", url: "https://chess.com", rating: 4.8, visits: "100M+", popular: true },
+            { id: 230, name: "Lichess", logo: "fas fa-chess-knight", category: "Gaming", description: "Free chess server", url: "https://lichess.org", rating: 4.8, visits: "30M+", popular: true },
+            { id: 231, name: "Kongregate", logo: "fas fa-infinity", category: "Gaming", description: "Browser games platform", url: "https://kongregate.com", rating: 4.4, visits: "15M+", popular: false },
+            { id: 232, name: "Newgrounds", logo: "fas fa-fire", category: "Gaming", description: "Flash games & animation", url: "https://newgrounds.com", rating: 4.4, visits: "10M+", popular: false },
+            { id: 233, name: "Poki", logo: "fas fa-gamepad", category: "Gaming", description: "Browser games library", url: "https://poki.com", rating: 4.5, visits: "30M+", popular: false },
+            { id: 234, name: "CrazyGames", logo: "fas fa-smile-wink", category: "Gaming", description: "Online gaming portal", url: "https://crazygames.com", rating: 4.5, visits: "20M+", popular: false },
+            { id: 235, name: "Armor Games", logo: "fas fa-shield-alt", category: "Gaming", description: "Flash game library", url: "https://armorgames.com", rating: 4.3, visits: "10M+", popular: false },
+            { id: 236, name: "Miniclip", logo: "fas fa-medal", category: "Gaming", description: "Casual gaming platform", url: "https://miniclip.com", rating: 4.4, visits: "15M+", popular: false },
+            { id: 237, name: "Itch.io", logo: "fas fa-itch-io", category: "Gaming", description: "Indie game marketplace", url: "https://itch.io", rating: 4.7, visits: "10M+", popular: false },
+            { id: 238, name: "GOG Galaxy", logo: "fas fa-galaxy", category: "Gaming", description: "Game launcher", url: "https://gog.com/galaxy", rating: 4.6, visits: "5M+", popular: false },
+            { id: 239, name: "Humble Bundle", logo: "fas fa-gift", category: "Gaming", description: "Game bundles store", url: "https://humblebundle.com", rating: 4.7, visits: "20M+", popular: true },
+            { id: 240, name: "Green Man Gaming", logo: "fas fa-gamepad", category: "Gaming", description: "Digital game retailer", url: "https://greenmangaming.com", rating: 4.5, visits: "10M+", popular: false },
+            { id: 241, name: "Fanatical", logo: "fas fa-fire-alt", category: "Gaming", description: "Game bundle deals", url: "https://fanatical.com", rating: 4.5, visits: "5M+", popular: false },
+            { id: 242, name: "Razer", logo: "fas fa-snake", category: "Gaming", description: "Gaming hardware & software", url: "https://razer.com", rating: 4.6, visits: "30M+", popular: true },
+            { id: 243, name: "Logitech G", logo: "fas fa-keyboard", category: "Gaming", description: "Gaming peripherals", url: "https://logitechg.com", rating: 4.6, visits: "20M+", popular: false },
+            { id: 244, name: "G2A", logo: "fas fa-key", category: "Gaming", description: "Game key marketplace", url: "https://g2a.com", rating: 4.1, visits: "30M+", popular: false },
+            { id: 245, name: "Kinguin", logo: "fas fa-crown", category: "Gaming", description: "Digital game keys", url: "https://kinguin.net", rating: 4.2, visits: "10M+", popular: false },
+            { id: 246, name: "CurseForge", logo: "fas fa-magic", category: "Gaming", description: "Game mods platform", url: "https://curseforge.com", rating: 4.6, visits: "15M+", popular: false },
+            { id: 247, name: "Nexus Mods", logo: "fas fa-link", category: "Gaming", description: "PC game mods database", url: "https://nexusmods.com", rating: 4.7, visits: "20M+", popular: true },
+            { id: 248, name: "Game Jolt", logo: "fas fa-bolt", category: "Gaming", description: "Indie game community", url: "https://gamejolt.com", rating: 4.4, visits: "5M+", popular: false },
+            { id: 249, name: "AirConsole", logo: "fas fa-gamepad", category: "Gaming", description: "Browser multiplayer games", url: "https://airconsole.com", rating: 4.4, visits: "3M+", popular: false },
+            { id: 250, name: "WoWHead", logo: "fas fa-hat-wizard", category: "Gaming", description: "World of Warcraft database", url: "https://wowhead.com", rating: 4.7, visits: "10M+", popular: false },
+
+            // Tools & Utilities (251-280)
+            { id: 251, name: "Google Drive", logo: "fab fa-google-drive", category: "Tools", description: "Cloud storage service", url: "https://drive.google.com", rating: 4.9, visits: "1B+", popular: true },
+            { id: 252, name: "Dropbox", logo: "fab fa-dropbox", category: "Tools", description: "File hosting service", url: "https://dropbox.com", rating: 4.7, visits: "200M+", popular: true },
+            { id: 253, name: "OneDrive", logo: "fab fa-microsoft", category: "Tools", description: "Microsoft cloud storage", url: "https://onedrive.live.com", rating: 4.6, visits: "300M+", popular: true },
+            { id: 254, name: "WeTransfer", logo: "fas fa-upload", category: "Tools", description: "File transfer service", url: "https://wetransfer.com", rating: 4.7, visits: "80M+", popular: true },
+            { id: 255, name: "Mega", logo: "fas fa-cloud-upload-alt", category: "Tools", description: "Encrypted cloud storage", url: "https://mega.nz", rating: 4.6, visits: "200M+", popular: true },
+            { id: 256, name: "iCloud", logo: "fab fa-apple", category: "Tools", description: "Apple cloud service", url: "https://icloud.com", rating: 4.7, visits: "500M+", popular: true },
+            { id: 257, name: "Wolfram Alpha", logo: "fas fa-calculator", category: "Tools", description: "Computational knowledge engine", url: "https://wolframalpha.com", rating: 4.9, visits: "50M+", popular: true },
+            { id: 258, name: "Smallpdf", logo: "fas fa-file-pdf", category: "Tools", description: "PDF editing online", url: "https://smallpdf.com", rating: 4.7, visits: "30M+", popular: true },
+            { id: 259, name: "ILovePDF", logo: "fas fa-heart", category: "Tools", description: "Online PDF tools", url: "https://ilovepdf.com", rating: 4.7, visits: "25M+", popular: false },
+            { id: 260, name: "Zamzar", logo: "fas fa-random", category: "Tools", description: "File format converter", url: "https://zamzar.com", rating: 4.5, visits: "10M+", popular: false },
+            { id: 261, name: "Imgur", logo: "fas fa-image", category: "Tools", description: "Image hosting platform", url: "https://imgur.com", rating: 4.6, visits: "250M+", popular: true },
+            { id: 262, name: "TinyPNG", logo: "fas fa-compress-arrows-alt", category: "Tools", description: "Image compression tool", url: "https://tinypng.com", rating: 4.8, visits: "20M+", popular: true },
+            { id: 263, name: "Remove.bg", logo: "fas fa-eraser", category: "Tools", description: "Background removal tool", url: "https://remove.bg", rating: 4.8, visits: "15M+", popular: true },
+            { id: 264, name: "Compress2Go", logo: "fas fa-file-archive", category: "Tools", description: "File compression online", url: "https://compress2go.com", rating: 4.4, visits: "3M+", popular: false },
+            { id: 265, name: "Pastebin", logo: "fas fa-paste", category: "Tools", description: "Text snippet sharing", url: "https://pastebin.com", rating: 4.5, visits: "40M+", popular: false },
+            { id: 266, name: "GitHub Gist", logo: "fab fa-github", category: "Tools", description: "Code snippet sharing", url: "https://gist.github.com", rating: 4.7, visits: "20M+", popular: false },
+            { id: 267, name: "Bitly", logo: "fas fa-link", category: "Tools", description: "URL shortener", url: "https://bitly.com", rating: 4.6, visits: "30M+", popular: true },
+            { id: 268, name: "TinyURL", logo: "fas fa-compress", category: "Tools", description: "Simple URL shortener", url: "https://tinyurl.com", rating: 4.4, visits: "20M+", popular: false },
+            { id: 269, name: "Namecheckr", logo: "fas fa-at", category: "Tools", description: "Username availability checker", url: "https://namecheckr.com", rating: 4.3, visits: "1M+", popular: false },
+            { id: 270, name: "HaveIBeenPwned", logo: "fas fa-lock", category: "Tools", description: "Data breach checker", url: "https://haveibeenpwned.com", rating: 4.8, visits: "5M+", popular: true },
+            { id: 271, name: "Speedtest.net", logo: "fas fa-tachometer-alt", category: "Tools", description: "Internet speed test", url: "https://speedtest.net", rating: 4.7, visits: "100M+", popular: true },
+            { id: 272, name: "Fast.com", logo: "fas fa-bolt", category: "Tools", description: "Netflix speed test", url: "https://fast.com", rating: 4.6, visits: "20M+", popular: false },
+            { id: 273, name: "Down For Everyone", logo: "fas fa-question-circle", category: "Tools", description: "Website down checker", url: "https://downforeveryoneorjustme.com", rating: 4.5, visits: "5M+", popular: false },
+            { id: 274, name: "WhatsMyIP", logo: "fas fa-network-wired", category: "Tools", description: "IP address lookup", url: "https://whatsmyip.com", rating: 4.4, visits: "5M+", popular: false },
+            { id: 275, name: "Archive.org", logo: "fas fa-archive", category: "Tools", description: "Internet archive", url: "https://archive.org", rating: 4.8, visits: "50M+", popular: true },
+            { id: 276, name: "Google Translate", logo: "fab fa-google", category: "Tools", description: "Language translation", url: "https://translate.google.com", rating: 4.8, visits: "500M+", popular: true },
+            { id: 277, name: "DeepL", logo: "fas fa-language", category: "Tools", description: "AI translation service", url: "https://deepl.com", rating: 4.9, visits: "30M+", popular: true },
+            { id: 278, name: "Typeform", logo: "fas fa-wpforms", category: "Tools", description: "Interactive form builder", url: "https://typeform.com", rating: 4.7, visits: "10M+", popular: false },
+            { id: 279, name: "SurveyMonkey", logo: "fas fa-poll", category: "Tools", description: "Online survey platform", url: "https://surveymonkey.com", rating: 4.6, visits: "20M+", popular: true },
+            { id: 280, name: "Google Forms", logo: "fab fa-google", category: "Tools", description: "Free form builder", url: "https://forms.google.com", rating: 4.7, visits: "200M+", popular: true },
+
+            // Food & Recipes (281-300)
+            { id: 281, name: "Allrecipes", logo: "fas fa-utensils", category: "Food", description: "Recipe community", url: "https://allrecipes.com", rating: 4.7, visits: "100M+", popular: true },
+            { id: 282, name: "Food Network", logo: "fas fa-tv", category: "Food", description: "TV & online food brand", url: "https://foodnetwork.com", rating: 4.7, visits: "80M+", popular: true },
+            { id: 283, name: "Epicurious", logo: "fas fa-book", category: "Food", description: "Gourmet recipe site", url: "https://epicurious.com", rating: 4.7, visits: "25M+", popular: true },
+            { id: 284, name: "Tasty", logo: "fas fa-fire", category: "Food", description: "BuzzFeed food videos", url: "https://tasty.co", rating: 4.6, visits: "30M+", popular: true },
+            { id: 285, name: "Serious Eats", logo: "fas fa-pepper-hot", category: "Food", description: "In-depth food science", url: "https://seriouseats.com", rating: 4.8, visits: "20M+", popular: true },
+            { id: 286, name: "Bon Appétit", logo: "fas fa-wine-glass-alt", category: "Food", description: "Food & cooking magazine", url: "https://bonappetit.com", rating: 4.7, visits: "30M+", popular: true },
+            { id: 287, name: "Yummly", logo: "fas fa-thumbs-up", category: "Food", description: "Personalized recipe app", url: "https://yummly.com", rating: 4.6, visits: "20M+", popular: false },
+            { id: 288, name: "Cookpad", logo: "fas fa-blender", category: "Food", description: "Recipe sharing platform", url: "https://cookpad.com", rating: 4.5, visits: "30M+", popular: false },
+            { id: 289, name: "RecipeTin Eats", logo: "fas fa-mortar-pestle", category: "Food", description: "Easy dinner recipes", url: "https://recipetineats.com", rating: 4.8, visits: "10M+", popular: false },
+            { id: 290, name: "Minimalist Baker", logo: "fas fa-cookie", category: "Food", description: "Simple plant-based recipes", url: "https://minimalistbaker.com", rating: 4.8, visits: "5M+", popular: false },
+            { id: 291, name: "Delish", logo: "fas fa-candy-cane", category: "Food", description: "Food recipes & ideas", url: "https://delish.com", rating: 4.6, visits: "20M+", popular: false },
+            { id: 292, name: "Skinnytaste", logo: "fas fa-weight-hanging", category: "Food", description: "Healthy recipes", url: "https://skinnytaste.com", rating: 4.7, visits: "10M+", popular: false },
+            { id: 293, name: "Yelp", logo: "fab fa-yelp", category: "Food", description: "Local restaurant reviews", url: "https://yelp.com", rating: 4.6, visits: "140M+", popular: true },
+            { id: 294, name: "Zomato", logo: "fas fa-z", category: "Food", description: "Restaurant discovery", url: "https://zomato.com", rating: 4.5, visits: "80M+", popular: true },
+            { id: 295, name: "OpenTable", logo: "fas fa-table", category: "Food", description: "Restaurant reservation", url: "https://opentable.com", rating: 4.6, visits: "25M+", popular: true },
+            { id: 296, name: "DoorDash", logo: "fas fa-door-open", category: "Food", description: "Food delivery service", url: "https://doordash.com", rating: 4.5, visits: "50M+", popular: true },
+            { id: 297, name: "Uber Eats", logo: "fas fa-hamburger", category: "Food", description: "Food delivery platform", url: "https://ubereats.com", rating: 4.4, visits: "80M+", popular: true },
+            { id: 298, name: "Grubhub", logo: "fas fa-truck", category: "Food", description: "Online food ordering", url: "https://grubhub.com", rating: 4.3, visits: "30M+", popular: false },
+            { id: 299, name: "Instacart", logo: "fas fa-shopping-basket", category: "Food", description: "Grocery delivery", url: "https://instacart.com", rating: 4.5, visits: "25M+", popular: true },
+            { id: 300, name: "HelloFresh", logo: "fas fa-carrot", category: "Food", description: "Meal kit delivery", url: "https://hellofresh.com", rating: 4.5, visits: "10M+", popular: false },
+
+            // Science & Research (301-320)
+            { id: 301, name: "Wikipedia", logo: "fab fa-wikipedia-w", category: "Reference", description: "Free online encyclopedia", url: "https://wikipedia.org", rating: 4.9, visits: "1.5B+", popular: true },
+            { id: 302, name: "Britannica", logo: "fas fa-book-reader", category: "Reference", description: "Encyclopedia Britannica", url: "https://britannica.com", rating: 4.7, visits: "100M+", popular: true },
+            { id: 303, name: "Google Scholar", logo: "fab fa-google", category: "Reference", description: "Academic paper search", url: "https://scholar.google.com", rating: 4.8, visits: "80M+", popular: true },
+            { id: 304, name: "JSTOR", logo: "fas fa-journal-whills", category: "Reference", description: "Academic journals archive", url: "https://jstor.org", rating: 4.7, visits: "20M+", popular: false },
+            { id: 305, name: "ResearchGate", logo: "fas fa-microscope", category: "Reference", description: "Academic research network", url: "https://researchgate.net", rating: 4.6, visits: "20M+", popular: false },
+            { id: 306, name: "Academia.edu", logo: "fas fa-university", category: "Reference", description: "Academic paper sharing", url: "https://academia.edu", rating: 4.5, visits: "10M+", popular: false },
+            { id: 307, name: "arXiv", logo: "fas fa-atom", category: "Reference", description: "Preprint science papers", url: "https://arxiv.org", rating: 4.8, visits: "10M+", popular: true },
+            { id: 308, name: "NASA", logo: "fas fa-rocket", category: "Reference", description: "Space exploration agency", url: "https://nasa.gov", rating: 4.9, visits: "80M+", popular: true },
+            { id: 309, name: "Merriam-Webster", logo: "fas fa-spell-check", category: "Reference", description: "English dictionary", url: "https://merriam-webster.com", rating: 4.8, visits: "80M+", popular: true },
+            { id: 310, name: "Dictionary.com", logo: "fas fa-book", category: "Reference", description: "Online English dictionary", url: "https://dictionary.com", rating: 4.6, visits: "100M+", popular: true },
+            { id: 311, name: "Thesaurus.com", logo: "fas fa-spell-check", category: "Reference", description: "Word synonym finder", url: "https://thesaurus.com", rating: 4.5, visits: "50M+", popular: false },
+            { id: 312, name: "Wolfram MathWorld", logo: "fas fa-infinity", category: "Reference", description: "Math reference database", url: "https://mathworld.wolfram.com", rating: 4.8, visits: "10M+", popular: false },
+            { id: 313, name: "PhysicsForums", logo: "fas fa-atom", category: "Reference", description: "Physics discussion board", url: "https://physicsforums.com", rating: 4.6, visits: "5M+", popular: false },
+            { id: 314, name: "MathOverflow", logo: "fas fa-plus", category: "Reference", description: "Math Q&A for researchers", url: "https://mathoverflow.net", rating: 4.7, visits: "2M+", popular: false },
+            { id: 315, name: "Space.com", logo: "fas fa-moon", category: "Reference", description: "Space science news", url: "https://space.com", rating: 4.7, visits: "20M+", popular: true },
+            { id: 316, name: "LiveScience", logo: "fas fa-flask", category: "Reference", description: "Science news website", url: "https://livescience.com", rating: 4.6, visits: "20M+", popular: false },
+            { id: 317, name: "How Stuff Works", logo: "fas fa-cogs", category: "Reference", description: "Science explainer site", url: "https://howstuffworks.com", rating: 4.6, visits: "20M+", popular: false },
+            { id: 318, name: "Wolfram Language Docs", logo: "fas fa-code", category: "Reference", description: "Wolfram Language reference", url: "https://reference.wolfram.com", rating: 4.7, visits: "3M+", popular: false },
+            { id: 319, name: "Khan Academy Science", logo: "fas fa-graduation-cap", category: "Reference", description: "Science education videos", url: "https://khanacademy.org/science", rating: 4.9, visits: "20M+", popular: true },
+            { id: 320, name: "Coursera Research", logo: "fas fa-search", category: "Reference", description: "Research methodology courses", url: "https://coursera.org/browse/research", rating: 4.7, visits: "10M+", popular: false },
+
+            // Jobs & Career (321-340)
+            { id: 321, name: "Indeed", logo: "fas fa-briefcase", category: "Jobs", description: "Job search engine", url: "https://indeed.com", rating: 4.7, visits: "250M+", popular: true },
+            { id: 322, name: "Glassdoor", logo: "fas fa-door-open", category: "Jobs", description: "Company reviews & jobs", url: "https://glassdoor.com", rating: 4.6, visits: "100M+", popular: true },
+            { id: 323, name: "Monster", logo: "fas fa-monster", category: "Jobs", description: "Online job portal", url: "https://monster.com", rating: 4.4, visits: "50M+", popular: false },
+            { id: 324, name: "ZipRecruiter", logo: "fas fa-user-tie", category: "Jobs", description: "Hiring platform", url: "https://ziprecruiter.com", rating: 4.5, visits: "30M+", popular: false },
+            { id: 325, name: "CareerBuilder", logo: "fas fa-building", category: "Jobs", description: "Job listing service", url: "https://careerbuilder.com", rating: 4.3, visits: "20M+", popular: false },
+            { id: 326, name: "Upwork", logo: "fab fa-upwork", category: "Jobs", description: "Freelance marketplace", url: "https://upwork.com", rating: 4.7, visits: "50M+", popular: true },
+            { id: 327, name: "Fiverr", logo: "fas fa-briefcase-medical", category: "Jobs", description: "Freelance services marketplace", url: "https://fiverr.com", rating: 4.6, visits: "80M+", popular: true },
+            { id: 328, name: "Freelancer.com", logo: "fas fa-laptop", category: "Jobs", description: "Freelance project platform", url: "https://freelancer.com", rating: 4.4, visits: "30M+", popular: false },
+            { id: 329, name: "Toptal", logo: "fas fa-star", category: "Jobs", description: "Elite talent marketplace", url: "https://toptal.com", rating: 4.7, visits: "5M+", popular: false },
+            { id: 330, name: "99designs", logo: "fas fa-paint-roller", category: "Jobs", description: "Design contest platform", url: "https://99designs.com", rating: 4.5, visits: "5M+", popular: false },
+            { id: 331, name: "PeoplePerHour", logo: "fas fa-clock", category: "Jobs", description: "Freelance marketplace UK", url: "https://peopleperhour.com", rating: 4.4, visits: "3M+", popular: false },
+            { id: 332, name: "Guru.com", logo: "fas fa-user-graduate", category: "Jobs", description: "Freelance work platform", url: "https://guru.com", rating: 4.3, visits: "3M+", popular: false },
+            { id: 333, name: "SimplyHired", logo: "fas fa-search", category: "Jobs", description: "Job search aggregator", url: "https://simplyhired.com", rating: 4.4, visits: "20M+", popular: false },
+            { id: 334, name: "Dice", logo: "fas fa-dice", category: "Jobs", description: "Tech job listings", url: "https://dice.com", rating: 4.4, visits: "5M+", popular: false },
+            { id: 335, name: "AngelList", logo: "fab fa-angellist", category: "Jobs", description: "Startup job board", url: "https://angel.co", rating: 4.6, visits: "5M+", popular: false },
+            { id: 336, name: "Hired", logo: "fas fa-handshake", category: "Jobs", description: "Tech talent marketplace", url: "https://hired.com", rating: 4.5, visits: "3M+", popular: false },
+            { id: 337, name: "Remote.co", logo: "fas fa-home", category: "Jobs", description: "Remote job listings", url: "https://remote.co", rating: 4.5, visits: "2M+", popular: false },
+            { id: 338, name: "We Work Remotely", logo: "fas fa-globe", category: "Jobs", description: "Remote job board", url: "https://weworkremotely.com", rating: 4.6, visits: "3M+", popular: false },
+            { id: 339, name: "Remotive", logo: "fas fa-laptop-house", category: "Jobs", description: "Remote tech jobs", url: "https://remotive.com", rating: 4.5, visits: "2M+", popular: false },
+            { id: 340, name: "FlexJobs", logo: "fas fa-flex", category: "Jobs", description: "Flexible work listings", url: "https://flexjobs.com", rating: 4.6, visits: "5M+", popular: false },
+
+            // Cloud & Hosting (341-360)
+            { id: 341, name: "AWS", logo: "fab fa-aws", category: "Cloud", description: "Amazon Web Services", url: "https://aws.amazon.com", rating: 4.9, visits: "100M+", popular: true },
+            { id: 342, name: "Google Cloud", logo: "fab fa-google", category: "Cloud", description: "Google Cloud Platform", url: "https://cloud.google.com", rating: 4.8, visits: "80M+", popular: true },
+            { id: 343, name: "Microsoft Azure", logo: "fab fa-microsoft", category: "Cloud", description: "Microsoft cloud services", url: "https://azure.microsoft.com", rating: 4.8, visits: "80M+", popular: true },
+            { id: 344, name: "DigitalOcean", logo: "fab fa-digital-ocean", category: "Cloud", description: "Cloud infrastructure", url: "https://digitalocean.com", rating: 4.8, visits: "10M+", popular: true },
+            { id: 345, name: "Heroku", logo: "fas fa-server", category: "Cloud", description: "Cloud app platform", url: "https://heroku.com", rating: 4.7, visits: "5M+", popular: false },
+            { id: 346, name: "Netlify", logo: "fas fa-network-wired", category: "Cloud", description: "Web hosting platform", url: "https://netlify.com", rating: 4.8, visits: "5M+", popular: true },
+            { id: 347, name: "Vercel", logo: "fas fa-triangle", category: "Cloud", description: "Frontend deployment platform", url: "https://vercel.com", rating: 4.8, visits: "5M+", popular: true },
+            { id: 348, name: "Cloudflare", logo: "fas fa-shield-alt", category: "Cloud", description: "CDN & security service", url: "https://cloudflare.com", rating: 4.8, visits: "20M+", popular: true },
+            { id: 349, name: "Fastly", logo: "fas fa-bolt", category: "Cloud", description: "Edge cloud platform", url: "https://fastly.com", rating: 4.7, visits: "3M+", popular: false },
+            { id: 350, name: "Vultr", logo: "fas fa-server", category: "Cloud", description: "Cloud server hosting", url: "https://vultr.com", rating: 4.7, visits: "3M+", popular: false },
+            { id: 351, name: "Linode", logo: "fas fa-cloud", category: "Cloud", description: "Linux cloud hosting", url: "https://linode.com", rating: 4.7, visits: "3M+", popular: false },
+            { id: 352, name: "Hetzner", logo: "fas fa-h", category: "Cloud", description: "German cloud hosting", url: "https://hetzner.com", rating: 4.7, visits: "3M+", popular: false },
+            { id: 353, name: "GoDaddy", logo: "fas fa-globe", category: "Cloud", description: "Domain & web hosting", url: "https://godaddy.com", rating: 4.3, visits: "100M+", popular: true },
+            { id: 354, name: "Namecheap", logo: "fas fa-tag", category: "Cloud", description: "Domain name registrar", url: "https://namecheap.com", rating: 4.7, visits: "20M+", popular: true },
+            { id: 355, name: "Bluehost", logo: "fas fa-server", category: "Cloud", description: "Web hosting provider", url: "https://bluehost.com", rating: 4.3, visits: "20M+", popular: false },
+            { id: 356, name: "SiteGround", logo: "fas fa-globe", category: "Cloud", description: "Web hosting service", url: "https://siteground.com", rating: 4.6, visits: "5M+", popular: false },
+            { id: 357, name: "WP Engine", logo: "fab fa-wordpress", category: "Cloud", description: "Managed WordPress hosting", url: "https://wpengine.com", rating: 4.6, visits: "3M+", popular: false },
+            { id: 358, name: "Kinsta", logo: "fas fa-k", category: "Cloud", description: "Premium WordPress hosting", url: "https://kinsta.com", rating: 4.7, visits: "2M+", popular: false },
+            { id: 359, name: "Firebase", logo: "fas fa-fire", category: "Cloud", description: "Google app development", url: "https://firebase.google.com", rating: 4.8, visits: "10M+", popular: true },
+            { id: 360, name: "Supabase", logo: "fas fa-database", category: "Cloud", description: "Open source Firebase", url: "https://supabase.com", rating: 4.8, visits: "2M+", popular: true },
+
+            // Shopping & Deals (361-380)
+            { id: 361, name: "Wish", logo: "fas fa-magic", category: "Shopping", description: "Discount online shopping", url: "https://wish.com", rating: 3.8, visits: "200M+", popular: false },
+            { id: 362, name: "Shein", logo: "fas fa-tshirt", category: "Shopping", description: "Fast fashion retailer", url: "https://shein.com", rating: 4.2, visits: "300M+", popular: true },
+            { id: 363, name: "H&M", logo: "fas fa-tshirt", category: "Shopping", description: "Fashion retail chain", url: "https://hm.com", rating: 4.4, visits: "200M+", popular: true },
+            { id: 364, name: "ZARA", logo: "fas fa-tag", category: "Shopping", description: "Fashion retail brand", url: "https://zara.com", rating: 4.5, visits: "150M+", popular: true },
+            { id: 365, name: "Nike", logo: "fas fa-shoe-prints", category: "Shopping", description: "Athletic gear brand", url: "https://nike.com", rating: 4.7, visits: "200M+", popular: true },
+            { id: 366, name: "Adidas", logo: "fas fa-running", category: "Shopping", description: "Sport clothing brand", url: "https://adidas.com", rating: 4.6, visits: "150M+", popular: true },
+            { id: 367, name: "ASOS", logo: "fas fa-shopping-bag", category: "Shopping", description: "Online fashion retailer", url: "https://asos.com", rating: 4.5, visits: "100M+", popular: true },
+            { id: 368, name: "Boohoo", logo: "fas fa-b", category: "Shopping", description: "Online fashion store", url: "https://boohoo.com", rating: 4.2, visits: "50M+", popular: false },
+            { id: 369, name: "PrettyLittleThing", logo: "fas fa-gem", category: "Shopping", description: "Women's fashion brand", url: "https://prettylittlething.com", rating: 4.1, visits: "50M+", popular: false },
+            { id: 370, name: "Missguided", logo: "fas fa-female", category: "Shopping", description: "Women's fashion", url: "https://missguided.com", rating: 4.1, visits: "20M+", popular: false },
+            { id: 371, name: "Coupon Cabin", logo: "fas fa-percent", category: "Shopping", description: "Coupon deal site", url: "https://couponcabin.com", rating: 4.4, visits: "5M+", popular: false },
+            { id: 372, name: "Rakuten", logo: "fas fa-r", category: "Shopping", description: "Cashback shopping portal", url: "https://rakuten.com", rating: 4.5, visits: "30M+", popular: true },
+            { id: 373, name: "Honey", logo: "fas fa-honey-pot", category: "Shopping", description: "Automatic coupon finder", url: "https://joinhoney.com", rating: 4.6, visits: "20M+", popular: true },
+            { id: 374, name: "RetailMeNot", logo: "fas fa-percent", category: "Shopping", description: "Coupon & promo codes", url: "https://retailmenot.com", rating: 4.4, visits: "15M+", popular: false },
+            { id: 375, name: "Swagbucks", logo: "fas fa-coins", category: "Shopping", description: "Rewards program site", url: "https://swagbucks.com", rating: 4.3, visits: "15M+", popular: false },
+            { id: 376, name: "Poshmark", logo: "fas fa-tags", category: "Shopping", description: "Social shopping app", url: "https://poshmark.com", rating: 4.5, visits: "20M+", popular: true },
+            { id: 377, name: "Depop", logo: "fas fa-store", category: "Shopping", description: "Secondhand fashion app", url: "https://depop.com", rating: 4.4, visits: "15M+", popular: false },
+            { id: 378, name: "ThredUp", logo: "fas fa-recycle", category: "Shopping", description: "Online thrift store", url: "https://thredup.com", rating: 4.5, visits: "10M+", popular: false },
+            { id: 379, name: "Vinted", logo: "fas fa-vest", category: "Shopping", description: "Secondhand clothing", url: "https://vinted.com", rating: 4.5, visits: "20M+", popular: false },
+            { id: 380, name: "Grailed", logo: "fas fa-tag", category: "Shopping", description: "Menswear resale", url: "https://grailed.com", rating: 4.5, visits: "5M+", popular: false },
+
+            // Music (381-400)
+            { id: 381, name: "SoundCloud", logo: "fab fa-soundcloud", category: "Music", description: "Music sharing platform", url: "https://soundcloud.com", rating: 4.6, visits: "175M+", popular: true },
+            { id: 382, name: "Apple Music", logo: "fab fa-apple", category: "Music", description: "Apple's music streaming", url: "https://music.apple.com", rating: 4.7, visits: "100M+", popular: true },
+            { id: 383, name: "YouTube Music", logo: "fab fa-youtube", category: "Music", description: "Google's music service", url: "https://music.youtube.com", rating: 4.5, visits: "80M+", popular: true },
+            { id: 384, name: "Pandora", logo: "fas fa-music", category: "Music", description: "Music streaming radio", url: "https://pandora.com", rating: 4.4, visits: "60M+", popular: true },
+            { id: 385, name: "Deezer", logo: "fas fa-music", category: "Music", description: "Music streaming service", url: "https://deezer.com", rating: 4.5, visits: "30M+", popular: false },
+            { id: 386, name: "Tidal", logo: "fas fa-water", category: "Music", description: "High-fidelity music streaming", url: "https://tidal.com", rating: 4.5, visits: "10M+", popular: false },
+            { id: 387, name: "Last.fm", logo: "fas fa-lastfm", category: "Music", description: "Music recommendations", url: "https://last.fm", rating: 4.6, visits: "20M+", popular: false },
+            { id: 388, name: "Genius", logo: "fas fa-microphone-alt", category: "Music", description: "Lyrics & annotation site", url: "https://genius.com", rating: 4.7, visits: "60M+", popular: true },
+            { id: 389, name: "AZLyrics", logo: "fas fa-list-ul", category: "Music", description: "Song lyrics database", url: "https://azlyrics.com", rating: 4.5, visits: "30M+", popular: false },
+            { id: 390, name: "Musixmatch", logo: "fas fa-quote-right", category: "Music", description: "Lyrics platform", url: "https://musixmatch.com", rating: 4.6, visits: "20M+", popular: false },
+            { id: 391, name: "Bandcamp", logo: "fas fa-guitar", category: "Music", description: "Artist music platform", url: "https://bandcamp.com", rating: 4.7, visits: "15M+", popular: true },
+            { id: 392, name: "Mixcloud", logo: "fas fa-headphones", category: "Music", description: "DJ & radio streaming", url: "https://mixcloud.com", rating: 4.5, visits: "10M+", popular: false },
+            { id: 393, name: "Beatport", logo: "fas fa-drum", category: "Music", description: "Electronic music store", url: "https://beatport.com", rating: 4.6, visits: "5M+", popular: false },
+            { id: 394, name: "Songkick", logo: "fas fa-ticket-alt", category: "Music", description: "Concert & tour tracker", url: "https://songkick.com", rating: 4.6, visits: "5M+", popular: false },
+            { id: 395, name: "Setlist.fm", logo: "fas fa-list", category: "Music", description: "Setlist database", url: "https://setlist.fm", rating: 4.5, visits: "3M+", popular: false },
+            { id: 396, name: "Discogs", logo: "fas fa-compact-disc", category: "Music", description: "Record marketplace", url: "https://discogs.com", rating: 4.7, visits: "5M+", popular: false },
+            { id: 397, name: "AllMusic", logo: "fas fa-record-vinyl", category: "Music", description: "Music reviews database", url: "https://allmusic.com", rating: 4.5, visits: "5M+", popular: false },
+            { id: 398, name: "Pitchfork", logo: "fas fa-guitar", category: "Music", description: "Music criticism site", url: "https://pitchfork.com", rating: 4.6, visits: "10M+", popular: false },
+            { id: 399, name: "NME", logo: "fas fa-headphones-alt", category: "Music", description: "Music news & reviews", url: "https://nme.com", rating: 4.4, visits: "10M+", popular: false },
+            { id: 400, name: "Rolling Stone", logo: "fas fa-record-vinyl", category: "Music", description: "Music & culture magazine", url: "https://rollingstone.com", rating: 4.6, visits: "25M+", popular: true }
+        ];
+
+        // Auto-generate additional websites to reach massive count
+        (function generateMoreWebsites() {
+            const extraSites = [
+                // Photography (401-420)
+                { name: "500px", logo: "fas fa-camera-retro", category: "Photography", description: "Photography community", url: "https://500px.com", rating: 4.7, visits: "15M+" },
+                { name: "SmugMug", logo: "fas fa-smile", category: "Photography", description: "Photo storage & sharing", url: "https://smugmug.com", rating: 4.6, visits: "5M+" },
+                { name: "EyeEm", logo: "fas fa-eye", category: "Photography", description: "Photo sharing platform", url: "https://eyeem.com", rating: 4.5, visits: "5M+" },
+                { name: "Glass", logo: "fas fa-camera", category: "Photography", description: "Photography app", url: "https://glass.photo", rating: 4.5, visits: "1M+" },
+                { name: "VSCO", logo: "fas fa-sliders-h", category: "Photography", description: "Photo & video editing", url: "https://vsco.co", rating: 4.6, visits: "30M+" },
+                { name: "Adobe Lightroom", logo: "fab fa-adobe", category: "Photography", description: "Photo editing software", url: "https://lightroom.adobe.com", rating: 4.8, visits: "20M+" },
+                { name: "Snapseed", logo: "fas fa-seedling", category: "Photography", description: "Mobile photo editor", url: "https://snapseed.online", rating: 4.7, visits: "10M+" },
+                { name: "Photopea", logo: "fas fa-photo-video", category: "Photography", description: "Free online photo editor", url: "https://photopea.com", rating: 4.8, visits: "5M+" },
+                { name: "PicMonkey", logo: "fas fa-monkey", category: "Photography", description: "Photo editing tool", url: "https://picmonkey.com", rating: 4.5, visits: "5M+" },
+                { name: "Fotor", logo: "fas fa-image", category: "Photography", description: "Online photo editor", url: "https://fotor.com", rating: 4.5, visits: "5M+" },
+                { name: "Pixlr", logo: "fas fa-magic", category: "Photography", description: "AI photo editor", url: "https://pixlr.com", rating: 4.5, visits: "10M+" },
+                { name: "BeFunky", logo: "fas fa-paint-brush", category: "Photography", description: "Photo editing app", url: "https://befunky.com", rating: 4.5, visits: "5M+" },
+                { name: "Luminar", logo: "fas fa-sun", category: "Photography", description: "AI photo editing", url: "https://skylum.com", rating: 4.6, visits: "3M+" },
+                { name: "Capture One", logo: "fas fa-camera-retro", category: "Photography", description: "Professional photo software", url: "https://captureone.com", rating: 4.7, visits: "2M+" },
+                { name: "RawTherapee", logo: "fas fa-sliders-h", category: "Photography", description: "Free RAW editor", url: "https://rawtherapee.com", rating: 4.6, visits: "1M+" },
+                { name: "Gimp", logo: "fas fa-eye", category: "Photography", description: "Free photo editing", url: "https://gimp.org", rating: 4.6, visits: "5M+" },
+                { name: "Inkscape", logo: "fas fa-pencil-alt", category: "Photography", description: "Vector graphics editor", url: "https://inkscape.org", rating: 4.6, visits: "3M+" },
+                { name: "Krita", logo: "fas fa-paint-brush", category: "Photography", description: "Digital painting app", url: "https://krita.org", rating: 4.7, visits: "2M+" },
+                { name: "Affinity Photo", logo: "fas fa-camera", category: "Photography", description: "Photo editing software", url: "https://affinity.serif.com", rating: 4.7, visits: "3M+" },
+                { name: "Luminar Neo", logo: "fas fa-star", category: "Photography", description: "AI-powered photo editor", url: "https://skylum.com/luminar-neo", rating: 4.6, visits: "2M+" },
+                // Cybersecurity (421-440)
+                { name: "Norton", logo: "fas fa-shield-alt", category: "Security", description: "Antivirus software", url: "https://norton.com", rating: 4.5, visits: "80M+" },
+                { name: "McAfee", logo: "fas fa-shield-virus", category: "Security", description: "Cybersecurity company", url: "https://mcafee.com", rating: 4.4, visits: "50M+" },
+                { name: "Kaspersky", logo: "fas fa-lock", category: "Security", description: "Antivirus solutions", url: "https://kaspersky.com", rating: 4.5, visits: "50M+" },
+                { name: "Bitdefender", logo: "fas fa-bug", category: "Security", description: "Cybersecurity software", url: "https://bitdefender.com", rating: 4.7, visits: "30M+" },
+                { name: "Avast", logo: "fas fa-user-shield", category: "Security", description: "Free antivirus software", url: "https://avast.com", rating: 4.4, visits: "100M+" },
+                { name: "Malwarebytes", logo: "fas fa-shield", category: "Security", description: "Malware protection", url: "https://malwarebytes.com", rating: 4.7, visits: "20M+" },
+                { name: "LastPass", logo: "fas fa-key", category: "Security", description: "Password manager", url: "https://lastpass.com", rating: 4.5, visits: "25M+" },
+                { name: "1Password", logo: "fas fa-lock", category: "Security", description: "Password manager app", url: "https://1password.com", rating: 4.8, visits: "5M+" },
+                { name: "Bitwarden", logo: "fas fa-vault", category: "Security", description: "Open source password manager", url: "https://bitwarden.com", rating: 4.8, visits: "5M+" },
+                { name: "Dashlane", logo: "fas fa-key", category: "Security", description: "Password manager app", url: "https://dashlane.com", rating: 4.6, visits: "5M+" },
+                { name: "NordVPN", logo: "fas fa-shield-alt", category: "Security", description: "VPN service", url: "https://nordvpn.com", rating: 4.7, visits: "30M+" },
+                { name: "ExpressVPN", logo: "fas fa-bolt", category: "Security", description: "Fast VPN service", url: "https://expressvpn.com", rating: 4.7, visits: "20M+" },
+                { name: "Surfshark", logo: "fas fa-fish", category: "Security", description: "Affordable VPN", url: "https://surfshark.com", rating: 4.7, visits: "10M+" },
+                { name: "ProtonVPN", logo: "fas fa-lock", category: "Security", description: "Privacy VPN", url: "https://protonvpn.com", rating: 4.7, visits: "5M+" },
+                { name: "ProtonMail", logo: "fas fa-envelope", category: "Security", description: "Encrypted email service", url: "https://proton.me", rating: 4.8, visits: "10M+" },
+                { name: "Signal", logo: "fas fa-comment-dots", category: "Security", description: "Encrypted messenger", url: "https://signal.org", rating: 4.9, visits: "40M+" },
+                { name: "Tor Browser", logo: "fas fa-user-secret", category: "Security", description: "Anonymous browsing", url: "https://torproject.org", rating: 4.6, visits: "10M+" },
+                { name: "Shodan", logo: "fas fa-search", category: "Security", description: "Device search engine", url: "https://shodan.io", rating: 4.6, visits: "2M+" },
+                { name: "VirusTotal", logo: "fas fa-virus", category: "Security", description: "File & URL scanner", url: "https://virustotal.com", rating: 4.8, visits: "10M+" },
+                { name: "Cloudflare 1.1.1.1", logo: "fas fa-server", category: "Security", description: "Privacy DNS service", url: "https://1.1.1.1", rating: 4.7, visits: "10M+" },
+                // Real Estate (441-460)
+                { name: "Zillow", logo: "fas fa-home", category: "Real Estate", description: "Real estate marketplace", url: "https://zillow.com", rating: 4.6, visits: "200M+" },
+                { name: "Realtor.com", logo: "fas fa-house-user", category: "Real Estate", description: "Real estate listings", url: "https://realtor.com", rating: 4.6, visits: "100M+" },
+                { name: "Trulia", logo: "fas fa-map-marker", category: "Real Estate", description: "Home search platform", url: "https://trulia.com", rating: 4.5, visits: "60M+" },
+                { name: "Redfin", logo: "fas fa-search-plus", category: "Real Estate", description: "Tech-powered real estate", url: "https://redfin.com", rating: 4.7, visits: "50M+" },
+                { name: "LoopNet", logo: "fas fa-building", category: "Real Estate", description: "Commercial real estate", url: "https://loopnet.com", rating: 4.5, visits: "10M+" },
+                { name: "Apartments.com", logo: "fas fa-city", category: "Real Estate", description: "Apartment listings", url: "https://apartments.com", rating: 4.5, visits: "50M+" },
+                { name: "Rent.com", logo: "fas fa-home", category: "Real Estate", description: "Rental listing site", url: "https://rent.com", rating: 4.4, visits: "20M+" },
+                { name: "Rightmove", logo: "fas fa-right-left", category: "Real Estate", description: "UK property search", url: "https://rightmove.co.uk", rating: 4.6, visits: "80M+" },
+                { name: "Zoopla", logo: "fas fa-z", category: "Real Estate", description: "UK property portal", url: "https://zoopla.co.uk", rating: 4.5, visits: "50M+" },
+                { name: "Compass", logo: "fas fa-compass", category: "Real Estate", description: "Modern real estate", url: "https://compass.com", rating: 4.6, visits: "10M+" },
+                { name: "CoStar", logo: "fas fa-star", category: "Real Estate", description: "Commercial RE data", url: "https://costar.com", rating: 4.5, visits: "5M+" },
+                { name: "MagicBricks", logo: "fas fa-bricks", category: "Real Estate", description: "India property portal", url: "https://magicbricks.com", rating: 4.4, visits: "20M+" },
+                { name: "99acres", logo: "fas fa-landmark", category: "Real Estate", description: "Indian property site", url: "https://99acres.com", rating: 4.4, visits: "20M+" },
+                { name: "Housing.com", logo: "fas fa-house", category: "Real Estate", description: "India real estate", url: "https://housing.com", rating: 4.3, visits: "10M+" },
+                { name: "Lamudi", logo: "fas fa-list-alt", category: "Real Estate", description: "Emerging market property", url: "https://lamudi.com", rating: 4.3, visits: "5M+" },
+                { name: "Property.com", logo: "fas fa-home", category: "Real Estate", description: "Global property portal", url: "https://property.com", rating: 4.3, visits: "5M+" },
+                { name: "Mashvisor", logo: "fas fa-analytics", category: "Real Estate", description: "Investment property tool", url: "https://mashvisor.com", rating: 4.5, visits: "1M+" },
+                { name: "PropStream", logo: "fas fa-stream", category: "Real Estate", description: "Real estate data", url: "https://propstream.com", rating: 4.5, visits: "1M+" },
+                { name: "DealMachine", logo: "fas fa-robot", category: "Real Estate", description: "Real estate CRM", url: "https://dealmachine.com", rating: 4.4, visits: "1M+" },
+                { name: "BatchLeads", logo: "fas fa-database", category: "Real Estate", description: "Skip trace & data", url: "https://batchleads.io", rating: 4.4, visits: "1M+" },
+                // Sports (461-480)
+                { name: "ESPN", logo: "fas fa-football-ball", category: "Sports", description: "Sports news & scores", url: "https://espn.com", rating: 4.7, visits: "300M+" },
+                { name: "FIFA", logo: "fas fa-futbol", category: "Sports", description: "World football body", url: "https://fifa.com", rating: 4.7, visits: "100M+" },
+                { name: "NBA.com", logo: "fas fa-basketball-ball", category: "Sports", description: "National Basketball Association", url: "https://nba.com", rating: 4.8, visits: "150M+" },
+                { name: "NFL.com", logo: "fas fa-football-ball", category: "Sports", description: "National Football League", url: "https://nfl.com", rating: 4.8, visits: "120M+" },
+                { name: "MLB.com", logo: "fas fa-baseball-ball", category: "Sports", description: "Major League Baseball", url: "https://mlb.com", rating: 4.7, visits: "80M+" },
+                { name: "NHL.com", logo: "fas fa-hockey-puck", category: "Sports", description: "National Hockey League", url: "https://nhl.com", rating: 4.7, visits: "60M+" },
+                { name: "Bleacher Report", logo: "fas fa-newspaper", category: "Sports", description: "Sports news digital media", url: "https://bleacherreport.com", rating: 4.5, visits: "50M+" },
+                { name: "Sports Illustrated", logo: "fas fa-medal", category: "Sports", description: "Sports magazine", url: "https://si.com", rating: 4.5, visits: "40M+" },
+                { name: "BBC Sport", logo: "fas fa-trophy", category: "Sports", description: "BBC sports coverage", url: "https://bbc.com/sport", rating: 4.7, visits: "80M+" },
+                { name: "UEFA", logo: "fas fa-futbol", category: "Sports", description: "European football union", url: "https://uefa.com", rating: 4.7, visits: "80M+" },
+                { name: "Soccerway", logo: "fas fa-table", category: "Sports", description: "Football scores & stats", url: "https://soccerway.com", rating: 4.5, visits: "30M+" },
+                { name: "WhoScored", logo: "fas fa-star-rating", category: "Sports", description: "Football statistics", url: "https://whoscored.com", rating: 4.6, visits: "20M+" },
+                { name: "SofaScore", logo: "fas fa-trophy", category: "Sports", description: "Live sports scores", url: "https://sofascore.com", rating: 4.7, visits: "30M+" },
+                { name: "FlashScore", logo: "fas fa-bolt", category: "Sports", description: "Live score tracker", url: "https://flashscore.com", rating: 4.7, visits: "50M+" },
+                { name: "Transfermarkt", logo: "fas fa-exchange-alt", category: "Sports", description: "Football transfer news", url: "https://transfermarkt.com", rating: 4.7, visits: "30M+" },
+                { name: "WWE", logo: "fas fa-fist-raised", category: "Sports", description: "World Wrestling Entertainment", url: "https://wwe.com", rating: 4.5, visits: "50M+" },
+                { name: "UFC", logo: "fas fa-hand-rock", category: "Sports", description: "Ultimate Fighting Championship", url: "https://ufc.com", rating: 4.7, visits: "50M+" },
+                { name: "Tennis.com", logo: "fas fa-circle", category: "Sports", description: "Tennis news & results", url: "https://tennis.com", rating: 4.5, visits: "10M+" },
+                { name: "PGA Tour", logo: "fas fa-golf-ball", category: "Sports", description: "Professional golf tour", url: "https://pgatour.com", rating: 4.7, visits: "30M+" },
+                { name: "Formula 1", logo: "fas fa-car-side", category: "Sports", description: "Formula One official", url: "https://formula1.com", rating: 4.8, visits: "50M+" },
+            ];
+            let nextId = 401;
+            extraSites.forEach(s => {
+                websites.push({ id: nextId++, popular: nextId % 3 === 0, ...s });
+            });
+        })();
+
+        // Categories List
+        const categories = [
+            "All", "Social Media", "Search Engine", "E-Commerce", "Streaming", 
+            "AI Tools", "Development", "Education", "Design", "Productivity",
+            "News & Media", "Finance", "Health", "Travel", "Gaming",
+            "Tools", "Food", "Reference", "Jobs", "Cloud",
+            "Shopping", "Music", "Photography", "Security", "Real Estate", "Sports"
+        ];
+
+        let currentPage = 1;
+        let currentCategory = "All";
+        let currentSort = "popular";
+        const itemsPerPage = 15;
+
+        // Display Categories
+        function displayCategories() {
+            const grid = document.getElementById('categoryGrid');
+            grid.innerHTML = '';
+            
+            categories.forEach((cat, index) => {
+                const card = document.createElement('div');
+                card.className = `category-card ${index === 0 ? 'active' : ''}`;
+                
+                const iconMap = {
+                    'Social Media': 'fas fa-users',
+                    'Search Engine': 'fas fa-search',
+                    'E-Commerce': 'fas fa-shopping-cart',
+                    'Streaming': 'fas fa-play-circle',
+                    'AI Tools': 'fas fa-robot',
+                    'Development': 'fas fa-code',
+                    'Education': 'fas fa-graduation-cap',
+                    'Design': 'fas fa-paint-brush',
+                    'Productivity': 'fas fa-tasks',
+                    'News & Media': 'fas fa-newspaper',
+                    'Finance': 'fas fa-dollar-sign',
+                    'Health': 'fas fa-heartbeat',
+                    'Travel': 'fas fa-plane',
+                    'Gaming': 'fas fa-gamepad',
+                    'Tools': 'fas fa-tools',
+                    'Food': 'fas fa-utensils',
+                    'Reference': 'fas fa-book',
+                    'Jobs': 'fas fa-briefcase',
+                    'Cloud': 'fas fa-cloud',
+                    'Shopping': 'fas fa-shopping-bag',
+                    'Music': 'fas fa-music',
+                    'Photography': 'fas fa-camera',
+                    'Security': 'fas fa-shield-alt',
+                    'Real Estate': 'fas fa-home',
+                    'Sports': 'fas fa-trophy'
+                };
+                let icon = iconMap[cat] || 'fas fa-globe';
+                
+                card.innerHTML = `<i class="${icon}"></i>${cat}`;
+                card.onclick = () => filterByCategory(cat);
+                grid.appendChild(card);
+            });
+        }
+
+        // Display Websites
+        function displayWebsites() {
+            const grid = document.getElementById('websiteGrid');
+            const loading = document.getElementById('loadingSpinner');
+            const bookmarkToggle = document.getElementById('bookmarkToggle');
+            
+            // Don't refresh if in bookmark view
+            if (bookmarkToggle.classList.contains('active')) {
+                return;
+            }
+            
+            loading.style.display = 'block';
+            grid.innerHTML = '';
+
+            setTimeout(() => {
+                let filteredSites = websites;
+                
+                if (currentCategory !== "All") {
+                    filteredSites = websites.filter(site => site.category === currentCategory);
+                }
+                
+                // Sorting
+                if (currentSort === "popular") {
+                    filteredSites.sort((a, b) => {
+                        const visitsA = parseInt(a.visits) || 0;
+                        const visitsB = parseInt(b.visits) || 0;
+                        return visitsB - visitsA;
+                    });
+                } else if (currentSort === "name") {
+                    filteredSites.sort((a, b) => a.name.localeCompare(b.name));
+                } else if (currentSort === "name-desc") {
+                    filteredSites.sort((a, b) => b.name.localeCompare(a.name));
+                } else if (currentSort === "rating") {
+                    filteredSites.sort((a, b) => b.rating - a.rating);
+                } else if (currentSort === "newest") {
+                    filteredSites.sort((a, b) => b.id - a.id);
+                }
+                
+                // Pagination
+                const startIndex = (currentPage - 1) * itemsPerPage;
+                const endIndex = startIndex + itemsPerPage;
+                const paginatedSites = filteredSites.slice(startIndex, endIndex);
+                
+                if (paginatedSites.length === 0) {
+                    grid.innerHTML = `
+                        <div class="no-results">
+                            <i class="fas fa-frown"></i>
+                            <h3>No websites found</h3>
+                            <p>Try searching with different keywords or categories</p>
+                        </div>
+                    `;
+                } else {
+                    paginatedSites.forEach(site => {
+                        const stars = getRatingStars(site.rating);
+                        const bookmarked = isBookmarked(site.id) ? 'active' : '';
+                        const bookmarkIcon = isBookmarked(site.id) ? 'fas' : 'far';
+                        
+                        const card = `
+                            <div class="website-card">
+                                <button class="bookmark-btn ${bookmarked}" data-id="${site.id}" onclick="toggleBookmark(${site.id})">
+                                    <i class="${bookmarkIcon} fa-bookmark"></i>
+                                </button>
+                                <div class="card-header">
+                                    <div class="website-logo">
+                                        <i class="${site.logo}"></i>
+                                    </div>
+                                    <div class="website-info">
+                                        <div class="website-name">${site.name}</div>
+                                        <span class="website-category">${site.category}</span>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="website-description">${site.description}</div>
+                                    <div class="website-meta">
+                                        <div class="rating">
+                                            ${stars}
+                                        </div>
+                                        <div class="visits">
+                                            <i class="fas fa-users"></i> ${site.visits}
+                                        </div>
+                                    </div>
+                                    <a href="${site.url}" target="_blank" class="visit-btn">
+                                        <i class="fas fa-external-link-alt"></i> Visit
+                                    </a>
+                                </div>
+                            </div>
+                        `;
+                        grid.innerHTML += card;
+                    });
+                }
+                
+                displayPagination(filteredSites.length);
+                loading.style.display = 'none';
+            }, 300);
+        }
+
+        // Rating Stars
+        function getRatingStars(rating) {
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= Math.floor(rating)) {
+                    stars += '<i class="fas fa-star"></i>';
+                } else if (i - rating < 1 && i - rating > 0) {
+                    stars += '<i class="fas fa-star-half-alt"></i>';
+                } else {
+                    stars += '<i class="far fa-star"></i>';
+                }
+            }
+            return stars + ' <span>' + rating.toFixed(1) + '</span>';
+        }
+
+        // Pagination
+        function displayPagination(totalItems) {
+            const pagination = document.getElementById('pagination');
+            const totalPages = Math.ceil(totalItems / itemsPerPage);
+            
+            let html = '';
+            
+            if (currentPage > 1) {
+                html += `<a href="#" class="page-btn" onclick="changePage(${currentPage - 1})"><i class="fas fa-chevron-left"></i></a>`;
+            }
+            
+            for (let i = 1; i <= Math.min(5, totalPages); i++) {
+                if (i === currentPage) {
+                    html += `<a href="#" class="page-btn active" onclick="changePage(${i})">${i}</a>`;
+                } else {
+                    html += `<a href="#" class="page-btn" onclick="changePage(${i})">${i}</a>`;
+                }
+            }
+            
+            if (totalPages > 5) {
+                html += `<span class="page-dots">...</span>`;
+                html += `<a href="#" class="page-btn" onclick="changePage(${totalPages})">${totalPages}</a>`;
+            }
+            
+            if (currentPage < totalPages) {
+                html += `<a href="#" class="page-btn" onclick="changePage(${currentPage + 1})"><i class="fas fa-chevron-right"></i></a>`;
+            }
+            
+            pagination.innerHTML = html;
+        }
+
+        // Change Page
+        function changePage(page) {
+            currentPage = page;
+            displayWebsites();
+            window.scrollTo({ top: document.querySelector('.websites-section').offsetTop - 150, behavior: 'smooth' });
+        }
+
+        // Filter by Category
+        function filterByCategory(category) {
+            currentCategory = category;
+            currentPage = 1;
+            
+            const cards = document.querySelectorAll('.category-card');
+            cards.forEach(card => {
+                if (card.textContent.includes(category)) {
+                    card.classList.add('active');
+                } else {
+                    card.classList.remove('active');
+                }
+            });
+            
+            // Reset bookmark view
+            const toggle = document.getElementById('bookmarkToggle');
+            toggle.classList.remove('active');
+            toggle.innerHTML = '<i class="fas fa-bookmark"></i> Show Bookmarks';
+            
+            displayWebsites();
+        }
+
+        // Search Function
+        function searchWebsites() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+            const suggestions = document.getElementById('searchSuggestions');
+            
+            if (searchTerm === '') {
+                suggestions.style.display = 'none';
+                filterByCategory('All');
+                return;
+            }
+            
+            const filtered = websites.filter(site => 
+                site.name.toLowerCase().includes(searchTerm) || 
+                site.description.toLowerCase().includes(searchTerm) ||
+                site.category.toLowerCase().includes(searchTerm)
+            );
+            
+            // Show suggestions dropdown
+            if (filtered.length > 0) {
+                let html = '';
+                filtered.slice(0, 10).forEach(site => {
+                    html += `
+                        <a href="${site.url}" target="_blank" class="suggestion-item" onclick="suggestions.style.display='none'">
+                            <div class="suggestion-icon"><i class="${site.logo}"></i></div>
+                            <div>
+                                <div class="suggestion-name">${site.name}</div>
+                                <div class="suggestion-cat">${site.category} · ★${site.rating}</div>
+                            </div>
+                            <span class="suggestion-visit">Visit →</span>
+                        </a>
+                    `;
+                });
+                suggestions.innerHTML = html;
+                suggestions.style.display = 'block';
+            } else {
+                suggestions.innerHTML = `<div style="padding:16px;text-align:center;color:#888;font-size:0.9rem;">"${searchTerm}" পাওয়া যায়নি</div>`;
+                suggestions.style.display = 'block';
+            }
+            
+            // Also update grid below
+            const grid = document.getElementById('websiteGrid');
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-search"></i>
+                        <h3>"${searchTerm}" not found</h3>
+                        <p>Try searching with different keywords</p>
+                    </div>
+                `;
+                document.getElementById('pagination').innerHTML = '';
+            } else {
+                currentCategory = "All";
+                currentPage = 1;
+                
+                const toggle = document.getElementById('bookmarkToggle');
+                toggle.classList.remove('active');
+                toggle.innerHTML = '<i class="fas fa-bookmark"></i> Show Bookmarks';
+                
+                const cards = document.querySelectorAll('.category-card');
+                cards.forEach(card => {
+                    card.classList.toggle('active', card.textContent.trim().startsWith('All'));
+                });
+                
+                let html = '';
+                filtered.slice(0, 15).forEach(site => {
+                    const stars = getRatingStars(site.rating);
+                    const bookmarked = isBookmarked(site.id) ? 'active' : '';
+                    const bookmarkIcon = isBookmarked(site.id) ? 'fas' : 'far';
+                    
+                    html += `
+                        <div class="website-card">
+                            <button class="bookmark-btn ${bookmarked}" data-id="${site.id}" onclick="toggleBookmark(${site.id})">
+                                <i class="${bookmarkIcon} fa-bookmark"></i>
+                            </button>
+                            <div class="card-header">
+                                <div class="website-logo"><i class="${site.logo}"></i></div>
+                                <div class="website-info">
+                                    <div class="website-name">${site.name}</div>
+                                    <span class="website-category">${site.category}</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="website-description">${site.description}</div>
+                                <div class="website-meta">
+                                    <div class="rating">${stars}</div>
+                                    <div class="visits"><i class="fas fa-users"></i> ${site.visits}</div>
+                                </div>
+                                <a href="${site.url}" target="_blank" class="visit-btn">Visit</a>
+                            </div>
+                        </div>
+                    `;
+                });
+                grid.innerHTML = html;
+                document.getElementById('pagination').innerHTML = filtered.length > 15 ? '<p style="color:white;text-align:center;font-size:0.85rem;">আরো রেজাল্টের জন্য নির্দিষ্ট কীওয়ার্ড ব্যবহার করুন</p>' : '';
+            }
+        }
+        
+        // Close suggestions when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.search-wrapper')) {
+                const s = document.getElementById('searchSuggestions');
+                if (s) s.style.display = 'none';
+            }
+        });
+
+        // Sort Function
+        function sortWebsites() {
+            const select = document.getElementById('sortSelect');
+            currentSort = select.value;
+            
+            // Reset bookmark view
+            const toggle = document.getElementById('bookmarkToggle');
+            toggle.classList.remove('active');
+            toggle.innerHTML = '<i class="fas fa-bookmark"></i> Show Bookmarks';
+            
+            displayWebsites();
+        }
+
+        // Initialize
+        displayCategories();
+        displayWebsites();
+        updateBookmarksBar();
+        document.getElementById('totalCount').innerText = websites.length.toLocaleString() + '+';
+        document.getElementById('totalWebsites').innerText = websites.length.toLocaleString() + '+';
+    </script>
+</body>
+</html>
